@@ -63630,7 +63630,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"main-content\">\n  <div class=\"container-fluid\">\n      <div class=\"row\">\n          <div class=\"col-lg-2 col-md-2 col-2 col-sm-2 col-xs-2\">\n              <div class=\"card sm-card\">\n                  <div class=\"card-body\">\n                      <h4 class=\"bg-title gt-ranking-number\"> Confirmados Brasil</h4>\n                      <h2 class=\"gt-number gt-bg-ranking-number\" id=\"total-country\">0</h2>\n                      <h3 class=\"gt-dark-number gt-bg-ranking-number\" id=\"total-country-deaths\">0</h3>\n                      <h4 class=\"bg-title gt-below-ranking-number\"> Óbitos confirmados</h4>\n                  </div>\n              </div>\n              <div class=\"card gt-card\">\n                  <div class=\"card-body\">\n                      <h5 class=\"bg-title gt-ranking-number\" style=\"padding-left: 6px;\">Relatório estadual</h5>\n                      <div id=\"states-ranking\" class=\"table-ranking my-custom-scrollbar\">\n                      </div>\n                  </div>\n              </div>\n          </div>\n          <div class=\"col-lg-3 col-md-3 col-3 col-sm-3 col-xs-3\">\n              <div class=\"card bg-card\">\n                  <div class=\"card-body\">\n                      <app-mapchart></app-mapchart>\n                  </div>\n              </div>\n              <div class=\"card bg-card\">\n                  <div class=\"card-body\">\n                      <svg id=\"svg-county\" class=\"h-100 w-100\"></svg>\n                  </div>\n              </div>\n          </div>\n          <div class=\"col-lg-2 col-md-2 col-2 col-sm-2 col-xs-2\">\n              <div class=\"card sm-card\">\n                  <div class=\"card-body\">\n                      <h4 class=\"bg-title gt-ranking-number\" id=\"name-total-state\"></h4>\n                      <h2 class=\"gt-number gt-bg-ranking-number\" id=\"total-state\">0</h2>\n                      <h3 class=\"gt-dark-number gt-bg-ranking-number\" id=\"total-state-deaths\">0</h3>\n                      <h4 class=\"bg-title gt-below-ranking-number\"> Óbitos confirmados</h4>\n                  </div>\n              </div>\n              <div class=\"card gt-card\">\n                  <div class=\"card-body\">\n                      <h5 class=\"bg-title gt-ranking-number\">Relatório por Município</h5>\n                      <div id=\"counties-ranking\" class=\"table-ranking my-custom-scrollbar\">\n                      </div>\n                  </div>\n              </div>\n          </div>\n          <div class=\"col-lg-5 col-md-5 col-5 col-sm-5 col-xs-5\">\n              <div class=\"card md-card\">\n                  <div class=\"card-body\">\n                      <svg id=\"svg-linechart-country\" class=\"h-100 w-100\"></svg>\n                  </div>\n              </div>\n              <div class=\"card md-card\">\n                  <div class=\"card-body\">\n                      <svg id=\"svg-linechart-state\" class=\"h-100 w-100\"></svg>\n                  </div>\n              </div>\n              <div class=\"card md-card\">\n                  <div class=\"card-body\">\n                      <svg id=\"svg-linechart-county\" class=\"h-100 w-100\"></svg>\n                  </div>\n              </div>\n          </div>\n      </div>\n  </div>\n</div>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"main-content\">\n  <div class=\"container-fluid\">\n      <div class=\"row\">\n          <div class=\"col-lg-2 col-md-2 col-2 col-sm-2 col-xs-2\">\n              <div class=\"card sm-card\">\n                  <div class=\"card-body\">\n                      <h4 class=\"bg-title gt-ranking-number\"> Confirmados Brasil</h4>\n                      <h2 class=\"gt-number gt-bg-ranking-number\" id=\"total-country\">0</h2>\n                      <h3 class=\"gt-dark-number gt-bg-ranking-number\" id=\"total-country-deaths\">0</h3>\n                      <h4 class=\"bg-title gt-below-ranking-number\"> Óbitos confirmados</h4>\n                  </div>\n              </div>\n              <div class=\"card gt-card\">\n                  <div class=\"card-body\">\n                      <h5 class=\"bg-title gt-ranking-number\" style=\"padding-left: 6px;\">Relatório estadual</h5>\n                      <div class=\"table-ranking my-custom-scrollbar\">\n                          <table>\n                              <tbody id=\"states-ranking\">\n                              </tbody>\n                          </table>\n                      </div>\n                  </div>\n              </div>\n          </div>\n          <div class=\"col-lg-3 col-md-3 col-3 col-sm-3 col-xs-3\">\n              <div class=\"card bg-card\">\n                  <div class=\"card-body\">\n                      <app-mapchart></app-mapchart>\n                  </div>\n              </div>\n              <div class=\"card bg-card\">\n                  <div class=\"card-body\">\n                      <svg id=\"svg-county\" class=\"h-100 w-100\"></svg>\n                  </div>\n              </div>\n          </div>\n          <div class=\"col-lg-2 col-md-2 col-2 col-sm-2 col-xs-2\">\n              <div class=\"card sm-card\">\n                  <div class=\"card-body\">\n                      <h4 class=\"bg-title gt-ranking-number\" id=\"name-total-state\"></h4>\n                      <h2 class=\"gt-number gt-bg-ranking-number\" id=\"total-state\">0</h2>\n                      <h3 class=\"gt-dark-number gt-bg-ranking-number\" id=\"total-state-deaths\">0</h3>\n                      <h4 class=\"bg-title gt-below-ranking-number\"> Óbitos confirmados</h4>\n                  </div>\n              </div>\n              <div class=\"card gt-card\">\n                  <div class=\"card-body\">\n                      <h5 class=\"bg-title gt-ranking-number\">Relatório por Município</h5>\n                      <div class=\"table-ranking my-custom-scrollbar\">\n                          <table>\n                              <tbody id=\"counties-ranking\">\n                              </tbody>\n                          </table>\n                      </div>\n                  </div>\n              </div>\n          </div>\n          <div class=\"col-lg-5 col-md-5 col-5 col-sm-5 col-xs-5\">\n              <div class=\"card md-card\">\n                  <div class=\"card-body\">\n                      <svg id=\"svg-linechart-country\" class=\"h-100 w-100\"></svg>\n                  </div>\n              </div>\n              <div class=\"card md-card\">\n                  <div class=\"card-body\">\n                      <svg id=\"svg-linechart-state\" class=\"h-100 w-100\"></svg>\n                  </div>\n              </div>\n              <div class=\"card md-card\">\n                  <div class=\"card-body\">\n                      <svg id=\"svg-linechart-county\" class=\"h-100 w-100\"></svg>\n                  </div>\n              </div>\n          </div>\n      </div>\n  </div>\n</div>\n");
 
 /***/ }),
 
@@ -64654,7 +64654,7 @@ var MapchartComponent = /** @class */ (function () {
             var _loop_1 = function (item) {
                 // if (justOneRecord) {
                 statesRankingElmnt
-                    .append('p')
+                    .append('tr')
                     .on('mouseover', function () {
                     d3__WEBPACK_IMPORTED_MODULE_1__["select"](this).style('cursor', 'pointer');
                     d3__WEBPACK_IMPORTED_MODULE_1__["select"](this).style('font-weight', '800');
@@ -64677,10 +64677,9 @@ var MapchartComponent = /** @class */ (function () {
                         self.loadStatesLineChart(self.iniSelectedDay, self.endSelectedDay);
                     }
                 })
-                    .html('<text class="gt-number gt-ranking-number"  style="padding-left: 10px;">' +
+                    .html('<td class="gt-number gt-ranking-number"  style="padding-left: 11px; text-align: right">' +
                     self.formatThousandsSeperator(self.rankingStates[item].value) +
-                    '</text> ' +
-                    self.rankingStates[item].name);
+                    '</td><td>' + self.rankingStates[item].name + '</td>');
             };
             // tslint:disable-next-line:forin
             for (var item in self.rankingStates) {
@@ -64923,7 +64922,7 @@ var MapchartComponent = /** @class */ (function () {
             var _loop_2 = function (item) {
                 if (justOneRecord) {
                     countiesRankingElmnt
-                        .append('p')
+                        .append('tr')
                         .on('mouseover', function () {
                         d3__WEBPACK_IMPORTED_MODULE_1__["select"](this).style('cursor', 'pointer');
                         d3__WEBPACK_IMPORTED_MODULE_1__["select"](this).style('font-weight', '800');
@@ -64935,18 +64934,16 @@ var MapchartComponent = /** @class */ (function () {
                         self.selectedCounty = self.rankingCounties[item].ibge;
                         self.loadCountiesLineChart(self.selectedState, self.iniSelectedDay, self.endSelectedDay, self.selectedCounty);
                     })
-                        .html('<text class="gt-number gt-ranking-number" style="padding-left: 6px;">' +
+                        .html('<td class="gt-number gt-ranking-number"  style="padding-left: 6px; text-align: right">' +
                         self.formatThousandsSeperator(self.rankingCounties[item].value) +
-                        '</text> ' +
-                        self.rankingCounties[item].name);
+                        '</td><td>' + self.rankingCounties[item].name + '</td>');
                 }
                 else {
                     countiesRankingElmnt
-                        .append('p')
-                        .html('<text class="gt-number gt-ranking-number" style="padding-left: 6px;">' +
+                        .append('tr')
+                        .html('<td class="gt-number gt-ranking-number"  style="padding-left: 6px; text-align: right">' +
                         self.formatThousandsSeperator(self.rankingCounties[item].value) +
-                        '</text> ' +
-                        self.rankingCounties[item].name);
+                        '</td><td>' + self.rankingCounties[item].name + '</td>');
                 }
             };
             // tslint:disable-next-line:forin
