@@ -64837,9 +64837,9 @@ var MapchartComponent = /** @class */ (function () {
                         : TotalReport.get(d.properties.COD_IBGE)) +
                     '</text><br/>' +
                     '<text>Total óbitos: </text><text style="font-weight: 800">' +
-                    (typeof TotalReport.get(d.properties.COD_IBGE) === 'undefined'
+                    (typeof TotalDeathReport.get(d.properties.COD_IBGE) === 'undefined'
                         ? 0
-                        : TotalReport.get(d.properties.COD_IBGE)) +
+                        : TotalDeathReport.get(d.properties.COD_IBGE)) +
                     '</text><br/>' +
                     '</div>');
             });
