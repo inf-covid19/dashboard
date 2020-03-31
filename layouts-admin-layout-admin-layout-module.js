@@ -63630,7 +63630,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"main-content\">\n  <div class=\"container-fluid\">\n      <div class=\"row\">\n          <div class=\"col-lg-2 col-md-2 col-2 col-sm-2 col-xs-2\">\n              <div class=\"card sm-card\">\n                  <div class=\"card-body\">\n                      <h4 class=\"bg-title gt-ranking-number\"> Total Brasil</h4>\n                      <h2 class=\"gt-number gt-bg-ranking-number\" id=\"total-country\">0</h2>\n                  </div>\n              </div>\n              <div class=\"card gt-card\">\n                  <div class=\"card-body\">\n                      <h5 class=\"bg-title gt-ranking-number\" style=\"padding-left: 6px;\">Relatório estadual</h5>\n                      <div id=\"states-ranking\" class=\"table-ranking my-custom-scrollbar\">\n                      </div>\n                  </div>\n              </div>\n          </div>\n          <div class=\"col-lg-3 col-md-3 col-3 col-sm-3 col-xs-3\">\n              <div class=\"card bg-card\">\n                  <div class=\"card-body\">\n                      <app-mapchart></app-mapchart>\n                  </div>\n              </div>\n              <div class=\"card bg-card\">\n                  <div class=\"card-body\">\n                      <svg id=\"svg-county\" class=\"h-100 w-100\"></svg>\n                  </div>\n              </div>\n          </div>\n          <div class=\"col-lg-2 col-md-2 col-2 col-sm-2 col-xs-2\">\n              <div class=\"card sm-card\">\n                  <div class=\"card-body\">\n                      <h4 class=\"bg-title gt-ranking-number\"> Total estado</h4>\n                      <h2 class=\"gt-number gt-bg-ranking-number\" id=\"total-state\">0</h2>\n                  </div>\n              </div>\n              <div class=\"card gt-card\">\n                  <div class=\"card-body\">\n                      <h5 class=\"bg-title gt-ranking-number\">Relatório por Município</h5>\n                      <div id=\"counties-ranking\" class=\"table-ranking my-custom-scrollbar\">\n                      </div>\n                  </div>\n              </div>\n          </div>\n          <div class=\"col-lg-5 col-md-5 col-5 col-sm-5 col-xs-5\">\n              <div class=\"card md-card\">\n                  <div class=\"card-body\">\n                      <svg id=\"svg-linechart-country\" class=\"h-100 w-100\"></svg>\n                  </div>\n              </div>\n              <div class=\"card md-card\">\n                  <div class=\"card-body\">\n                      <svg id=\"svg-linechart-state\" class=\"h-100 w-100\"></svg>\n                  </div>\n              </div>\n              <div class=\"card md-card\">\n                  <div class=\"card-body\">\n                      <svg id=\"svg-linechart-county\" class=\"h-100 w-100\"></svg>\n                  </div>\n              </div>\n          </div>\n      </div>\n  </div>\n</div>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"main-content\">\n  <div class=\"container-fluid\">\n      <div class=\"row\">\n          <div class=\"col-lg-2 col-md-2 col-2 col-sm-2 col-xs-2\">\n              <div class=\"card sm-card\">\n                  <div class=\"card-body\">\n                      <h4 class=\"bg-title gt-ranking-number\"> Confirmados Brasil</h4>\n                      <h2 class=\"gt-number gt-bg-ranking-number\" id=\"total-country\">0</h2>\n                      <h3 class=\"gt-dark-number gt-bg-ranking-number\" id=\"total-country-deaths\">0</h3>\n                      <h4 class=\"bg-title gt-below-ranking-number\"> Óbitos confirmados</h4>\n                  </div>\n              </div>\n              <div class=\"card gt-card\">\n                  <div class=\"card-body\">\n                      <h5 class=\"bg-title gt-ranking-number\" style=\"padding-left: 6px;\">Relatório estadual</h5>\n                      <div id=\"states-ranking\" class=\"table-ranking my-custom-scrollbar\">\n                      </div>\n                  </div>\n              </div>\n          </div>\n          <div class=\"col-lg-3 col-md-3 col-3 col-sm-3 col-xs-3\">\n              <div class=\"card bg-card\">\n                  <div class=\"card-body\">\n                      <app-mapchart></app-mapchart>\n                  </div>\n              </div>\n              <div class=\"card bg-card\">\n                  <div class=\"card-body\">\n                      <svg id=\"svg-county\" class=\"h-100 w-100\"></svg>\n                  </div>\n              </div>\n          </div>\n          <div class=\"col-lg-2 col-md-2 col-2 col-sm-2 col-xs-2\">\n              <div class=\"card sm-card\">\n                  <div class=\"card-body\">\n                      <h4 class=\"bg-title gt-ranking-number\" id=\"name-total-state\"></h4>\n                      <h2 class=\"gt-number gt-bg-ranking-number\" id=\"total-state\">0</h2>\n                      <h3 class=\"gt-dark-number gt-bg-ranking-number\" id=\"total-state-deaths\">0</h3>\n                      <h4 class=\"bg-title gt-below-ranking-number\"> Óbitos confirmados</h4>\n                  </div>\n              </div>\n              <div class=\"card gt-card\">\n                  <div class=\"card-body\">\n                      <h5 class=\"bg-title gt-ranking-number\">Relatório por Município</h5>\n                      <div id=\"counties-ranking\" class=\"table-ranking my-custom-scrollbar\">\n                      </div>\n                  </div>\n              </div>\n          </div>\n          <div class=\"col-lg-5 col-md-5 col-5 col-sm-5 col-xs-5\">\n              <div class=\"card md-card\">\n                  <div class=\"card-body\">\n                      <svg id=\"svg-linechart-country\" class=\"h-100 w-100\"></svg>\n                  </div>\n              </div>\n              <div class=\"card md-card\">\n                  <div class=\"card-body\">\n                      <svg id=\"svg-linechart-state\" class=\"h-100 w-100\"></svg>\n                  </div>\n              </div>\n              <div class=\"card md-card\">\n                  <div class=\"card-body\">\n                      <svg id=\"svg-linechart-county\" class=\"h-100 w-100\"></svg>\n                  </div>\n              </div>\n          </div>\n      </div>\n  </div>\n</div>\n");
 
 /***/ }),
 
@@ -64230,6 +64230,8 @@ var MapchartComponent = /** @class */ (function () {
         this.data = {};
         this.totalCountry = 0;
         this.totalState = 0;
+        this.totalDeathCountry = 0;
+        this.totalDeathState = 0;
         this.rankingStates = [];
         this.rankingCounties = [];
         this.listDatesStates = [];
@@ -64248,8 +64250,8 @@ var MapchartComponent = /** @class */ (function () {
         };
         this.yFormat = d3__WEBPACK_IMPORTED_MODULE_1__["format"]('.2s');
         this.statesNames = {
-            AC: 'Acre', AL: 'Alagoas', AM: 'Amazonas', AP: 'Amapâ', BA: 'Bahia', CE: 'Ceará', DF: 'Distrito Federal', ES: 'Espírito Santo',
-            GO: 'Goaís', MA: 'Maranhão', MG: 'Minas Gerais', MS: 'Mato Grosso do Sul', MT: 'Mato Grosso', PA: 'Pará', PB: 'Paraíba', PE: 'Pernambuco',
+            AC: 'Acre', AL: 'Alagoas', AM: 'Amazonas', AP: 'Amapá', BA: 'Bahia', CE: 'Ceará', DF: 'Distrito Federal', ES: 'Espírito Santo',
+            GO: 'Goiás', MA: 'Maranhão', MG: 'Minas Gerais', MS: 'Mato Grosso do Sul', MT: 'Mato Grosso', PA: 'Pará', PB: 'Paraíba', PE: 'Pernambuco',
             PI: 'Piauí', PR: 'Paraná', RJ: 'Rio de Janeiro', RN: 'Rio Grande do Norte', RO: 'Rondônia', RR: 'Roraima', RS: 'Rio Grande do Sul', SC: 'Santa Catarina', SE: 'Sergipe', SP: 'São Paulo', TO: 'Tocantins'
         };
         this.countiesNames = {};
@@ -64354,8 +64356,8 @@ var MapchartComponent = /** @class */ (function () {
                 handle.attr('display', null).attr('transform', function (d, i) {
                     return 'translate(' + [s[i], -height] + ')';
                 });
-                d3__WEBPACK_IMPORTED_MODULE_1__["select"]('#label-date-ini').html('<text style="font-weight: 800">' + formatTime(d1[0]) + '</text>');
-                d3__WEBPACK_IMPORTED_MODULE_1__["select"]('#label-date-end').html('<text style="font-weight: 800">' + formatTime(d1[1]) + '</text>');
+                d3__WEBPACK_IMPORTED_MODULE_1__["select"]('#label-date-ini').html('<text style="font-weight: 800; font-size: min(2.1vh, 2.1vw);">' + formatTime(d1[0]) + '</text>');
+                d3__WEBPACK_IMPORTED_MODULE_1__["select"]('#label-date-end').html('<text style="font-weight: 800; font-size: min(2.1vh, 2.1vw);">' + formatTime(d1[1]) + '</text>');
             }
             function brushended() {
                 if (!d3__WEBPACK_IMPORTED_MODULE_1__["event"].sourceEvent) {
@@ -64370,8 +64372,8 @@ var MapchartComponent = /** @class */ (function () {
                     d1[0] = d3__WEBPACK_IMPORTED_MODULE_1__["timeDay"].floor(d0[0]);
                     d1[1] = d3__WEBPACK_IMPORTED_MODULE_1__["timeDay"].offset(d1[0]);
                 }
-                d3__WEBPACK_IMPORTED_MODULE_1__["select"]('#label-date-ini').html('<text style="font-weight: 800">' + formatTime(d1[0]) + '</text>');
-                d3__WEBPACK_IMPORTED_MODULE_1__["select"]('#label-date-end').html('<text style="font-weight: 800">' + formatTime(d1[1]) + '</text>');
+                d3__WEBPACK_IMPORTED_MODULE_1__["select"]('#label-date-ini').html('<text style="font-weight: 800; font-size: min(2.1vh, 2.1vw);">' + formatTime(d1[0]) + '</text>');
+                d3__WEBPACK_IMPORTED_MODULE_1__["select"]('#label-date-end').html('<text style="font-weight: 800; font-size: min(2.1vh, 2.1vw);">' + formatTime(d1[1]) + '</text>');
                 d3__WEBPACK_IMPORTED_MODULE_1__["select"](this)
                     .transition()
                     .call(d3__WEBPACK_IMPORTED_MODULE_1__["event"].target.move, d1.map(x));
@@ -64453,7 +64455,7 @@ var MapchartComponent = /** @class */ (function () {
             var svg = d3__WEBPACK_IMPORTED_MODULE_1__["select"]('#svg-country')
                 .attr('viewBox', '0 0 ' + container.width * 1.3 + ' ' + container.height * 1.3);
             var TotalReport = d3__WEBPACK_IMPORTED_MODULE_1__["map"]();
-            var TotalReportMS = d3__WEBPACK_IMPORTED_MODULE_1__["map"]();
+            var TotalDeathReport = d3__WEBPACK_IMPORTED_MODULE_1__["map"]();
             var path = d3__WEBPACK_IMPORTED_MODULE_1__["geoPath"]();
             var maxValue = 0;
             // const currDate = self.listDatesStates[self.listDatesStates.indexOf(self.iniSelectedDay) - 1];
@@ -64462,39 +64464,32 @@ var MapchartComponent = /** @class */ (function () {
                 d3__WEBPACK_IMPORTED_MODULE_1__["json"]('./assets/json/coduf.json'),
                 new Promise(function (resolve) {
                     self.totalCountry = 0;
+                    self.totalDeathCountry = 0;
                     self.rankingStates = [];
                     // tslint:disable-next-line:forin
                     for (var key in self.countiesByStates) {
                         // for (const key in self.data[self.endSelectedDay]['estados']) {
-                        var valorEnd = 0, valorIni = 0;
+                        var valorEnd = 0, valorIni = 0, valorDeathIni = 0, valorDeathEnd = 0;
                         if (typeof self.data[self.iniSelectedDay] === 'undefined') {
                             valorIni = 0;
+                            valorDeathIni = 0;
                         }
                         else {
-                            valorIni =
-                                typeof self.data[currDate]['estados'][key] === 'undefined'
-                                    ? 0
-                                    : self.data[currDate]['estados'][key].total;
+                            valorIni = typeof self.data[currDate]['estados'][key] === 'undefined' ? 0 : self.data[currDate]['estados'][key].total;
+                            valorDeathIni = typeof self.data[currDate]['estados'][key] === 'undefined' ? 0 : self.data[currDate]['estados'][key].total_death;
                         }
                         if (typeof self.data[self.endSelectedDay] === 'undefined') {
                             valorEnd = 0;
+                            valorDeathEnd = 0;
                         }
                         else {
-                            valorEnd =
-                                typeof self.data[self.endSelectedDay]['estados'][key] ===
-                                    'undefined'
-                                    ? 0
-                                    : self.data[self.endSelectedDay]['estados'][key].total;
+                            valorEnd = typeof self.data[self.endSelectedDay]['estados'][key] === 'undefined' ? 0 : self.data[self.endSelectedDay]['estados'][key].total;
+                            valorDeathEnd = typeof self.data[self.endSelectedDay]['estados'][key] === 'undefined' ? 0 : self.data[self.endSelectedDay]['estados'][key].total_death;
                         }
-                        // if (typeof valorEnd === 'undefined') { valorEnd = 0; }
-                        // if (typeof valorIni === 'undefined') { valorIni = 0; }
                         TotalReport.set(key, Math.abs(valorEnd - valorIni));
+                        TotalDeathReport.set(key, Math.abs(valorDeathEnd - valorDeathIni));
                         self.totalCountry += Math.abs(valorEnd - valorIni);
-                        // console.log('self total country', self.totalCountry);
-                        // console.log('self curr date', currDate);
-                        // console.log('self curr date', self.endSelectedDay);
-                        // self.totalCountry += valorEnd;
-                        // if(self.iniSelectedDay === )
+                        self.totalDeathCountry += Math.abs(valorDeathEnd - valorDeathIni);
                         maxValue = Math.max(maxValue, Math.abs(valorEnd - valorIni));
                         self.rankingStates.push({
                             region: key,
@@ -64573,6 +64568,11 @@ var MapchartComponent = /** @class */ (function () {
                         ? 0
                         : TotalReport.get(d.properties.UF_05)) +
                     '</text><br/>' +
+                    '<text>Total óbitos: </text><text style="font-weight: 800">' +
+                    (typeof TotalDeathReport.get(d.properties.UF_05) === 'undefined'
+                        ? 0
+                        : TotalDeathReport.get(d.properties.UF_05)) +
+                    '</text><br/>' +
                     '</div>');
             });
             var zoom = d3__WEBPACK_IMPORTED_MODULE_1__["zoom"]()
@@ -64647,6 +64647,7 @@ var MapchartComponent = /** @class */ (function () {
                 .remove();
             // @ts-ignore
             d3__WEBPACK_IMPORTED_MODULE_1__["select"]('#total-country').html(self.formatThousandsSeperator(self.totalCountry));
+            d3__WEBPACK_IMPORTED_MODULE_1__["select"]('#total-country-deaths').html(self.formatThousandsSeperator(self.totalDeathCountry));
             var statesRankingElmnt = d3__WEBPACK_IMPORTED_MODULE_1__["select"]('#states-ranking');
             statesRankingElmnt.selectAll('*').remove();
             self.rankingStates.sort(function (a, b) { return (a.value < b.value ? 1 : -1); });
@@ -64708,6 +64709,7 @@ var MapchartComponent = /** @class */ (function () {
             d3__WEBPACK_IMPORTED_MODULE_1__["select"]('#svg-county').selectAll('*').remove();
             var svg = d3__WEBPACK_IMPORTED_MODULE_1__["select"]('#svg-county').attr('viewBox', '0 0 ' + container.width * 1.3 + ' ' + container.height * 1.3);
             var TotalReport = d3__WEBPACK_IMPORTED_MODULE_1__["map"]();
+            var TotalDeathReport = d3__WEBPACK_IMPORTED_MODULE_1__["map"]();
             var path = d3__WEBPACK_IMPORTED_MODULE_1__["geoPath"]();
             var maxValue = 0;
             var promises = [
@@ -64715,48 +64717,47 @@ var MapchartComponent = /** @class */ (function () {
                 new Promise(function (resolve) {
                     self.rankingCounties = [];
                     self.totalState = 0;
+                    self.totalDeathState = 0;
                     // const beginDay = self.listDatesCounties.indexOf(self.iniSelectedDay) === -1 ? self.listDatesCounties[0] : self.iniSelectedDay;
                     var beginDay = self.iniSelectedDay;
                     // const beginDay = self.listDatesStates[self.listDatesStates.indexOf(self.iniSelectedDay) - 1];
-                    var lastDay = self.listDatesStates.indexOf(self.endSelectedDay) ===
-                        self.listDatesStates.length - 1
-                        ? self.listDatesStates[self.listDatesStates.length - 2]
-                        : self.endSelectedDay;
+                    var lastDay = self.listDatesStates.indexOf(self.endSelectedDay) === self.listDatesStates.length - 1 ? self.listDatesStates[self.listDatesStates.length - 2] : self.endSelectedDay;
                     self.countiesByStates[stateParam].forEach(function (key, index) {
-                        var valorEnd = 0, valorIni = 0;
+                        var valorEnd = 0, valorIni = 0, valorDeathEnd = 0, valorDeathIni = 0;
                         if (typeof self.data[beginDay] === 'undefined') {
                             valorIni = 0;
+                            valorDeathIni = 0;
                         }
                         else {
                             if (typeof self.data[beginDay]['estados'][stateParam] === 'undefined') {
                                 valorIni = 0;
+                                valorDeathIni = 0;
                             }
                             else {
-                                valorIni =
-                                    typeof self.data[beginDay]['estados'][stateParam]['municipios'][key] === 'undefined'
-                                        ? 0
-                                        : self.data[beginDay]['estados'][stateParam]['municipios'][key].total;
+                                valorIni = typeof self.data[beginDay]['estados'][stateParam]['municipios'][key] === 'undefined' ? 0 : self.data[beginDay]['estados'][stateParam]['municipios'][key].total;
+                                valorDeathIni = typeof self.data[beginDay]['estados'][stateParam]['municipios'][key] === 'undefined' ? 0 : self.data[beginDay]['estados'][stateParam]['municipios'][key].total_death;
                             }
                         }
                         if (typeof self.data[lastDay] === 'undefined') {
                             valorEnd = 0;
+                            valorDeathEnd = 0;
                         }
                         else {
                             if (typeof self.data[lastDay]['estados'][stateParam] === 'undefined') {
                                 valorEnd = 0;
+                                valorDeathEnd = 0;
                             }
                             else {
-                                valorEnd =
-                                    typeof self.data[lastDay]['estados'][stateParam]['municipios'][key] === 'undefined'
-                                        ? 0
-                                        : self.data[lastDay]['estados'][stateParam]['municipios'][key]
-                                            .total;
+                                valorEnd = typeof self.data[lastDay]['estados'][stateParam]['municipios'][key] === 'undefined' ? 0 : self.data[lastDay]['estados'][stateParam]['municipios'][key].total;
+                                valorDeathEnd = typeof self.data[lastDay]['estados'][stateParam]['municipios'][key] === 'undefined' ? 0 : self.data[lastDay]['estados'][stateParam]['municipios'][key].total_death;
                             }
                         }
                         // if (typeof valorEnd === 'undefined') { valorEnd = 0; }
                         // if (typeof valorIni === 'undefined') { valorIni = 0; }
                         TotalReport.set(key, Math.abs(valorEnd - valorIni));
+                        TotalDeathReport.set(key, Math.abs(valorDeathEnd - valorDeathIni));
                         self.totalState += Math.abs(valorEnd - valorIni);
+                        self.totalDeathState += Math.abs(valorDeathEnd - valorDeathIni);
                         maxValue = Math.max(maxValue, Math.abs(valorEnd - valorIni));
                         self.rankingCounties.push({
                             ibge: key,
@@ -64835,6 +64836,11 @@ var MapchartComponent = /** @class */ (function () {
                         ? 0
                         : TotalReport.get(d.properties.COD_IBGE)) +
                     '</text><br/>' +
+                    '<text>Total óbitos: </text><text style="font-weight: 800">' +
+                    (typeof TotalReport.get(d.properties.COD_IBGE) === 'undefined'
+                        ? 0
+                        : TotalReport.get(d.properties.COD_IBGE)) +
+                    '</text><br/>' +
                     '</div>');
             });
             var zoom = d3__WEBPACK_IMPORTED_MODULE_1__["zoom"]()
@@ -64909,6 +64915,8 @@ var MapchartComponent = /** @class */ (function () {
                 .remove();
             g.call(self.tipCounty);
             d3__WEBPACK_IMPORTED_MODULE_1__["select"]('#total-state').html(self.formatThousandsSeperator(self.totalState));
+            d3__WEBPACK_IMPORTED_MODULE_1__["select"]('#total-state-deaths').html(self.formatThousandsSeperator(self.totalDeathState));
+            d3__WEBPACK_IMPORTED_MODULE_1__["select"]('#name-total-state').html('Total ' + self.selectedState);
             var countiesRankingElmnt = d3__WEBPACK_IMPORTED_MODULE_1__["select"]('#counties-ranking');
             countiesRankingElmnt.selectAll('*').remove();
             self.rankingCounties.sort(function (a, b) { return (a.value < b.value ? 1 : -1); });
@@ -65050,7 +65058,7 @@ var MapchartComponent = /** @class */ (function () {
                     .attr('font-family', 'sans-serif')
                     .style('font-size', 'calc(2vh)')
                     .style('font-weight', 'bold')
-                    .text('Total de casos no Brasil por dia');
+                    .text('Casos Confirmados no Brasil por dia');
                 var cases = g
                     .selectAll('.category')
                     .data(self.lineChartCountry)
@@ -65214,7 +65222,7 @@ var MapchartComponent = /** @class */ (function () {
                     .attr('transform', 'rotate(-90)')
                     .text('Cases');
                 var title = stateParam === ''
-                    ? 'Total de casos por estado'
+                    ? 'Casos Confirmados por estado'
                     : self.statesNames[stateParam];
                 g.append('text')
                     .attr('x', width / 3.5)
@@ -65420,7 +65428,7 @@ var MapchartComponent = /** @class */ (function () {
                     .attr('transform', 'rotate(-90)')
                     .text('Cases');
                 var title = countyParam === ''
-                    ? 'Total de casos por município (' + stateParam + ')'
+                    ? 'Casos Confirmados casos por município (' + stateParam + ')'
                     : typeof self.countiesNames[countyParam] === 'undefined'
                         ? 'IBGE: ' + countyParam
                         : self.countiesNames[countyParam];
@@ -65510,11 +65518,13 @@ var MapchartComponent = /** @class */ (function () {
             var date = date_fns__WEBPACK_IMPORTED_MODULE_3__["format"](d, 'yyyy-MM-dd');
             self.data[date] = {
                 total: 0,
+                total_death: 0,
                 estados: {}
             };
             Object.keys(_this.statesNames).forEach(function (uf) {
                 self.data[date]['estados'][uf] = {
                     total: 0,
+                    total_death: 0,
                     municipios: {}
                 };
             });
@@ -65527,7 +65537,10 @@ var MapchartComponent = /** @class */ (function () {
                 }
                 if (d.place_type === 'state') {
                     self.data[d.date]['total'] += parseInt(d.confirmed);
+                    // self.data[d.date]['total_death'] += d.deaths === '' ? 0 : parseInt(d.deaths);
+                    self.data[d.date]['total_death'] = 0;
                     self.data[d.date]['estados'][d.state]['total'] = parseInt(d.confirmed);
+                    self.data[d.date]['estados'][d.state]['total_death'] = d.deaths === '' ? 0 : parseInt(d.deaths);
                 }
                 // Filling cities data
                 else if (d.place_type === 'city') {
@@ -65538,13 +65551,15 @@ var MapchartComponent = /** @class */ (function () {
                     if (munId in self.data[d.date]['estados'][d.state]['municipios'] ===
                         false) {
                         self.data[d.date]['estados'][d.state]['municipios'][munId] = {
-                            total: 0
+                            total: 0,
+                            total_death: 0
                         };
                     }
                     if (-1 === self.countiesByStates[d.state].indexOf(munId)) {
                         self.countiesByStates[d.state].push(munId);
                     }
                     self.data[d.date]['estados'][d.state]['municipios'][munId]['total'] += parseInt(d.confirmed);
+                    self.data[d.date]['estados'][d.state]['municipios'][munId]['total_death'] = d.deaths === '' ? 0 : parseInt(d.deaths);
                     self.countiesNames[munId] = d.city.split('/')[0];
                     if (-1 === self.listDatesCounties.indexOf(d.date)) {
                         self.listDatesCounties.push(d.date);
@@ -65557,12 +65572,18 @@ var MapchartComponent = /** @class */ (function () {
                 var date = date_fns__WEBPACK_IMPORTED_MODULE_3__["format"](d, 'yyyy-MM-dd');
                 var lastDate = date_fns__WEBPACK_IMPORTED_MODULE_3__["format"](dateSerie[i], 'yyyy-MM-dd');
                 self.data[date].total = 0;
+                self.data[date].total_death = 0;
                 Object.keys(self.data[date]['estados']).forEach(function (uf) {
                     if (self.data[date]['estados'][uf].total === 0) {
                         var lastValue = self.data[lastDate]['estados'][uf].total;
                         self.data[date]['estados'][uf].total = lastValue;
                     }
                     self.data[date].total += self.data[date]['estados'][uf].total;
+                    if (self.data[date]['estados'][uf].total_death === 0) {
+                        var lastValue = self.data[lastDate]['estados'][uf].total_death;
+                        self.data[date]['estados'][uf].total_death = lastValue;
+                    }
+                    self.data[date].total_death += self.data[date]['estados'][uf].total_death;
                     Object.keys(self.data[lastDate]['estados'][uf]['municipios']).forEach(function (city) {
                         if (city in self.data[date]['estados'][uf]['municipios'] ===
                             false) {
