@@ -64389,13 +64389,15 @@ var MapchartComponent = /** @class */ (function () {
                     .call(d3__WEBPACK_IMPORTED_MODULE_1__["event"].target.move, d1.map(x));
                 self.iniSelectedDay = formatTime(d1[0]);
                 self.endSelectedDay = formatTime(d1[1]);
-                // if (d3.select('#multipleStatesCheckBox').property('checked')) {
-                self.loadWidgetCountry();
-                // } else {
-                //   self.loadWidgetCountry(true);
-                // }
+                if (d3__WEBPACK_IMPORTED_MODULE_1__["select"]('#byDeathsCheckBox').property('checked')) {
+                    self.loadWidgetCountry(true);
+                    self.loadWidgetState(self.selectedState, true);
+                }
+                else {
+                    self.loadWidgetCountry();
+                    self.loadWidgetState(self.selectedState);
+                }
                 // if (d3.select('#multipleCountiesCheckBox').property('checked')) {
-                self.loadWidgetState(self.selectedState);
                 // } else {
                 // self.loadWidgetState(self.selectedState, true);
                 // }
@@ -64407,9 +64409,25 @@ var MapchartComponent = /** @class */ (function () {
         };
         this.loadResizeWindow = function () {
             _this.loadRangeSliderTime();
-            _this.loadWidgetCountry();
-            _this.loadWidgetState(_this.selectedState);
-            // this.loadCountryLineChart(this.iniSelectedDay, this.endSelectedDay);
+            if (d3__WEBPACK_IMPORTED_MODULE_1__["select"]('#byDeathsCheckBox').property('checked')) {
+                _this.loadWidgetCountry(true);
+                _this.loadWidgetState(_this.selectedState, true);
+            }
+            else {
+                _this.loadWidgetCountry();
+                _this.loadWidgetState(_this.selectedState);
+            }
+        };
+        this.onByDeathsCheckBoxChange = function () {
+            var self = _this;
+            if (d3__WEBPACK_IMPORTED_MODULE_1__["select"]('#byDeathsCheckBox').property('checked')) {
+                self.loadWidgetCountry(true);
+                self.loadWidgetState(self.selectedState, true);
+            }
+            else {
+                self.loadWidgetCountry();
+                self.loadWidgetState(self.selectedState);
+            }
         };
         /*onStatesCheckBoxChange = () => {
           const self = this;
@@ -64437,8 +64455,8 @@ var MapchartComponent = /** @class */ (function () {
         this.formatThousandsSeperator = function (n) {
             return d3__WEBPACK_IMPORTED_MODULE_1__["format"](',d')(n);
         };
-        this.loadWidgetCountry = function (justOneRecordState) {
-            if (justOneRecordState === void 0) { justOneRecordState = false; }
+        this.loadWidgetCountry = function (byDeaths) {
+            if (byDeaths === void 0) { byDeaths = false; }
             var self = _this;
             var container = d3__WEBPACK_IMPORTED_MODULE_1__["select"]('#svg-country').node();
             //
@@ -64489,12 +64507,18 @@ var MapchartComponent = /** @class */ (function () {
                         TotalDeathReport.set(key, Math.abs(valorDeathEnd - valorDeathIni));
                         self.totalCountry += Math.abs(valorEnd - valorIni);
                         self.totalDeathCountry += Math.abs(valorDeathEnd - valorDeathIni);
-                        maxValue = Math.max(maxValue, Math.abs(valorEnd - valorIni));
-                        self.rankingStates.push({
-                            region: key,
-                            name: self.statesNames[key],
-                            value: Math.abs(valorEnd - valorIni)
-                        });
+                        if (byDeaths === true) {
+                            maxValue = Math.max(maxValue, Math.abs(valorDeathEnd - valorDeathIni));
+                            self.rankingStates.push({ region: key, name: self.statesNames[key],
+                                value: Math.abs(valorDeathEnd - valorDeathIni)
+                            });
+                        }
+                        else {
+                            maxValue = Math.max(maxValue, Math.abs(valorEnd - valorIni));
+                            self.rankingStates.push({ region: key, name: self.statesNames[key],
+                                value: Math.abs(valorEnd - valorIni)
+                            });
+                        }
                     }
                     resolve(true);
                 })
@@ -64521,9 +64545,13 @@ var MapchartComponent = /** @class */ (function () {
                     .enter()
                     .append('path')
                     .attr('fill', function (d) {
-                    var estColor = typeof TotalReport.get(d.properties.UF_05) === 'undefined'
-                        ? 0
-                        : TotalReport.get(d.properties.UF_05);
+                    var estColor = 0;
+                    if (byDeaths === true) {
+                        estColor = typeof TotalDeathReport.get(d.properties.UF_05) === 'undefined' ? 0 : TotalDeathReport.get(d.properties.UF_05);
+                    }
+                    else {
+                        estColor = typeof TotalReport.get(d.properties.UF_05) === 'undefined' ? 0 : TotalReport.get(d.properties.UF_05);
+                    }
                     if (estColor === 0) {
                         return '#000000';
                     }
@@ -64538,11 +64566,9 @@ var MapchartComponent = /** @class */ (function () {
                 })
                     .on('click', function (d) {
                     self.selectedState = d.properties.UF_05;
-                    if (justOneRecordState === true) {
-                        self.loadStatesLineChart(self.iniSelectedDay, self.endSelectedDay, self.selectedState);
-                    }
+                    // self.loadStatesLineChart(self.iniSelectedDay, self.endSelectedDay, byDeaths );
                     // if (d3.select('#multipleCountiesCheckBox').property('checked')) {
-                    self.loadWidgetState(self.selectedState);
+                    self.loadWidgetState(self.selectedState, byDeaths);
                     // } else {
                     //   self.loadWidgetState(self.selectedState, true);
                     // }
@@ -64646,6 +64672,7 @@ var MapchartComponent = /** @class */ (function () {
             var statesRankingElmnt = d3__WEBPACK_IMPORTED_MODULE_1__["select"]('#states-ranking');
             statesRankingElmnt.selectAll('*').remove();
             self.rankingStates.sort(function (a, b) { return (a.value < b.value ? 1 : -1); });
+            var classColor = byDeaths === false ? 'gt-number' : 'gt-dark-number';
             var _loop_1 = function (item) {
                 // if (justOneRecord) {
                 statesRankingElmnt
@@ -64660,7 +64687,7 @@ var MapchartComponent = /** @class */ (function () {
                     .on('click', function () {
                     self.selectedState = self.rankingStates[item].region;
                     // if (d3.select('#multipleCountiesCheckBox').property('checked')) {
-                    self.loadWidgetState(self.rankingStates[item].region); // without event click on counties map
+                    self.loadWidgetState(self.rankingStates[item].region, byDeaths); // without event click on counties map
                     // } else {
                     //   self.loadWidgetState(self.rankingStates[item].region, true);
                     // }
@@ -64668,10 +64695,10 @@ var MapchartComponent = /** @class */ (function () {
                     //   self.loadStatesLineChart(self.iniSelectedDay, self.endSelectedDay, self.selectedState);
                     // } else {
                     //   self.loadStatesLineChart(self.iniSelectedDay, self.endSelectedDay);
-                    self.loadCountiesLineChart(self.selectedState, self.iniSelectedDay, self.endSelectedDay);
+                    self.loadCountiesLineChart(self.selectedState, self.iniSelectedDay, self.endSelectedDay, byDeaths);
                     // }
                 })
-                    .html('<td class="gt-number gt-ranking-number"  style="padding-left: 11px; text-align: right">' +
+                    .html('<td class="' + classColor + ' gt-ranking-number"  style="padding-left: 11px; text-align: right">' +
                     self.formatThousandsSeperator(self.rankingStates[item].value) +
                     '</td><td>' + self.rankingStates[item].name + '</td>');
             };
@@ -64682,11 +64709,11 @@ var MapchartComponent = /** @class */ (function () {
             // if (justOneRecordState === true) {
             //   self.loadStatesLineChart(self.iniSelectedDay, self.endSelectedDay, self.rankingStates[0].region);
             // } else {
-            self.loadStatesLineChart(self.iniSelectedDay, self.endSelectedDay);
+            self.loadStatesLineChart(self.iniSelectedDay, self.endSelectedDay, byDeaths);
             // }
         };
-        this.loadWidgetState = function (stateParam, justOneRecord) {
-            if (justOneRecord === void 0) { justOneRecord = false; }
+        this.loadWidgetState = function (stateParam, byDeaths) {
+            if (byDeaths === void 0) { byDeaths = false; }
             var self = _this;
             var container = d3__WEBPACK_IMPORTED_MODULE_1__["select"]('#svg-county').node();
             //
@@ -64746,12 +64773,18 @@ var MapchartComponent = /** @class */ (function () {
                         TotalDeathReport.set(key, Math.abs(valorDeathEnd - valorDeathIni));
                         self.totalState += Math.abs(valorEnd - valorIni);
                         self.totalDeathState += Math.abs(valorDeathEnd - valorDeathIni);
-                        maxValue = Math.max(maxValue, Math.abs(valorEnd - valorIni));
-                        self.rankingCounties.push({
-                            ibge: key,
-                            name: self.countiesNames[key],
-                            value: Math.abs(valorEnd - valorIni)
-                        });
+                        if (byDeaths === true) {
+                            maxValue = Math.max(maxValue, Math.abs(valorDeathEnd - valorDeathIni));
+                            self.rankingCounties.push({ ibge: key, name: self.countiesNames[key],
+                                value: Math.abs(valorDeathEnd - valorDeathIni)
+                            });
+                        }
+                        else {
+                            maxValue = Math.max(maxValue, Math.abs(valorEnd - valorIni));
+                            self.rankingCounties.push({ ibge: key, name: self.countiesNames[key],
+                                value: Math.abs(valorEnd - valorIni)
+                            });
+                        }
                     });
                     resolve(true);
                 })
@@ -64781,9 +64814,13 @@ var MapchartComponent = /** @class */ (function () {
                     .enter()
                     .append('path')
                     .attr('fill', function (d) {
-                    var munColor = typeof TotalReport.get(d.properties.COD_IBGE) === 'undefined'
-                        ? 0
-                        : TotalReport.get(d.properties.COD_IBGE);
+                    var munColor = 0;
+                    if (byDeaths === true) {
+                        munColor = typeof TotalDeathReport.get(d.properties.COD_IBGE) === 'undefined' ? 0 : TotalDeathReport.get(d.properties.COD_IBGE);
+                    }
+                    else {
+                        munColor = typeof TotalReport.get(d.properties.COD_IBGE) === 'undefined' ? 0 : TotalReport.get(d.properties.COD_IBGE);
+                    }
                     if (munColor === 0) {
                         return '#000000';
                     }
@@ -64791,12 +64828,6 @@ var MapchartComponent = /** @class */ (function () {
                 })
                     .attr('d', path)
                     .attr('stroke', '#eeeeee')
-                    .on('click', function (d) {
-                    self.selectedCounty = d.properties.COD_IBGE;
-                    if (justOneRecord === true) {
-                        self.loadCountiesLineChart(self.selectedState, self.iniSelectedDay, self.endSelectedDay, d.properties.COD_IBGE);
-                    }
-                })
                     .on('mouseover', self.tipCounty.show)
                     .on('mouseout', function () {
                     d3__WEBPACK_IMPORTED_MODULE_1__["select"](this).attr('stroke', '#eeeeee');
@@ -64905,45 +64936,23 @@ var MapchartComponent = /** @class */ (function () {
             var countiesRankingElmnt = d3__WEBPACK_IMPORTED_MODULE_1__["select"]('#counties-ranking');
             countiesRankingElmnt.selectAll('*').remove();
             self.rankingCounties.sort(function (a, b) { return (a.value < b.value ? 1 : -1); });
-            var _loop_2 = function (item) {
-                if (justOneRecord) {
-                    countiesRankingElmnt
-                        .append('tr')
-                        .on('mouseover', function () {
-                        d3__WEBPACK_IMPORTED_MODULE_1__["select"](this).style('cursor', 'pointer');
-                        d3__WEBPACK_IMPORTED_MODULE_1__["select"](this).style('font-weight', '800');
-                    })
-                        .on('mouseout', function () {
-                        d3__WEBPACK_IMPORTED_MODULE_1__["select"](this).style('font-weight', '300');
-                    })
-                        .on('click', function () {
-                        self.selectedCounty = self.rankingCounties[item].ibge;
-                        self.loadCountiesLineChart(self.selectedState, self.iniSelectedDay, self.endSelectedDay, self.selectedCounty);
-                    })
-                        .html('<td class="gt-number gt-ranking-number"  style="padding-left: 6px; text-align: right">' +
-                        self.formatThousandsSeperator(self.rankingCounties[item].value) +
-                        '</td><td>' + self.rankingCounties[item].name + '</td>');
-                }
-                else {
-                    countiesRankingElmnt
-                        .append('tr')
-                        .html('<td class="gt-number gt-ranking-number"  style="padding-left: 6px; text-align: right">' +
-                        self.formatThousandsSeperator(self.rankingCounties[item].value) +
-                        '</td><td>' + self.rankingCounties[item].name + '</td>');
-                }
-            };
+            var classColor = byDeaths === false ? 'gt-number' : 'gt-dark-number';
             // tslint:disable-next-line:forin
             for (var item in self.rankingCounties) {
-                _loop_2(item);
+                countiesRankingElmnt
+                    .append('tr')
+                    .on('mouseover', function () {
+                    d3__WEBPACK_IMPORTED_MODULE_1__["select"](this).style('cursor', 'pointer');
+                    d3__WEBPACK_IMPORTED_MODULE_1__["select"](this).style('font-weight', '800');
+                })
+                    .on('mouseout', function () {
+                    d3__WEBPACK_IMPORTED_MODULE_1__["select"](this).style('font-weight', '300');
+                })
+                    .html('<td class="' + classColor + ' gt-ranking-number"  style="padding-left: 6px; text-align: right">' +
+                    self.formatThousandsSeperator(self.rankingCounties[item].value) +
+                    '</td><td>' + self.rankingCounties[item].name + '</td>');
             }
-            if (justOneRecord === true) {
-                self.selectedCounty =
-                    self.countiesByStates[stateParam].indexOf(self.selectedCounty) !== -1 ? self.selectedCounty : self.rankingCounties[0].ibge;
-                self.loadCountiesLineChart(stateParam, self.iniSelectedDay, self.endSelectedDay, self.selectedCounty);
-            }
-            else {
-                self.loadCountiesLineChart(stateParam, self.iniSelectedDay, self.endSelectedDay);
-            }
+            self.loadCountiesLineChart(stateParam, self.iniSelectedDay, self.endSelectedDay, byDeaths);
         };
         /*loadCountryLineChart = (iniDate, endDate) => {
           const self = this;
@@ -65121,8 +65130,8 @@ var MapchartComponent = /** @class */ (function () {
             });
           g.call(self.tipLineCountry);
         };*/
-        this.loadStatesLineChart = function (iniDate, endDate, stateParam) {
-            if (stateParam === void 0) { stateParam = ''; }
+        this.loadStatesLineChart = function (iniDate, endDate, byDeaths) {
+            if (byDeaths === void 0) { byDeaths = false; }
             var self = _this;
             var container = d3__WEBPACK_IMPORTED_MODULE_1__["select"]('#svg-linechart-state').node();
             if (container === (undefined || null) || container.parentNode === (undefined || null)) {
@@ -65140,14 +65149,22 @@ var MapchartComponent = /** @class */ (function () {
                     self.rankingStates.forEach(function (rankingElm, index) {
                         // if (index > 9 && stateParam === '') { return; }
                         var state = rankingElm.region;
-                        if (stateParam !== '' && state !== stateParam) {
-                            return;
-                        }
                         var posIni = self.listDatesStates.indexOf(iniDate);
                         while (self.listDatesStates[posIni] <= endDate) {
-                            var value = typeof self.data[self.listDatesStates[posIni]] === 'undefined' ? 0 : self.data[self.listDatesStates[posIni]].total;
+                            var value = 0;
+                            if (byDeaths === true) {
+                                value = typeof self.data[self.listDatesStates[posIni]] === 'undefined' ? 0 : self.data[self.listDatesStates[posIni]].total_death;
+                            }
+                            else {
+                                value = typeof self.data[self.listDatesStates[posIni]] === 'undefined' ? 0 : self.data[self.listDatesStates[posIni]].total;
+                            }
                             if (value !== 0) {
-                                value = typeof self.data[self.listDatesStates[posIni]]['estados'][state] === 'undefined' ? 0 : self.data[self.listDatesStates[posIni]]['estados'][state].total;
+                                if (byDeaths === true) {
+                                    value = typeof self.data[self.listDatesStates[posIni]]['estados'][state] === 'undefined' ? 0 : self.data[self.listDatesStates[posIni]]['estados'][state].total_death;
+                                }
+                                else {
+                                    value = typeof self.data[self.listDatesStates[posIni]]['estados'][state] === 'undefined' ? 0 : self.data[self.listDatesStates[posIni]]['estados'][state].total;
+                                }
                             }
                             if (value !== 0) {
                                 self.lineChartStates.push({ region: state, date: parseDate(self.listDatesStates[posIni]), value: value });
@@ -65172,6 +65189,9 @@ var MapchartComponent = /** @class */ (function () {
             function ready(_a) {
                 var dataPoints = _a[0];
                 var legendRange = [0, 10, 50, 100, 250, 500, 1000, 5000, 10000];
+                if (byDeaths === true) {
+                    legendRange = [0, 1, 5, 10, 25, 50, 100, 500, 1000];
+                }
                 var colorRange = self.getPlasmaList(9);
                 var qtyDays = 1 + self.listDatesStates.indexOf(self.endSelectedDay) - self.listDatesStates.indexOf(self.iniSelectedDay);
                 var gridSizeX = width / qtyDays;
@@ -65595,8 +65615,8 @@ var MapchartComponent = /** @class */ (function () {
             });
           g.call(self.tipLineCounty);
         };*/
-        this.loadCountiesLineChart = function (stateParam, iniDate, endDate, countyParam) {
-            if (countyParam === void 0) { countyParam = ''; }
+        this.loadCountiesLineChart = function (stateParam, iniDate, endDate, byDeaths) {
+            if (byDeaths === void 0) { byDeaths = false; }
             var self = _this;
             var container = d3__WEBPACK_IMPORTED_MODULE_1__["select"]('#svg-linechart-county').node();
             if (container === (undefined || null) || container.parentNode === (undefined || null)) {
@@ -65632,14 +65652,28 @@ var MapchartComponent = /** @class */ (function () {
                         var county = rankingElm.ibge;
                         var posIni = self.listDatesCounties.indexOf(iniDate);
                         while (self.listDatesCounties[posIni] <= endDate) {
-                            var value = typeof self.data[self.listDatesCounties[posIni]] === 'undefined'
-                                ? 0
-                                : self.data[self.listDatesCounties[posIni]].total;
-                            if (value !== 0) {
-                                value = typeof self.data[self.listDatesCounties[posIni]]['estados'][stateParam] === 'undefined' ? 0 : self.data[self.listDatesCounties[posIni]]['estados'][stateParam].total;
+                            var value = 0;
+                            if (byDeaths === true) {
+                                value = typeof self.data[self.listDatesCounties[posIni]] === 'undefined' ? 0 : self.data[self.listDatesCounties[posIni]].total_death;
+                            }
+                            else {
+                                value = typeof self.data[self.listDatesCounties[posIni]] === 'undefined' ? 0 : self.data[self.listDatesCounties[posIni]].total;
                             }
                             if (value !== 0) {
-                                value = typeof self.data[self.listDatesCounties[posIni]]['estados'][stateParam]['municipios'][county] === 'undefined' ? 0 : self.data[self.listDatesCounties[posIni]]['estados'][stateParam]['municipios'][county].total;
+                                if (byDeaths === true) {
+                                    value = typeof self.data[self.listDatesCounties[posIni]]['estados'][stateParam] === 'undefined' ? 0 : self.data[self.listDatesCounties[posIni]]['estados'][stateParam].total_death;
+                                }
+                                else {
+                                    value = typeof self.data[self.listDatesCounties[posIni]]['estados'][stateParam] === 'undefined' ? 0 : self.data[self.listDatesCounties[posIni]]['estados'][stateParam].total;
+                                }
+                            }
+                            if (value !== 0) {
+                                if (byDeaths === true) {
+                                    value = typeof self.data[self.listDatesCounties[posIni]]['estados'][stateParam]['municipios'][county] === 'undefined' ? 0 : self.data[self.listDatesCounties[posIni]]['estados'][stateParam]['municipios'][county].total_death;
+                                }
+                                else {
+                                    value = typeof self.data[self.listDatesCounties[posIni]]['estados'][stateParam]['municipios'][county] === 'undefined' ? 0 : self.data[self.listDatesCounties[posIni]]['estados'][stateParam]['municipios'][county].total;
+                                }
                             }
                             if (value !== 0) {
                                 self.lineChartCounties.push({ date: parseDate(self.listDatesCounties[posIni]),
@@ -65665,6 +65699,9 @@ var MapchartComponent = /** @class */ (function () {
             function ready(_a) {
                 var dataPoints = _a[0];
                 var legendRange = [0, 5, 10, 20, 50, 100, 200, 500, 1000];
+                if (byDeaths === true) {
+                    legendRange = [0, 1, 2, 5, 10, 25, 50, 75, 100];
+                }
                 var colorRange = self.getPlasmaList(9);
                 var qtyDays = 1 + self.listDatesStates.indexOf(self.endSelectedDay) - self.listDatesStates.indexOf(self.iniSelectedDay);
                 var gridSizeX = width / qtyDays;
@@ -65938,6 +65975,13 @@ var MapchartComponent = /** @class */ (function () {
                             var lastValue = self.data[lastDate]['estados'][uf]['municipios'][city];
                             self.data[date]['estados'][uf]['municipios'][city] = __assign({}, lastValue);
                         }
+                        if (city in self.data[date]['estados'][uf]['municipios'] === false ||
+                            (city in self.data[date]['estados'][uf]['municipios'] === true
+                                && self.data[date]['estados'][uf]['municipios'][city].total_death === 0
+                                && self.data[date]['estados'][uf]['municipios'][city].total_death < self.data[lastDate]['estados'][uf]['municipios'][city].total_death)) {
+                            var lastValue = self.data[lastDate]['estados'][uf]['municipios'][city];
+                            self.data[date]['estados'][uf]['municipios'][city].total_death = lastValue.total_death;
+                        }
                     });
                 });
             });
@@ -65979,10 +66023,7 @@ var MapchartComponent = /** @class */ (function () {
             }
             // self.loadRangeSliderTime();
             self.loadResizeWindow();
-            /*d3.select('#multipleStatesCheckBox').on(
-              'change',
-              self.onStatesCheckBoxChange
-            );*/
+            d3__WEBPACK_IMPORTED_MODULE_1__["select"]('#byDeathsCheckBox').on('change', self.onByDeathsCheckBoxChange);
             /*d3.select('#multipleCountiesCheckBox').on(
               'change',
               self.onCountiesCheckBoxChange
