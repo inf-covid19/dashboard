@@ -63630,7 +63630,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"main-content\">\n  <div class=\"container-fluid\">\n      <div class=\"row\">\n          <div class=\"col-lg-2 col-md-2 col-2 col-sm-2 col-xs-2\">\n              <div class=\"card sm-card\">\n                  <div class=\"card-body\">\n                      <h4 class=\"bg-title gt-ranking-number\">Confirmados Brasil</h4>\n                      <h2 class=\"gt-number gt-bg-ranking-number\" id=\"total-country\">0</h2>\n                      <h3 class=\"gt-dark-number gt-bg-ranking-number\" id=\"total-country-deaths\">0</h3>\n                      <h4 class=\"bg-title gt-below-ranking-number\">Óbitos</h4>\n                  </div>\n              </div>\n              <div class=\"card gt-card\">\n                  <div class=\"card-body\">\n                      <h5 class=\"bg-title gt-ranking-number\" style=\"padding-left: 6px;\">Relatório estadual</h5>\n                      <div class=\"table-ranking my-custom-scrollbar\">\n                          <table>\n                              <tbody id=\"states-ranking\">\n                              </tbody>\n                          </table>\n                      </div>\n                  </div>\n              </div>\n          </div>\n          <div class=\"col-lg-3 col-md-3 col-3 col-sm-3 col-xs-3\">\n              <div class=\"card bg-card\">\n                  <div class=\"card-body\">\n                      <app-mapchart></app-mapchart>\n                  </div>\n              </div>\n              <div class=\"card bg-card\">\n                  <div class=\"card-body\">\n                      <svg id=\"svg-county\" class=\"h-100 w-100\"></svg>\n                  </div>\n              </div>\n          </div>\n          <div class=\"col-lg-2 col-md-2 col-2 col-sm-2 col-xs-2\">\n              <div class=\"card sm-card\">\n                  <div class=\"card-body\">\n                      <h4 class=\"bg-title gt-ranking-number\" id=\"name-total-state\"></h4>\n                      <h2 class=\"gt-number gt-bg-ranking-number\" id=\"total-state\">0</h2>\n                      <h3 class=\"gt-dark-number gt-bg-ranking-number\" id=\"total-state-deaths\">0</h3>\n                      <h4 class=\"bg-title gt-below-ranking-number\">Óbitos</h4>\n                  </div>\n              </div>\n              <div class=\"card gt-card\">\n                  <div class=\"card-body\">\n                      <h5 class=\"bg-title gt-ranking-number\">Relatório por Município</h5>\n                      <div class=\"table-ranking my-custom-scrollbar\">\n                          <table>\n                              <tbody id=\"counties-ranking\">\n                              </tbody>\n                          </table>\n                      </div>\n                  </div>\n              </div>\n          </div>\n          <div class=\"col-lg-5 col-md-5 col-5 col-sm-5 col-xs-5\">\n              <div class=\"card md-card\">\n                  <div class=\"card-body\">\n                      <svg id=\"svg-linechart-country\" class=\"h-100 w-100\"></svg>\n                  </div>\n              </div>\n              <div class=\"card md-card\">\n                  <div class=\"card-body\">\n                      <svg id=\"svg-linechart-state\" class=\"h-100 w-100\"></svg>\n                  </div>\n              </div>\n              <div class=\"card md-card\">\n                  <div class=\"card-body\">\n                      <svg id=\"svg-linechart-county\" class=\"h-100 w-100\"></svg>\n                  </div>\n              </div>\n          </div>\n      </div>\n  </div>\n</div>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"main-content\">\n  <div class=\"container-fluid\">\n      <div class=\"row\">\n          <div class=\"col-lg-2 col-md-2 col-2 col-sm-2 col-xs-2\">\n              <div class=\"card sm-card\">\n                  <div class=\"card-body\">\n                      <h4 class=\"bg-title gt-ranking-number\">Confirmados Brasil</h4>\n                      <h2 class=\"gt-number gt-bg-ranking-number\" id=\"total-country\">0</h2>\n                      <h4 class=\"bg-title gt-below-ranking-number\">Óbitos</h4>\n                      <h3 class=\"gt-dark-number gt-bg-ranking-number\" id=\"total-country-deaths\">0</h3>\n                  </div>\n              </div>\n              <div class=\"card gt-card\">\n                  <div class=\"card-body\">\n                      <h5 class=\"bg-title gt-ranking-number\" style=\"padding-left: 6px;\">Relatório estadual</h5>\n                      <div class=\"table-ranking my-custom-scrollbar\">\n                          <table>\n                              <tbody id=\"states-ranking\">\n                              </tbody>\n                          </table>\n                      </div>\n                  </div>\n              </div>\n          </div>\n          <div class=\"col-lg-3 col-md-3 col-3 col-sm-3 col-xs-3\">\n              <div class=\"card bg-card\">\n                  <div class=\"card-body\">\n                      <app-mapchart></app-mapchart>\n                  </div>\n              </div>\n              <div class=\"card bg-card\">\n                  <div class=\"card-body\">\n                      <svg id=\"svg-county\" class=\"h-100 w-100\"></svg>\n                  </div>\n              </div>\n          </div>\n          <div class=\"col-lg-2 col-md-2 col-2 col-sm-2 col-xs-2\">\n              <div class=\"card sm-card\">\n                  <div class=\"card-body\">\n                      <h4 class=\"bg-title gt-ranking-number\" id=\"name-total-state\"></h4>\n                      <h2 class=\"gt-number gt-bg-ranking-number\" id=\"total-state\">0</h2>\n                      <h4 class=\"bg-title gt-below-ranking-number\">Óbitos</h4>\n                      <h3 class=\"gt-dark-number gt-bg-ranking-number\" id=\"total-state-deaths\">0</h3>\n                  </div>\n              </div>\n              <div class=\"card gt-card\">\n                  <div class=\"card-body\">\n                      <h5 class=\"bg-title gt-ranking-number\">Relatório por Município</h5>\n                      <div class=\"table-ranking my-custom-scrollbar\">\n                          <table>\n                              <tbody id=\"counties-ranking\">\n                              </tbody>\n                          </table>\n                      </div>\n                  </div>\n              </div>\n          </div>\n          <div class=\"col-lg-5 col-md-5 col-5 col-sm-5 col-xs-5\">\n              <!--<div class=\"card md-card\">\n                  <div class=\"card-body\">\n                      <svg id=\"svg-linechart-country\" class=\"h-100 w-100\"></svg>\n                  </div>\n              </div>-->\n              <div class=\"card bg-card\">\n                  <div class=\"card-body\">\n                      <svg id=\"svg-linechart-state\" class=\"h-100 w-100\"></svg>\n                  </div>\n              </div>\n              <div class=\"card bg-card\">\n                  <div class=\"card-body\">\n                      <svg id=\"svg-linechart-county\" class=\"h-100 w-100\"></svg>\n                  </div>\n              </div>\n          </div>\n      </div>\n  </div>\n</div>\n");
 
 /***/ }),
 
@@ -64224,9 +64224,10 @@ var MapchartComponent = /** @class */ (function () {
     function MapchartComponent() {
         var _this = this;
         this.iniSelectedDay = '2020-01-01';
-        this.minSelectedDay = '2020-02-23';
+        this.minSelectedDay = '2020-02-24';
         this.endSelectedDay = '2020-03-24';
         this.maxSelectedDay = '2020-03-24';
+        this.newStatesMaxVal = 0;
         this.data = {};
         this.totalCountry = 0;
         this.totalState = 0;
@@ -64267,6 +64268,15 @@ var MapchartComponent = /** @class */ (function () {
                 '#316395', '#994499', '#22aa99', '#aaaa11', '#6633cc', '#e67300', '#8b0707', '#651067', '#329262', '#5574a6', '#3b3eac'
             ];
             return coloresG[n % coloresG.length];
+        };
+        this.colorScale = function (colorRange, legendRange, value) {
+            var color = colorRange[colorRange.length - 1];
+            for (var index = 0; index < colorRange.length; index++) {
+                if (value >= legendRange[index] && value < legendRange[index + 1]) {
+                    return colorRange[index];
+                }
+            }
+            return color;
         };
         this.loadRangeSliderTime = function () {
             var self = _this;
@@ -64379,55 +64389,44 @@ var MapchartComponent = /** @class */ (function () {
                     .call(d3__WEBPACK_IMPORTED_MODULE_1__["event"].target.move, d1.map(x));
                 self.iniSelectedDay = formatTime(d1[0]);
                 self.endSelectedDay = formatTime(d1[1]);
-                if (d3__WEBPACK_IMPORTED_MODULE_1__["select"]('#multipleStatesCheckBox').property('checked')) {
-                    self.loadWidgetCountry();
-                }
-                else {
-                    self.loadWidgetCountry(true);
-                }
-                if (d3__WEBPACK_IMPORTED_MODULE_1__["select"]('#multipleCountiesCheckBox').property('checked')) {
-                    self.loadWidgetState(self.selectedState);
-                }
-                else {
-                    self.loadWidgetState(self.selectedState, true);
-                }
-                self.loadCountryLineChart(self.iniSelectedDay, self.endSelectedDay);
+                // if (d3.select('#multipleStatesCheckBox').property('checked')) {
+                self.loadWidgetCountry();
+                // } else {
+                //   self.loadWidgetCountry(true);
+                // }
+                // if (d3.select('#multipleCountiesCheckBox').property('checked')) {
+                self.loadWidgetState(self.selectedState);
+                // } else {
+                // self.loadWidgetState(self.selectedState, true);
+                // }
+                // self.loadCountryLineChart(self.iniSelectedDay, self.endSelectedDay);
             }
             var currIniDate = new Date(parseDate(self.iniSelectedDay)).valueOf();
             var currEndDate = new Date(parseDate(self.endSelectedDay)).valueOf();
-            // gBrush.call(brush.move, [iniDate, endDate].map(x));
             gBrush.call(brush.move, [currIniDate, currEndDate].map(x));
-            // self.iniSelectedDay = formatTime(iniDate);
-            // self.endSelectedDay = formatTime(endDate);
-            // self.loadResizeWindow();
-            /*self.loadWidgetCountry();
-            self.loadWidgetState(self.selectedState);
-            self.loadCountryLineChart(self.iniSelectedDay, self.endSelectedDay);*/
         };
         this.loadResizeWindow = function () {
             _this.loadRangeSliderTime();
             _this.loadWidgetCountry();
             _this.loadWidgetState(_this.selectedState);
-            _this.loadCountryLineChart(_this.iniSelectedDay, _this.endSelectedDay);
+            // this.loadCountryLineChart(this.iniSelectedDay, this.endSelectedDay);
         };
-        this.onStatesCheckBoxChange = function () {
-            var self = _this;
-            if (d3__WEBPACK_IMPORTED_MODULE_1__["select"]('#multipleStatesCheckBox').property('checked')) {
-                self.loadWidgetCountry();
-            }
-            else {
-                self.loadWidgetCountry(true);
-            }
-        };
-        this.onCountiesCheckBoxChange = function () {
-            var self = _this;
-            if (d3__WEBPACK_IMPORTED_MODULE_1__["select"]('#multipleCountiesCheckBox').property('checked')) {
-                self.loadWidgetState(self.selectedState);
-            }
-            else {
-                self.loadWidgetState(self.selectedState, true);
-            }
-        };
+        /*onStatesCheckBoxChange = () => {
+          const self = this;
+          if (d3.select('#multipleStatesCheckBox').property('checked')) {
+            self.loadWidgetCountry();
+          } else {
+            self.loadWidgetCountry(true);
+          }
+        };*/
+        /*onCountiesCheckBoxChange = () => {
+          const self = this;
+          if (d3.select('#multipleCountiesCheckBox').property('checked')) {
+            self.loadWidgetState(self.selectedState);
+          } else {
+            self.loadWidgetState(self.selectedState, true);
+          }
+        };*/
         this.getPlasmaList = function (cant) {
             var rangeColor = [];
             for (var i = 0; i < cant; i++) {
@@ -64501,12 +64500,9 @@ var MapchartComponent = /** @class */ (function () {
                 })
             ];
             Promise.all(promises).then(ready);
-            var newMaxVal = self.closestMaxLegend(maxValue / 1.5);
-            var stepSize = newMaxVal / 10;
-            var yLegend = d3__WEBPACK_IMPORTED_MODULE_1__["scaleLinear"]()
-                .domain(d3__WEBPACK_IMPORTED_MODULE_1__["range"](stepSize === 1 ? 1 : stepSize + 1, Math.max(stepSize * 10, 9), stepSize)
-                .reverse())
-                .rangeRound([58, 88]);
+            self.newStatesMaxVal = self.closestMaxLegend(maxValue / 1.5);
+            var stepSize = self.newStatesMaxVal / 10;
+            var yLegend = d3__WEBPACK_IMPORTED_MODULE_1__["scaleLinear"]().domain(d3__WEBPACK_IMPORTED_MODULE_1__["range"](stepSize === 1 ? 1 : stepSize + 1, Math.max(stepSize * 10, 9), stepSize).reverse()).rangeRound([58, 88]);
             var colorRangePlasma = self.getPlasmaList(9);
             var color = d3__WEBPACK_IMPORTED_MODULE_1__["scaleThreshold"]()
                 .domain(d3__WEBPACK_IMPORTED_MODULE_1__["range"](stepSize === 1 ? 1 : stepSize + 1, Math.max(stepSize * 10, 9), stepSize))
@@ -64545,12 +64541,11 @@ var MapchartComponent = /** @class */ (function () {
                     if (justOneRecordState === true) {
                         self.loadStatesLineChart(self.iniSelectedDay, self.endSelectedDay, self.selectedState);
                     }
-                    if (d3__WEBPACK_IMPORTED_MODULE_1__["select"]('#multipleCountiesCheckBox').property('checked')) {
-                        self.loadWidgetState(self.selectedState);
-                    }
-                    else {
-                        self.loadWidgetState(self.selectedState, true);
-                    }
+                    // if (d3.select('#multipleCountiesCheckBox').property('checked')) {
+                    self.loadWidgetState(self.selectedState);
+                    // } else {
+                    //   self.loadWidgetState(self.selectedState, true);
+                    // }
                 });
                 var widthTrans = Math.abs(container.width - mapG.node().getBoundingClientRect().width) / 2;
                 var heightTrans = Math.abs(container.height - mapG.node().getBoundingClientRect().height) / 2;
@@ -64664,18 +64659,17 @@ var MapchartComponent = /** @class */ (function () {
                 })
                     .on('click', function () {
                     self.selectedState = self.rankingStates[item].region;
-                    if (d3__WEBPACK_IMPORTED_MODULE_1__["select"]('#multipleCountiesCheckBox').property('checked')) {
-                        self.loadWidgetState(self.rankingStates[item].region); // without event click on counties map
-                    }
-                    else {
-                        self.loadWidgetState(self.rankingStates[item].region, true);
-                    }
-                    if (justOneRecordState) {
-                        self.loadStatesLineChart(self.iniSelectedDay, self.endSelectedDay, self.selectedState);
-                    }
-                    else {
-                        self.loadStatesLineChart(self.iniSelectedDay, self.endSelectedDay);
-                    }
+                    // if (d3.select('#multipleCountiesCheckBox').property('checked')) {
+                    self.loadWidgetState(self.rankingStates[item].region); // without event click on counties map
+                    // } else {
+                    //   self.loadWidgetState(self.rankingStates[item].region, true);
+                    // }
+                    // if (justOneRecordState) {
+                    //   self.loadStatesLineChart(self.iniSelectedDay, self.endSelectedDay, self.selectedState);
+                    // } else {
+                    //   self.loadStatesLineChart(self.iniSelectedDay, self.endSelectedDay);
+                    self.loadCountiesLineChart(self.selectedState, self.iniSelectedDay, self.endSelectedDay);
+                    // }
                 })
                     .html('<td class="gt-number gt-ranking-number"  style="padding-left: 11px; text-align: right">' +
                     self.formatThousandsSeperator(self.rankingStates[item].value) +
@@ -64685,12 +64679,11 @@ var MapchartComponent = /** @class */ (function () {
             for (var item in self.rankingStates) {
                 _loop_1(item);
             }
-            if (justOneRecordState === true) {
-                self.loadStatesLineChart(self.iniSelectedDay, self.endSelectedDay, self.rankingStates[0].region);
-            }
-            else {
-                self.loadStatesLineChart(self.iniSelectedDay, self.endSelectedDay);
-            }
+            // if (justOneRecordState === true) {
+            //   self.loadStatesLineChart(self.iniSelectedDay, self.endSelectedDay, self.rankingStates[0].region);
+            // } else {
+            self.loadStatesLineChart(self.iniSelectedDay, self.endSelectedDay);
+            // }
         };
         this.loadWidgetState = function (stateParam, justOneRecord) {
             if (justOneRecord === void 0) { justOneRecord = false; }
@@ -64959,162 +64952,187 @@ var MapchartComponent = /** @class */ (function () {
                 self.loadCountiesLineChart(stateParam, self.iniSelectedDay, self.endSelectedDay);
             }
         };
-        this.loadCountryLineChart = function (iniDate, endDate) {
-            var self = _this;
-            var container = d3__WEBPACK_IMPORTED_MODULE_1__["select"]('#svg-linechart-country').node();
-            if (container === (undefined || null) ||
-                container.parentNode === (undefined || null)) {
-                return;
-            }
-            container = container.parentNode.parentNode.getBoundingClientRect();
-            var margin = { top: 20, right: 40, bottom: 25, left: 15 };
-            var width = container.width - margin.left - margin.right;
-            var height = container.height - margin.top - margin.bottom;
-            var parseDate = d3__WEBPACK_IMPORTED_MODULE_1__["timeParse"]('%Y-%m-%d');
-            // Define scales
-            var xScale = d3__WEBPACK_IMPORTED_MODULE_1__["scaleTime"]().range([0, width]);
-            var yScale = d3__WEBPACK_IMPORTED_MODULE_1__["scaleLinear"]().range([height, 0]);
-            var color = d3__WEBPACK_IMPORTED_MODULE_1__["scaleOrdinal"]().range(d3__WEBPACK_IMPORTED_MODULE_1__["schemeCategory10"]);
-            // Define axes
-            var xAxis = d3__WEBPACK_IMPORTED_MODULE_1__["axisBottom"]()
-                .tickFormat(d3__WEBPACK_IMPORTED_MODULE_1__["timeFormat"]('%d/%m'))
-                .scale(xScale);
-            var yAxis = d3__WEBPACK_IMPORTED_MODULE_1__["axisLeft"]()
-                .tickFormat(self.yFormat)
-                .scale(yScale);
-            var minY = 100000000000;
-            var maxY = 0;
-            // Define lines
-            var line = d3__WEBPACK_IMPORTED_MODULE_1__["line"]()
-                .curve(d3__WEBPACK_IMPORTED_MODULE_1__["curveMonotoneX"])
-                .x(function (d) {
-                return xScale(d['date']);
+        /*loadCountryLineChart = (iniDate, endDate) => {
+          const self = this;
+          let container = d3.select('#svg-linechart-country').node() as any;
+          if (
+            container === (undefined || null) ||
+            container.parentNode === (undefined || null)
+          ) {
+            return;
+          }
+          container = container.parentNode.parentNode.getBoundingClientRect();
+          const margin = { top: 20, right: 40, bottom: 25, left: 15 };
+          const width = container.width - margin.left - margin.right;
+          const height = container.height - margin.top - margin.bottom;
+      
+          const parseDate = d3.timeParse('%Y-%m-%d');
+      
+          // Define scales
+          const xScale = d3.scaleTime().range([0, width]);
+          const yScale = d3.scaleLinear().range([height, 0]);
+          const color = d3.scaleOrdinal().range(d3.schemeCategory10);
+      
+          // Define axes
+          const xAxis = d3
+            .axisBottom()
+            .tickFormat(d3.timeFormat('%d/%m'))
+            .scale(xScale);
+          const yAxis = d3
+            .axisLeft()
+            .tickFormat(self.yFormat)
+            .scale(yScale);
+      
+          let minY = 100000000000;
+          let maxY = 0;
+      
+          // Define lines
+          const line = d3
+            .line()
+            .curve(d3.curveMonotoneX)
+            .x(function(d) {
+              return xScale(d['date']);
             })
-                .y(function (d) {
-                return yScale(d['value']);
+            .y(function(d) {
+              return yScale(d['value']);
             });
-            d3__WEBPACK_IMPORTED_MODULE_1__["select"]('#svg-linechart-country')
-                .selectAll('*')
-                .remove();
-            // Define svg canvas
-            var svg = d3__WEBPACK_IMPORTED_MODULE_1__["select"]('#svg-linechart-country')
-                .attr('viewBox', '0 0 ' + container.width + ' ' + container.height);
-            var g = svg
-                .append('g')
-                .attr('transform', 'translate(' + margin.right + ', ' + margin.left + ')');
-            var promises = [
-                new Promise(function (resolve) {
-                    self.lineChartCountry = [];
-                    var posIni = self.listDatesStates.indexOf(iniDate);
-                    var points = [];
-                    while (self.listDatesStates[posIni] <= endDate) {
-                        var value = typeof self.data[self.listDatesStates[posIni]] === 'undefined'
-                            ? 0
-                            : self.data[self.listDatesStates[posIni]].total;
-                        minY = Math.min(minY, value);
-                        maxY = Math.max(maxY, value);
-                        if (value !== 0) {
-                            points.push({
-                                date: parseDate(self.listDatesStates[posIni]),
-                                value: value
-                            });
-                        }
-                        posIni = posIni + 1;
-                    }
-                    self.lineChartCountry.push({ region: 'Brasil', datapoints: points });
-                    resolve(true);
-                })
-            ];
-            Promise.all(promises).then(ready);
-            function ready(_a) {
-                var dataPoints = _a[0];
-                var posIni = self.listDatesStates.indexOf(iniDate);
-                var posEnd = self.listDatesStates.indexOf(endDate);
-                xScale.domain(d3__WEBPACK_IMPORTED_MODULE_1__["extent"](self.listDatesStates.slice(posIni, posEnd + 1), function (d) {
-                    return parseDate(d);
-                }));
-                yScale.domain([minY - 2, maxY + 30]);
-                // Place the axes on the chart
-                g.append('g')
-                    .attr('class', 'x axis')
-                    .attr('transform', 'translate(0,' + height + ')')
-                    .call(xAxis);
-                g.append('g')
-                    .attr('class', 'y axis')
-                    .call(yAxis)
-                    .append('text')
-                    .attr('class', 'label')
-                    .attr('y', 6)
-                    .style('text-anchor', 'beginning')
-                    .attr('transform', 'rotate(-90)')
-                    .text('Cases');
-                g.append('text')
-                    .attr('x', width / 4)
-                    .attr('y', 5)
-                    .attr('fill', '#aaaaaa')
-                    .attr('font-family', 'sans-serif')
-                    .style('font-size', 'calc(2vh)')
-                    .style('font-weight', 'bold')
-                    .text('Casos Confirmados no Brasil por dia');
-                var cases = g
-                    .selectAll('.category')
-                    .data(self.lineChartCountry)
-                    .enter()
-                    .append('g')
-                    .attr('class', 'category');
-                cases
-                    .append('path')
-                    .attr('class', 'line')
-                    .attr('d', function (d) {
-                    return line(d.datapoints);
-                })
-                    .attr('fill', 'none')
-                    .style('stroke', function (d) {
-                    return self.coloresGoogle(0);
-                });
-                cases
-                    .selectAll('.series')
-                    .data(function (d) {
-                    return d.datapoints;
-                })
-                    .enter()
-                    .append('circle') // Uses the enter().append() method
-                    .attr('class', 'dot') // Assign a class for styling
-                    .attr('cx', function (d) {
-                    return xScale(d.date);
-                })
-                    .attr('cy', function (d) {
-                    return yScale(d.value);
-                })
-                    .attr('stroke', self.coloresGoogle(0))
-                    .attr('fill', self.coloresGoogle(0))
-                    .attr('r', 2)
-                    .on('mouseover', self.tipLineCountry.show)
-                    .on('mouseout', self.tipLineCountry.hide);
-            }
-            self.tipLineCountry = Object(d3_tip__WEBPACK_IMPORTED_MODULE_2__["default"])();
-            self.tipLineCountry
-                .attr('class', 'd3-tip')
-                .offset([50, -50])
-                .html(function (d) {
-                return ('<div style="opacity:0.8;background-color:' +
-                    d3__WEBPACK_IMPORTED_MODULE_1__["select"](this).attr('fill') +
-                    ';padding:7px;color:white">' +
-                    '<text>' +
-                    d3__WEBPACK_IMPORTED_MODULE_1__["timeFormat"]('%d/%m')(d.date) +
-                    ':</text> <text style="font-weight: 800">' +
-                    self.formatThousandsSeperator(d.value) +
-                    '</text>' +
-                    '</div>');
+      
+          d3.select('#svg-linechart-country')
+            .selectAll('*')
+            .remove();
+          // Define svg canvas
+          const svg = d3
+            .select('#svg-linechart-country')
+            .attr('viewBox', '0 0 ' + container.width + ' ' + container.height);
+          const g = svg
+            .append('g')
+            .attr(
+              'transform',
+              'translate(' + margin.right + ', ' + margin.left + ')'
+            );
+      
+          const promises = [
+            new Promise(resolve => {
+              self.lineChartCountry = [];
+              let posIni = self.listDatesStates.indexOf(iniDate);
+      
+              const points = [];
+              while (self.listDatesStates[posIni] <= endDate) {
+                const value =
+                  typeof self.data[self.listDatesStates[posIni]] === 'undefined'
+                    ? 0
+                    : self.data[self.listDatesStates[posIni]].total;
+                minY = Math.min(minY, value);
+                maxY = Math.max(maxY, value);
+                if (value !== 0) {
+                  points.push({
+                    date: parseDate(self.listDatesStates[posIni]),
+                    value: value
+                  });
+                }
+                posIni = posIni + 1;
+              }
+              self.lineChartCountry.push({ region: 'Brasil', datapoints: points });
+              resolve(true);
+            })
+          ];
+      
+          Promise.all(promises).then(ready);
+      
+          function ready([dataPoints]) {
+            const posIni = self.listDatesStates.indexOf(iniDate);
+            const posEnd = self.listDatesStates.indexOf(endDate);
+            xScale.domain(
+              d3.extent(self.listDatesStates.slice(posIni, posEnd + 1), function(d) {
+                return parseDate(d);
+              })
+            );
+            yScale.domain([minY - 2, maxY + 30]);
+      
+            // Place the axes on the chart
+            g.append('g')
+              .attr('class', 'x axis')
+              .attr('transform', 'translate(0,' + height + ')')
+              .call(xAxis);
+      
+            g.append('g')
+              .attr('class', 'y axis')
+              .call(yAxis)
+              .append('text')
+              .attr('class', 'label')
+              .attr('y', 6)
+              .style('text-anchor', 'beginning')
+              .attr('transform', 'rotate(-90)')
+              .text('Cases');
+      
+            g.append('text')
+              .attr('x', width / 4)
+              .attr('y', 5)
+              .attr('fill', '#aaaaaa')
+              .attr('font-family', 'sans-serif')
+              .style('font-size', 'calc(2vh)')
+              .style('font-weight', 'bold')
+              .text('Casos Confirmados no Brasil por dia');
+      
+            const cases = g
+              .selectAll('.category')
+              .data(self.lineChartCountry)
+              .enter()
+              .append('g')
+              .attr('class', 'category');
+      
+            cases
+              .append('path')
+              .attr('class', 'line')
+              .attr('d', function(d) {
+                return line(d.datapoints);
+              })
+              .attr('fill', 'none')
+              .style('stroke', function(d) {
+                return self.coloresGoogle(0);
+              });
+            cases.selectAll('.series')
+              .data(function(d) { return d.datapoints; })
+              .enter()
+              .append('circle') // Uses the enter().append() method
+              .attr('class', 'dot') // Assign a class for styling
+              .attr('cx', function(d) {
+                return xScale(d.date);
+              })
+              .attr('cy', function(d) {
+                return yScale(d.value);
+              })
+              .attr('stroke', self.coloresGoogle(0))
+              .attr('fill', self.coloresGoogle(0))
+              .attr('r', 2)
+              .on('mouseover', self.tipLineCountry.show)
+              .on('mouseout', self.tipLineCountry.hide);
+          }
+      
+          self.tipLineCountry = d3Tip();
+          self.tipLineCountry
+            .attr('class', 'd3-tip')
+            .offset([50, -50])
+            .html(function(d) {
+              return (
+                '<div style="opacity:0.8;background-color:' +
+                d3.select(this).attr('fill') +
+                ';padding:7px;color:white">' +
+                '<text>' +
+                d3.timeFormat('%d/%m')(d.date) +
+                ':</text> <text style="font-weight: 800">' +
+                self.formatThousandsSeperator(d.value) +
+                '</text>' +
+                '</div>'
+              );
             });
-            g.call(self.tipLineCountry);
-        };
+          g.call(self.tipLineCountry);
+        };*/
         this.loadStatesLineChart = function (iniDate, endDate, stateParam) {
             if (stateParam === void 0) { stateParam = ''; }
             var self = _this;
             var container = d3__WEBPACK_IMPORTED_MODULE_1__["select"]('#svg-linechart-state').node();
-            if (container === (undefined || null) ||
-                container.parentNode === (undefined || null)) {
+            if (container === (undefined || null) || container.parentNode === (undefined || null)) {
                 return;
             }
             container = container.parentNode.parentNode.getBoundingClientRect();
@@ -65122,161 +65140,200 @@ var MapchartComponent = /** @class */ (function () {
             var width = container.width - margin.left - margin.right;
             var height = container.height - margin.top - margin.bottom;
             var parseDate = d3__WEBPACK_IMPORTED_MODULE_1__["timeParse"]('%Y-%m-%d');
-            // Define scales
-            var xScale = d3__WEBPACK_IMPORTED_MODULE_1__["scaleTime"]().range([0, width]);
-            var yScale = d3__WEBPACK_IMPORTED_MODULE_1__["scaleLinear"]().range([height, 0]);
-            var color = d3__WEBPACK_IMPORTED_MODULE_1__["scaleOrdinal"]().range(d3__WEBPACK_IMPORTED_MODULE_1__["schemeCategory10"]);
-            // Define axes
-            var xAxis = d3__WEBPACK_IMPORTED_MODULE_1__["axisBottom"]()
-                .tickFormat(d3__WEBPACK_IMPORTED_MODULE_1__["timeFormat"]('%d/%m'))
-                .scale(xScale);
-            var yAxis = d3__WEBPACK_IMPORTED_MODULE_1__["axisLeft"]()
-                .tickFormat(self.yFormat)
-                .scale(yScale);
-            var minY = 100000000000;
-            var maxY = 0;
-            // Define lines
-            var line = d3__WEBPACK_IMPORTED_MODULE_1__["line"]()
-                .curve(d3__WEBPACK_IMPORTED_MODULE_1__["curveMonotoneX"])
-                .x(function (d) {
-                return xScale(d['date']);
-            })
-                .y(function (d) {
-                return yScale(d['value']);
-            });
-            d3__WEBPACK_IMPORTED_MODULE_1__["select"]('#svg-linechart-state')
-                .selectAll('*')
-                .remove();
-            // Define svg canvas
-            var svg = d3__WEBPACK_IMPORTED_MODULE_1__["select"]('#svg-linechart-state')
-                .attr('viewBox', '0 0 ' + container.width + ' ' + container.height);
-            var g = svg
-                .append('g')
-                .attr('transform', 'translate(' + margin.right + ', ' + margin.left + ')');
             var statesList = [];
             var promises = [
                 new Promise(function (resolve) {
                     self.lineChartStates = [];
                     self.rankingStates.forEach(function (rankingElm, index) {
-                        if (index > 9 && stateParam === '') {
-                            return;
-                        }
+                        // if (index > 9 && stateParam === '') { return; }
                         var state = rankingElm.region;
                         if (stateParam !== '' && state !== stateParam) {
                             return;
                         }
                         var posIni = self.listDatesStates.indexOf(iniDate);
-                        var points = [];
                         while (self.listDatesStates[posIni] <= endDate) {
-                            var value = typeof self.data[self.listDatesStates[posIni]] === 'undefined'
-                                ? 0
-                                : self.data[self.listDatesStates[posIni]].total;
+                            var value = typeof self.data[self.listDatesStates[posIni]] === 'undefined' ? 0 : self.data[self.listDatesStates[posIni]].total;
                             if (value !== 0) {
-                                value =
-                                    typeof self.data[self.listDatesStates[posIni]]['estados'][state] === 'undefined'
-                                        ? 0
-                                        : self.data[self.listDatesStates[posIni]]['estados'][state]
-                                            .total;
+                                value = typeof self.data[self.listDatesStates[posIni]]['estados'][state] === 'undefined' ? 0 : self.data[self.listDatesStates[posIni]]['estados'][state].total;
                             }
-                            minY = Math.min(minY, value);
-                            maxY = Math.max(maxY, value);
                             if (value !== 0) {
-                                points.push({
-                                    date: parseDate(self.listDatesStates[posIni]),
-                                    value: value,
-                                    region: state
-                                });
+                                self.lineChartStates.push({ region: state, date: parseDate(self.listDatesStates[posIni]), value: value });
                             }
                             posIni = posIni + 1;
                         }
                         statesList.push(state);
-                        self.lineChartStates.push({ region: state, datapoints: points });
                     });
                     resolve(true);
                 })
             ];
             Promise.all(promises).then(ready);
+            d3__WEBPACK_IMPORTED_MODULE_1__["select"]('#svg-linechart-state').selectAll('*').remove();
+            var svg = d3__WEBPACK_IMPORTED_MODULE_1__["select"]('#svg-linechart-state')
+                .attr('x', 0)
+                .attr('y', margin.top)
+                .attr('width', width + margin.left + margin.right)
+                .attr('height', height + margin.top + margin.bottom)
+                .attr('viewBox', '0 0 ' + container.width + ' ' + container.height);
+            var g = svg.append('g')
+                .attr('transform', 'translate(' + margin.left + ',' + margin.top * 2.5 + ')');
             function ready(_a) {
                 var dataPoints = _a[0];
-                var posIni = self.listDatesStates.indexOf(iniDate);
-                var posEnd = self.listDatesStates.indexOf(endDate);
-                xScale.domain(d3__WEBPACK_IMPORTED_MODULE_1__["extent"](self.listDatesStates.slice(posIni, posEnd + 1), function (d) {
-                    return parseDate(d);
-                }));
-                yScale.domain([minY - 2, maxY + 30]);
-                // Place the axes on the chart
-                g.append('g')
-                    .attr('class', 'x axis')
-                    .attr('transform', 'translate(0,' + height + ')')
-                    .call(xAxis);
-                g.append('g')
-                    .attr('class', 'y axis')
-                    .call(yAxis)
-                    .append('text')
-                    .attr('class', 'label')
-                    .attr('y', 6)
-                    .style('text-anchor', 'beginning')
-                    .attr('transform', 'rotate(-90)')
-                    .text('Cases');
-                var title = stateParam === ''
-                    ? 'Casos Confirmados por estado'
-                    : self.statesNames[stateParam];
-                g.append('text')
+                var legendRange = [0, 10, 50, 100, 250, 500, 1000, 5000, 10000];
+                var colorRange = self.getPlasmaList(9);
+                var qtyDays = 1 + self.listDatesStates.indexOf(self.endSelectedDay) - self.listDatesStates.indexOf(self.iniSelectedDay);
+                var gridSizeX = width / qtyDays;
+                var gridSizeY = height / 12;
+                var times = self.listDatesStates.slice(self.listDatesStates.indexOf(self.iniSelectedDay), self.listDatesStates.indexOf(self.endSelectedDay) + 1);
+                var legendElementWidth = width / 14;
+                var x = d3__WEBPACK_IMPORTED_MODULE_1__["axisBottom"]().tickFormat(d3__WEBPACK_IMPORTED_MODULE_1__["timeFormat"]('%d/%m')).scale(d3__WEBPACK_IMPORTED_MODULE_1__["scaleTime"]()
+                    .domain([d3__WEBPACK_IMPORTED_MODULE_1__["timeParse"]('%Y-%m-%d')(self.iniSelectedDay), d3__WEBPACK_IMPORTED_MODULE_1__["timeParse"]('%Y-%m-%d')(self.endSelectedDay)])
+                    .range([0, gridSizeX * (qtyDays - 0.9)]));
+                svg.append('text')
                     .attr('x', width / 3.5)
-                    .attr('y', 5)
+                    .attr('y', margin.top)
                     .attr('fill', '#aaaaaa')
                     .attr('font-family', 'sans-serif')
                     .style('font-size', 'calc(2vh)')
                     .style('font-weight', 'bold')
-                    .text(title);
-                var cases = g
-                    .selectAll('.category')
-                    .data(self.lineChartStates)
-                    .enter()
+                    .text('Casos Confirmados por estado');
+                g.append('g')
+                    .attr('class', 'x-axis')
+                    .attr('transform', 'translate( 0,' + 0 + ')')
+                    .call(x)
+                    .selectAll('text')
+                    .attr('y', 0)
+                    .attr('x', 9)
+                    .attr('dy', '.35em')
+                    .attr('transform', 'rotate(-45)')
+                    .style('text-anchor', 'start');
+                d3__WEBPACK_IMPORTED_MODULE_1__["selectAll"]('g.x-axis path.domain').remove();
+                d3__WEBPACK_IMPORTED_MODULE_1__["selectAll"]('g.x-axis line').remove();
+                var scrollG = svg
                     .append('g')
-                    .attr('class', 'category');
-                cases
-                    .append('path')
-                    .attr('class', 'line')
-                    .attr('d', function (d) {
-                    return line(d.datapoints);
+                    .attr('id', 'scroll-y-div')
+                    .attr('width', width)
+                    .attr('height', 9.9 * gridSizeY)
+                    .attr('transform', 'translate(0,' + margin.top * 2.5 + ')');
+                scrollG.append('rect')
+                    .attr('width', width + margin.left + margin.right)
+                    .attr('height', 9.9 * gridSizeY)
+                    .attr('x', 0).attr('y', 0)
+                    .attr('fill-opacity', 0);
+                var scrollGDiv = svg
+                    .append('svg')
+                    .attr('width', width + margin.left + margin.right)
+                    .attr('height', 10 * gridSizeY)
+                    .attr('x', 0)
+                    .attr('y', margin.top * 2.5)
+                    .attr('transform', 'translate(0,' + margin.top * 2.5 + ')');
+                var dayLabels = scrollGDiv.selectAll('.dayLabel')
+                    .data(statesList)
+                    .enter().append('text')
+                    .text(function (d) { return d; })
+                    .attr('x', 15)
+                    .attr('y', function (d, i) { return i * gridSizeY; })
+                    .style('text-anchor', 'end')
+                    .style('fill', '#aaaaaa')
+                    .attr('transform', 'translate(0,' + gridSizeY / 1.5 + ')');
+                var heatMapG = scrollGDiv
+                    .append('g')
+                    .attr('transform', 'translate(20, 0)');
+                var heatMap = heatMapG
+                    .selectAll('.hour')
+                    .data(self.lineChartStates)
+                    .enter().append('rect')
+                    .attr('x', function (d) {
+                    if (d3__WEBPACK_IMPORTED_MODULE_1__["timeFormat"]('%Y-%m-%d')(d.date) !== -1) {
+                        return times.indexOf(d3__WEBPACK_IMPORTED_MODULE_1__["timeFormat"]('%Y-%m-%d')(d.date)) * gridSizeX;
+                    }
                 })
-                    .attr('fill', 'none')
-                    .style('stroke', function (d) {
-                    return self.coloresGoogle(statesList.indexOf(d.region));
-                });
-                cases
-                    .selectAll('.series')
-                    .data(function (d) {
-                    return d.datapoints;
+                    .attr('y', function (d) {
+                    if (d3__WEBPACK_IMPORTED_MODULE_1__["timeFormat"]('%Y-%m-%d')(d.date) !== -1) {
+                        return (statesList.indexOf(d.region)) * gridSizeY;
+                    }
                 })
-                    .enter()
-                    .append('circle')
-                    .attr('class', 'dot')
-                    .attr('cx', function (d) {
-                    return xScale(d.date);
-                })
-                    .attr('cy', function (d) {
-                    return yScale(d.value);
-                })
-                    .attr('stroke', function (d) {
-                    return self.coloresGoogle(statesList.indexOf(d.region));
-                })
-                    .attr('fill', function (d) {
-                    return self.coloresGoogle(statesList.indexOf(d.region));
-                })
-                    .attr('r', 2)
+                    .attr('rx', 1)
+                    .attr('ry', 1)
+                    .attr('class', 'hour bordered')
+                    .attr('width', gridSizeX)
+                    .attr('height', gridSizeY)
+                    .style('fill', '#ffffff')
                     .on('mouseover', self.tipLineState.show)
                     .on('mouseout', self.tipLineState.hide);
+                heatMap.transition().duration(1000).style('fill', function (d) {
+                    return self.colorScale(colorRange, legendRange, d.value);
+                });
+                /*BEGIN SCROLLBAR*/
+                var scrollDistance = 0;
+                var root = scrollGDiv.attr('clip-path', 'url(#scrollbox-clip-path)');
+                var clipRect = scrollGDiv.append('clipPath').attr('id', 'scrollbox-clip-path').append('rect');
+                clipRect.attr('x', 0)
+                    .attr('y', 0)
+                    .attr('width', width + margin.left + margin.right)
+                    .attr('height', 10 * gridSizeY);
+                root.insert('rect', 'g')
+                    .attr('x', 0)
+                    .attr('y', 0)
+                    .attr('width', width + margin.left + margin.right)
+                    .attr('height', 10 * gridSizeY)
+                    .attr('opacity', 0);
+                var scrollBar = scrollG.append('rect')
+                    .attr('width', 2)
+                    .attr('rx', 1)
+                    .attr('ry', 1)
+                    .attr('transform', 'translate(' + scrollG.node().getBoundingClientRect().width + ',0)');
+                var absoluteContentHeight = heatMapG.node().getBoundingClientRect().height;
+                var scrollbarHeight = scrollG.node().getBoundingClientRect().height * scrollG.node().getBoundingClientRect().height / absoluteContentHeight;
+                scrollBar.attr('height', scrollbarHeight);
+                var maxScroll = Math.max(absoluteContentHeight - scrollG.node().getBoundingClientRect().height, 0);
+                function updateScrollPosition(diff) {
+                    scrollDistance += diff;
+                    scrollDistance = Math.max(0, scrollDistance);
+                    scrollDistance = Math.min(maxScroll, scrollDistance);
+                    heatMapG.attr('transform', 'translate(20, ' + (-scrollDistance) + ')');
+                    dayLabels.attr('transform', 'translate(0, ' + (gridSizeY / 1.5 - scrollDistance) + ')');
+                    var scrollBarPosition = scrollDistance / maxScroll * (scrollG.node().getBoundingClientRect().height - scrollbarHeight);
+                    scrollBar.attr('y', scrollBarPosition);
+                }
+                // Set up scroll events
+                root.on('wheel', function (e) {
+                    updateScrollPosition(d3__WEBPACK_IMPORTED_MODULE_1__["event"].deltaY);
+                });
+                // Set up scrollbar drag events
+                var dragBehaviour = d3__WEBPACK_IMPORTED_MODULE_1__["drag"]()
+                    .on('drag', function () {
+                    updateScrollPosition(d3__WEBPACK_IMPORTED_MODULE_1__["event"].dy * maxScroll / (svg.height - scrollbarHeight));
+                });
+                scrollBar.call(dragBehaviour);
+                /*END*/
+                var legend = g.append('g').attr('transform', 'translate(10, ' + (10 * gridSizeY + 2) + ')');
+                legend.selectAll('rect')
+                    .data(legendRange)
+                    .enter()
+                    .append('rect')
+                    .attr('fill', function (d) { return self.colorScale(colorRange, legendRange, d); })
+                    .attr('x', function (d, i) { return legendElementWidth * i; })
+                    .attr('width', legendElementWidth)
+                    .attr('height', gridSizeY / 2);
+                legend.selectAll('text')
+                    .data(legendRange)
+                    .join('text')
+                    .attr('fill', '#aaaaaa')
+                    .attr('x', function (d, i) { return legendElementWidth * i; })
+                    .attr('y', gridSizeY + 2)
+                    .text(function (d, i) {
+                    if (i === colorRange.length - 1) {
+                        return '≥' + self.yFormat(d);
+                    }
+                    return '' + self.yFormat(d);
+                });
             }
             self.tipLineState = Object(d3_tip__WEBPACK_IMPORTED_MODULE_2__["default"])();
             self.tipLineState
                 .attr('class', 'd3-tip')
-                .offset([70, -50])
+                .offset([20, -80])
                 .html(function (d) {
-                return ('<div style="opacity:0.8;background-color:' +
-                    d3__WEBPACK_IMPORTED_MODULE_1__["select"](this).attr('fill') +
-                    ';padding:7px;color:white">' +
+                return ('<div style="opacity:0.8;background-color:#8b0707;padding:7px;color:white">' +
                     '<text style="font-weight: 800">' +
                     self.statesNames[d.region] +
                     '</text></br><text>' +
@@ -65286,54 +65343,280 @@ var MapchartComponent = /** @class */ (function () {
                     '</text>' +
                     '</div>');
             });
-            g.call(self.tipLineState);
+            svg.call(self.tipLineState);
         };
+        /*loadCountiesLineChart = (stateParam, iniDate, endDate, countyParam = '') => {
+          const self = this;
+          let container = d3.select('#svg-linechart-county').node() as any;
+          if (
+            container === (undefined || null) ||
+            container.parentNode === (undefined || null)
+          ) {
+            return;
+          }
+          container = container.parentNode.parentNode.getBoundingClientRect();
+          const margin = { top: 20, right: 40, bottom: 25, left: 15 };
+          const width = container.width - margin.left - margin.right;
+          const height = container.height - margin.top - margin.bottom;
+      
+          const parseDate = d3.timeParse('%Y-%m-%d');
+      
+          // Define scales
+          const xScale = d3.scaleTime().range([0, width]);
+          const yScale = d3.scaleLinear().range([height, 0]);
+          const color = d3.scaleOrdinal().range(d3.schemeCategory10);
+      
+          // Define axes
+          const xAxis = d3
+            .axisBottom()
+            .tickFormat(d3.timeFormat('%d/%m'))
+            .scale(xScale);
+          const yAxis = d3
+            .axisLeft()
+            .tickFormat(self.yFormat)
+            .scale(yScale);
+      
+          let minY = 100000000000;
+          let maxY = 0;
+      
+          // Define lines
+          const line = d3
+            .line()
+            .curve(d3.curveMonotoneX)
+            .x(function(d) {
+              return xScale(d['date']);
+            })
+            .y(function(d) {
+              return yScale(d['value']);
+            });
+      
+          d3.select('#svg-linechart-county')
+            .selectAll('*')
+            .remove();
+          // Define svg canvas
+          const svg = d3
+            .select('#svg-linechart-county')
+            .attr('viewBox', '0 0 ' + container.width + ' ' + container.height);
+          const g = svg
+            .append('g')
+            .attr(
+              'transform',
+              'translate(' + margin.right + ', ' + margin.left + ')'
+            );
+      
+          const countiesList = [];
+          const ibgeList = [];
+      
+          let posIniTemp = self.listDatesCounties.indexOf(iniDate);
+          while (self.listDatesCounties[posIniTemp] <= endDate) {
+            if (
+              typeof self.data[self.listDatesCounties[posIniTemp]] !== 'undefined' &&
+              typeof self.data[self.listDatesCounties[posIniTemp]]['estados'][
+                stateParam
+              ] !== 'undefined'
+            ) {
+              // tslint:disable-next-line:forin
+              for (const county in self.data[self.listDatesCounties[posIniTemp]][
+                'estados'
+              ][stateParam]['municipios']) {
+                if (-1 === ibgeList.indexOf(county)) {
+                  ibgeList.push(county);
+                }
+              }
+            }
+            posIniTemp = posIniTemp + 1;
+          }
+      
+          const promises = [
+            new Promise(resolve => {
+              self.lineChartCounties = [];
+      
+              // for (const county in ibgeList) {
+              // ibgeList.forEach(function(county, index) {
+              self.rankingCounties.forEach(function(rankingElm, index) {
+                if (index > 9 && countyParam === '') {
+                  return;
+                }
+                const county = rankingElm.ibge;
+                if (countyParam !== '' && county !== countyParam) {
+                  return;
+                }
+      
+                let posIni = self.listDatesCounties.indexOf(iniDate);
+                const points = [];
+                while (self.listDatesCounties[posIni] <= endDate) {
+                  let value =
+                    typeof self.data[self.listDatesCounties[posIni]] === 'undefined'
+                      ? 0
+                      : self.data[self.listDatesCounties[posIni]].total;
+                  if (value !== 0) {
+                    value =
+                      typeof self.data[self.listDatesCounties[posIni]]['estados'][
+                        stateParam
+                      ] === 'undefined'
+                        ? 0
+                        : self.data[self.listDatesCounties[posIni]]['estados'][
+                            stateParam
+                          ].total;
+                  }
+                  if (value !== 0) {
+                    value =
+                      typeof self.data[self.listDatesCounties[posIni]]['estados'][
+                        stateParam
+                      ]['municipios'][county] === 'undefined'
+                        ? 0
+                        : self.data[self.listDatesCounties[posIni]]['estados'][
+                            stateParam
+                          ]['municipios'][county].total;
+                  }
+                  minY = Math.min(minY, value);
+                  maxY = Math.max(maxY, value);
+                  if (value !== 0) {
+                    points.push({
+                      date: parseDate(self.listDatesCounties[posIni]),
+                      value: value,
+                      region: county
+                    });
+                  }
+                  posIni = posIni + 1;
+                }
+                countiesList.push(county);
+                self.lineChartCounties.push({ region: county, datapoints: points });
+              });
+              resolve(true);
+            })
+          ];
+      
+          Promise.all(promises).then(ready);
+      
+          function ready([dataPoints]) {
+            const posIni =
+              self.listDatesCounties.indexOf(iniDate) === -1
+                ? 0
+                : self.listDatesCounties.indexOf(iniDate);
+            const posEnd =
+              self.listDatesCounties.indexOf(endDate) === -1
+                ? self.listDatesCounties.length - 1
+                : self.listDatesCounties.indexOf(endDate);
+            xScale.domain(
+              d3.extent(self.listDatesCounties.slice(posIni, posEnd + 1), function(
+                d
+              ) {
+                return parseDate(d);
+              })
+            );
+            yScale.domain([minY - 2, maxY + 30]);
+      
+            // Place the axes on the chart
+            g.append('g')
+              .attr('class', 'x axis')
+              .attr('transform', 'translate(0,' + height + ')')
+              .call(xAxis);
+      
+            g.append('g')
+              .attr('class', 'y axis')
+              .call(yAxis)
+              .append('text')
+              .attr('class', 'label')
+              .attr('y', 6)
+              .style('text-anchor', 'beginning')
+              .attr('transform', 'rotate(-90)')
+              .text('Cases');
+      
+            const title =
+              countyParam === ''
+                ? 'Casos Confirmados casos por município (' + stateParam + ')'
+                : typeof self.countiesNames[countyParam] === 'undefined'
+                ? 'IBGE: ' + countyParam
+                : self.countiesNames[countyParam];
+      
+            g.append('text')
+              .attr('x', width / 3.5)
+              .attr('y', 5)
+              .attr('fill', '#aaaaaa')
+              .attr('font-family', 'sans-serif')
+              .style('font-size', 'calc(2vh)')
+              .style('font-weight', 'bold')
+              .text(title);
+      
+            const cases = g
+              .selectAll('.category')
+              .data(self.lineChartCounties)
+              .enter()
+              .append('g')
+              .attr('class', 'category');
+      
+            cases
+              .append('path')
+              .attr('class', 'line')
+              .attr('d', function(d) {
+                return line(d.datapoints);
+              })
+              .attr('fill', 'none')
+              .style('stroke', function(d) {
+                return self.coloresGoogle(countiesList.indexOf(d.region));
+              });
+            cases
+              .selectAll('.series')
+              .data(function(d) {
+                return d.datapoints;
+              })
+              .enter()
+              .append('circle')
+              .attr('class', 'dot')
+              .attr('cx', function(d) {
+                return xScale(d.date);
+              })
+              .attr('cy', function(d) {
+                return yScale(d.value);
+              })
+              .attr('stroke', function(d) {
+                return self.coloresGoogle(countiesList.indexOf(d.region));
+              })
+              .attr('fill', function(d) {
+                return self.coloresGoogle(countiesList.indexOf(d.region));
+              })
+              .attr('r', 2)
+              .on('mouseover', self.tipLineCounty.show)
+              .on('mouseout', self.tipLineCounty.hide);
+          }
+      
+          self.tipLineCounty = d3Tip();
+          self.tipLineCounty
+            .attr('class', 'd3-tip')
+            .offset([20, -80])
+            .html(function(d) {
+              return (
+                '<div style="opacity:0.8;background-color:' +
+                d3.select(this).attr('fill') +
+                ';padding:7px;color:white">' +
+                '<text style="font-weight: 800">' +
+                self.countiesNames[d.region] +
+                '</text></br><text>' +
+                d3.timeFormat('%d/%m')(d.date) +
+                ':</text> <text style="font-weight: 800">' +
+                self.formatThousandsSeperator(d.value) +
+                '</text>' +
+                '</div>'
+              );
+            });
+          g.call(self.tipLineCounty);
+        };*/
         this.loadCountiesLineChart = function (stateParam, iniDate, endDate, countyParam) {
             if (countyParam === void 0) { countyParam = ''; }
             var self = _this;
-            // iniDate = self.listDatesCounties.indexOf(iniDate) === -1 ? self.listDatesCounties[0] : iniDate;
-            // endDate = self.listDatesCounties.indexOf(endDate) === -1 ? self.listDatesCounties[self.listDatesCounties.length - 1] : endDate;
             var container = d3__WEBPACK_IMPORTED_MODULE_1__["select"]('#svg-linechart-county').node();
-            if (container === (undefined || null) ||
-                container.parentNode === (undefined || null)) {
+            if (container === (undefined || null) || container.parentNode === (undefined || null)) {
                 return;
             }
             container = container.parentNode.parentNode.getBoundingClientRect();
-            var margin = { top: 20, right: 40, bottom: 25, left: 15 };
+            var margin = { top: 20, right: 40, bottom: 25, left: 45 };
             var width = container.width - margin.left - margin.right;
             var height = container.height - margin.top - margin.bottom;
             var parseDate = d3__WEBPACK_IMPORTED_MODULE_1__["timeParse"]('%Y-%m-%d');
             // Define scales
             var xScale = d3__WEBPACK_IMPORTED_MODULE_1__["scaleTime"]().range([0, width]);
-            var yScale = d3__WEBPACK_IMPORTED_MODULE_1__["scaleLinear"]().range([height, 0]);
-            var color = d3__WEBPACK_IMPORTED_MODULE_1__["scaleOrdinal"]().range(d3__WEBPACK_IMPORTED_MODULE_1__["schemeCategory10"]);
-            // Define axes
-            var xAxis = d3__WEBPACK_IMPORTED_MODULE_1__["axisBottom"]()
-                .tickFormat(d3__WEBPACK_IMPORTED_MODULE_1__["timeFormat"]('%d/%m'))
-                .scale(xScale);
-            var yAxis = d3__WEBPACK_IMPORTED_MODULE_1__["axisLeft"]()
-                .tickFormat(self.yFormat)
-                .scale(yScale);
-            var minY = 100000000000;
-            var maxY = 0;
-            // Define lines
-            var line = d3__WEBPACK_IMPORTED_MODULE_1__["line"]()
-                .curve(d3__WEBPACK_IMPORTED_MODULE_1__["curveMonotoneX"])
-                .x(function (d) {
-                return xScale(d['date']);
-            })
-                .y(function (d) {
-                return yScale(d['value']);
-            });
-            d3__WEBPACK_IMPORTED_MODULE_1__["select"]('#svg-linechart-county')
-                .selectAll('*')
-                .remove();
-            // Define svg canvas
-            var svg = d3__WEBPACK_IMPORTED_MODULE_1__["select"]('#svg-linechart-county')
-                .attr('viewBox', '0 0 ' + container.width + ' ' + container.height);
-            var g = svg
-                .append('g')
-                .attr('transform', 'translate(' + margin.right + ', ' + margin.left + ')');
+            d3__WEBPACK_IMPORTED_MODULE_1__["select"]('#svg-linechart-county').selectAll('*').remove();
             var countiesList = [];
             var ibgeList = [];
             var posIniTemp = self.listDatesCounties.indexOf(iniDate);
@@ -65352,8 +65635,6 @@ var MapchartComponent = /** @class */ (function () {
             var promises = [
                 new Promise(function (resolve) {
                     self.lineChartCounties = [];
-                    // for (const county in ibgeList) {
-                    // ibgeList.forEach(function(county, index) {
                     self.rankingCounties.forEach(function (rankingElm, index) {
                         if (index > 9 && countyParam === '') {
                             return;
@@ -65363,28 +65644,18 @@ var MapchartComponent = /** @class */ (function () {
                             return;
                         }
                         var posIni = self.listDatesCounties.indexOf(iniDate);
-                        var points = [];
                         while (self.listDatesCounties[posIni] <= endDate) {
                             var value = typeof self.data[self.listDatesCounties[posIni]] === 'undefined'
                                 ? 0
                                 : self.data[self.listDatesCounties[posIni]].total;
                             if (value !== 0) {
-                                value =
-                                    typeof self.data[self.listDatesCounties[posIni]]['estados'][stateParam] === 'undefined'
-                                        ? 0
-                                        : self.data[self.listDatesCounties[posIni]]['estados'][stateParam].total;
+                                value = typeof self.data[self.listDatesCounties[posIni]]['estados'][stateParam] === 'undefined' ? 0 : self.data[self.listDatesCounties[posIni]]['estados'][stateParam].total;
                             }
                             if (value !== 0) {
-                                value =
-                                    typeof self.data[self.listDatesCounties[posIni]]['estados'][stateParam]['municipios'][county] === 'undefined'
-                                        ? 0
-                                        : self.data[self.listDatesCounties[posIni]]['estados'][stateParam]['municipios'][county].total;
+                                value = typeof self.data[self.listDatesCounties[posIni]]['estados'][stateParam]['municipios'][county] === 'undefined' ? 0 : self.data[self.listDatesCounties[posIni]]['estados'][stateParam]['municipios'][county].total;
                             }
-                            minY = Math.min(minY, value);
-                            maxY = Math.max(maxY, value);
                             if (value !== 0) {
-                                points.push({
-                                    date: parseDate(self.listDatesCounties[posIni]),
+                                self.lineChartCounties.push({ date: parseDate(self.listDatesCounties[posIni]),
                                     value: value,
                                     region: county
                                 });
@@ -65392,99 +65663,115 @@ var MapchartComponent = /** @class */ (function () {
                             posIni = posIni + 1;
                         }
                         countiesList.push(county);
-                        self.lineChartCounties.push({ region: county, datapoints: points });
                     });
                     resolve(true);
                 })
             ];
             Promise.all(promises).then(ready);
+            d3__WEBPACK_IMPORTED_MODULE_1__["select"]('#svg-linechart-county').selectAll('*').remove();
+            var svg = d3__WEBPACK_IMPORTED_MODULE_1__["select"]('#svg-linechart-county')
+                .attr('width', width + margin.left + margin.right)
+                .attr('height', height + margin.top + margin.bottom)
+                .attr('viewBox', '0 0 ' + container.width + ' ' + container.height);
+            var g = svg.append('g')
+                .attr('transform', 'translate(' + margin.left + ',' + margin.top * 2.5 + ')');
             function ready(_a) {
                 var dataPoints = _a[0];
-                var posIni = self.listDatesCounties.indexOf(iniDate) === -1
-                    ? 0
-                    : self.listDatesCounties.indexOf(iniDate);
-                var posEnd = self.listDatesCounties.indexOf(endDate) === -1
-                    ? self.listDatesCounties.length - 1
-                    : self.listDatesCounties.indexOf(endDate);
-                xScale.domain(d3__WEBPACK_IMPORTED_MODULE_1__["extent"](self.listDatesCounties.slice(posIni, posEnd + 1), function (d) {
-                    return parseDate(d);
-                }));
-                yScale.domain([minY - 2, maxY + 30]);
-                // Place the axes on the chart
-                g.append('g')
-                    .attr('class', 'x axis')
-                    .attr('transform', 'translate(0,' + height + ')')
-                    .call(xAxis);
-                g.append('g')
-                    .attr('class', 'y axis')
-                    .call(yAxis)
-                    .append('text')
-                    .attr('class', 'label')
-                    .attr('y', 6)
-                    .style('text-anchor', 'beginning')
-                    .attr('transform', 'rotate(-90)')
-                    .text('Cases');
-                var title = countyParam === ''
-                    ? 'Casos Confirmados casos por município (' + stateParam + ')'
-                    : typeof self.countiesNames[countyParam] === 'undefined'
-                        ? 'IBGE: ' + countyParam
-                        : self.countiesNames[countyParam];
-                g.append('text')
+                var legendRange = [0, 5, 10, 20, 50, 100, 200, 500, 1000];
+                var colorRange = self.getPlasmaList(9);
+                var qtyDays = 1 + self.listDatesStates.indexOf(self.endSelectedDay) - self.listDatesStates.indexOf(self.iniSelectedDay);
+                var gridSizeX = width / qtyDays;
+                var gridSizeY = height / 12;
+                var times = self.listDatesStates.slice(self.listDatesStates.indexOf(self.iniSelectedDay), self.listDatesStates.indexOf(self.endSelectedDay) + 1);
+                var legendElementWidth = width / 14;
+                var x = d3__WEBPACK_IMPORTED_MODULE_1__["axisBottom"]().tickFormat(d3__WEBPACK_IMPORTED_MODULE_1__["timeFormat"]('%d/%m')).scale(d3__WEBPACK_IMPORTED_MODULE_1__["scaleTime"]()
+                    .domain([d3__WEBPACK_IMPORTED_MODULE_1__["timeParse"]('%Y-%m-%d')(self.iniSelectedDay), d3__WEBPACK_IMPORTED_MODULE_1__["timeParse"]('%Y-%m-%d')(self.endSelectedDay)])
+                    .range([0, gridSizeX * (qtyDays - 0.9)]));
+                svg.append('text')
                     .attr('x', width / 3.5)
-                    .attr('y', 5)
+                    .attr('y', margin.top)
                     .attr('fill', '#aaaaaa')
                     .attr('font-family', 'sans-serif')
                     .style('font-size', 'calc(2vh)')
                     .style('font-weight', 'bold')
-                    .text(title);
-                var cases = g
-                    .selectAll('.category')
-                    .data(self.lineChartCounties)
-                    .enter()
+                    .text('Casos Confirmados por município');
+                var dayLabels = g.selectAll('.dayLabel')
+                    .data(countiesList)
+                    .enter().append('text')
+                    .text(function (d) { return d; })
+                    .attr('x', 0)
+                    .attr('y', function (d, i) { return i * gridSizeY; })
+                    .style('text-anchor', 'end')
+                    .style('fill', '#aaaaaa')
+                    .attr('transform', 'translate(0,' + gridSizeY / 1.5 + ')');
+                g.append('g')
+                    .attr('class', 'x-axis')
+                    .attr('transform', 'translate(4,' + 0 + ')')
+                    .call(x)
+                    .selectAll('text')
+                    .attr('y', 0)
+                    .attr('x', 9)
+                    .attr('dy', '.35em')
+                    .attr('transform', 'rotate(-45)')
+                    .style('text-anchor', 'start');
+                d3__WEBPACK_IMPORTED_MODULE_1__["selectAll"]('g.x-axis path.domain').remove();
+                d3__WEBPACK_IMPORTED_MODULE_1__["selectAll"]('g.x-axis line').remove();
+                var heatMapG = svg
                     .append('g')
-                    .attr('class', 'category');
-                cases
-                    .append('path')
-                    .attr('class', 'line')
-                    .attr('d', function (d) {
-                    return line(d.datapoints);
+                    .attr('transform', 'translate(50,' + margin.top * 2.5 + ')');
+                var heatMap = heatMapG
+                    .selectAll('.hour')
+                    .data(self.lineChartCounties)
+                    .enter().append('rect')
+                    .attr('x', function (d) {
+                    if (d3__WEBPACK_IMPORTED_MODULE_1__["timeFormat"]('%Y-%m-%d')(d.date) !== -1) {
+                        return times.indexOf(d3__WEBPACK_IMPORTED_MODULE_1__["timeFormat"]('%Y-%m-%d')(d.date)) * gridSizeX;
+                    }
                 })
-                    .attr('fill', 'none')
-                    .style('stroke', function (d) {
-                    return self.coloresGoogle(countiesList.indexOf(d.region));
-                });
-                cases
-                    .selectAll('.series')
-                    .data(function (d) {
-                    return d.datapoints;
+                    .attr('y', function (d) {
+                    if (d3__WEBPACK_IMPORTED_MODULE_1__["timeFormat"]('%Y-%m-%d')(d.date) !== -1) {
+                        return (countiesList.indexOf(d.region)) * gridSizeY;
+                    }
                 })
-                    .enter()
-                    .append('circle')
-                    .attr('class', 'dot')
-                    .attr('cx', function (d) {
-                    return xScale(d.date);
-                })
-                    .attr('cy', function (d) {
-                    return yScale(d.value);
-                })
-                    .attr('stroke', function (d) {
-                    return self.coloresGoogle(countiesList.indexOf(d.region));
-                })
-                    .attr('fill', function (d) {
-                    return self.coloresGoogle(countiesList.indexOf(d.region));
-                })
-                    .attr('r', 2)
+                    .attr('rx', 1)
+                    .attr('ry', 1)
+                    .attr('class', 'hour bordered')
+                    .attr('width', gridSizeX)
+                    .attr('height', gridSizeY)
+                    .style('fill', '#ffffff')
                     .on('mouseover', self.tipLineCounty.show)
                     .on('mouseout', self.tipLineCounty.hide);
+                heatMap.transition().duration(1000).style('fill', function (d) {
+                    return self.colorScale(colorRange, legendRange, d.value);
+                });
+                var legend = g.append('g').attr('transform', 'translate(10, ' + (10 * gridSizeY + 2) + ')');
+                legend.selectAll('rect')
+                    .data(legendRange)
+                    .enter()
+                    .append('rect')
+                    .attr('fill', function (d) { return self.colorScale(colorRange, legendRange, d); })
+                    .attr('x', function (d, i) { return legendElementWidth * i; })
+                    .attr('width', legendElementWidth)
+                    .attr('height', gridSizeY / 2);
+                legend.selectAll('text')
+                    .data(legendRange)
+                    .join('text')
+                    .attr('fill', '#aaaaaa')
+                    .attr('x', function (d, i) { return legendElementWidth * i; })
+                    .attr('y', gridSizeY + 2)
+                    .text(function (d, i) {
+                    if (i === colorRange.length - 1) {
+                        return '≥' + self.yFormat(d);
+                    }
+                    return '' + self.yFormat(d);
+                });
             }
             self.tipLineCounty = Object(d3_tip__WEBPACK_IMPORTED_MODULE_2__["default"])();
             self.tipLineCounty
                 .attr('class', 'd3-tip')
                 .offset([20, -80])
                 .html(function (d) {
-                return ('<div style="opacity:0.8;background-color:' +
-                    d3__WEBPACK_IMPORTED_MODULE_1__["select"](this).attr('fill') +
-                    ';padding:7px;color:white">' +
+                return ('<div style="opacity:0.8;background-color:#8b0707;padding:7px;color:white">' +
                     '<text style="font-weight: 800">' +
                     self.countiesNames[d.region] +
                     '</text></br><text>' +
@@ -65494,7 +65781,7 @@ var MapchartComponent = /** @class */ (function () {
                     '</text>' +
                     '</div>');
             });
-            g.call(self.tipLineCounty);
+            svg.call(self.tipLineCounty);
         };
         d3__WEBPACK_IMPORTED_MODULE_1__["formatDefaultLocale"]({
             decimal: ',',
@@ -65582,8 +65869,10 @@ var MapchartComponent = /** @class */ (function () {
                     }
                     self.data[date].total_death += self.data[date]['estados'][uf].total_death;
                     Object.keys(self.data[lastDate]['estados'][uf]['municipios']).forEach(function (city) {
-                        if (city in self.data[date]['estados'][uf]['municipios'] ===
-                            false) {
+                        if (city in self.data[date]['estados'][uf]['municipios'] === false ||
+                            (city in self.data[date]['estados'][uf]['municipios'] === true
+                                && self.data[date]['estados'][uf]['municipios'][city].total === 0
+                                && self.data[date]['estados'][uf]['municipios'][city].total < self.data[lastDate]['estados'][uf]['municipios'][city].total)) {
                             var lastValue = self.data[lastDate]['estados'][uf]['municipios'][city];
                             self.data[date]['estados'][uf]['municipios'][city] = __assign({}, lastValue);
                         }
@@ -65628,8 +65917,14 @@ var MapchartComponent = /** @class */ (function () {
             }
             // self.loadRangeSliderTime();
             self.loadResizeWindow();
-            d3__WEBPACK_IMPORTED_MODULE_1__["select"]('#multipleStatesCheckBox').on('change', self.onStatesCheckBoxChange);
-            d3__WEBPACK_IMPORTED_MODULE_1__["select"]('#multipleCountiesCheckBox').on('change', self.onCountiesCheckBoxChange);
+            /*d3.select('#multipleStatesCheckBox').on(
+              'change',
+              self.onStatesCheckBoxChange
+            );*/
+            /*d3.select('#multipleCountiesCheckBox').on(
+              'change',
+              self.onCountiesCheckBoxChange
+            );*/
         });
     };
     MapchartComponent.prototype.ngAfterViewInit = function () {
