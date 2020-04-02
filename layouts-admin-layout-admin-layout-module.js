@@ -65218,7 +65218,7 @@ var MapchartComponent = /** @class */ (function () {
                     .attr('height', 10 * gridSizeY)
                     .attr('x', 0)
                     .attr('y', margin.top * 2.5)
-                    .attr('transform', 'translate(0,' + margin.top * 2.5 + ')');
+                    .attr('transform', 'translate(0, 0)');
                 var dayLabels = scrollGDiv.selectAll('.dayLabel')
                     .data(statesList)
                     .enter().append('text')
@@ -65711,7 +65711,7 @@ var MapchartComponent = /** @class */ (function () {
                     .attr('height', 10 * gridSizeY)
                     .attr('x', 0)
                     .attr('y', margin.top * 2.5)
-                    .attr('transform', 'translate(0,' + margin.top * 2.5 + ')');
+                    .attr('transform', 'translate(0, 0)');
                 var dayLabels = scrollGDiv.selectAll('.dayLabel')
                     .data(countiesList)
                     .enter().append('text')
