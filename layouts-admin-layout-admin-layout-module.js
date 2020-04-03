@@ -64252,7 +64252,7 @@ var MapchartComponent = /** @class */ (function () {
             AC: [], AL: [], AM: [], AP: [], BA: [], CE: [], DF: [], ES: [], GO: [], MA: [], MG: [], MS: [], MT: [], PA: [], PB: [], PE: [],
             PI: [], PR: [], RJ: [], RN: [], RO: [], RR: [], RS: [], SC: [], SE: [], SP: [], TO: []
         };
-        this.yFormat = d3__WEBPACK_IMPORTED_MODULE_1__["format"]('.2s');
+        this.yFormat = d3__WEBPACK_IMPORTED_MODULE_1__["format"](',d');
         this.statesNames = {
             AC: 'Acre', AL: 'Alagoas', AM: 'Amazonas', AP: 'Amapá', BA: 'Bahia', CE: 'Ceará', DF: 'Distrito Federal', ES: 'Espírito Santo',
             GO: 'Goiás', MA: 'Maranhão', MG: 'Minas Gerais', MS: 'Mato Grosso do Sul', MT: 'Mato Grosso', PA: 'Pará', PB: 'Paraíba', PE: 'Pernambuco',
@@ -64285,6 +64285,7 @@ var MapchartComponent = /** @class */ (function () {
             var self = _this;
             var parseDate = d3__WEBPACK_IMPORTED_MODULE_1__["timeParse"]('%Y-%m-%d');
             var formatTime = d3__WEBPACK_IMPORTED_MODULE_1__["timeFormat"]('%Y-%m-%d');
+            var formatTimeFront = d3__WEBPACK_IMPORTED_MODULE_1__["timeFormat"]('%d/%m/%Y');
             var iniDate = new Date(parseDate(self.minSelectedDay)).valueOf();
             var endDate = new Date(parseDate(self.maxSelectedDay)).valueOf();
             d3__WEBPACK_IMPORTED_MODULE_1__["select"]('#date-slider').selectAll('*').remove();
@@ -64369,8 +64370,8 @@ var MapchartComponent = /** @class */ (function () {
                 handle.attr('display', null).attr('transform', function (d, i) {
                     return 'translate(' + [s[i], -height] + ')';
                 });
-                d3__WEBPACK_IMPORTED_MODULE_1__["select"]('#label-date-ini').html('<text style="font-weight: 800; font-size: min(2.1vh, 2.1vw);">' + formatTime(d1[0]) + '</text>');
-                d3__WEBPACK_IMPORTED_MODULE_1__["select"]('#label-date-end').html('<text style="font-weight: 800; font-size: min(2.1vh, 2.1vw);">' + formatTime(d1[1]) + '</text>');
+                d3__WEBPACK_IMPORTED_MODULE_1__["select"]('#label-date-ini').html('<text style="font-weight: 800; font-size: min(2.1vh, 2.1vw);">' + formatTimeFront(d1[0]) + '</text>');
+                d3__WEBPACK_IMPORTED_MODULE_1__["select"]('#label-date-end').html('<text style="font-weight: 800; font-size: min(2.1vh, 2.1vw);">' + formatTimeFront(d1[1]) + '</text>');
             }
             function brushended() {
                 if (!d3__WEBPACK_IMPORTED_MODULE_1__["event"].sourceEvent) {
@@ -64385,8 +64386,8 @@ var MapchartComponent = /** @class */ (function () {
                     d1[0] = d3__WEBPACK_IMPORTED_MODULE_1__["timeDay"].floor(d0[0]);
                     d1[1] = d3__WEBPACK_IMPORTED_MODULE_1__["timeDay"].offset(d1[0]);
                 }
-                d3__WEBPACK_IMPORTED_MODULE_1__["select"]('#label-date-ini').html('<text style="font-weight: 800; font-size: min(2.1vh, 2.1vw);">' + formatTime(d1[0]) + '</text>');
-                d3__WEBPACK_IMPORTED_MODULE_1__["select"]('#label-date-end').html('<text style="font-weight: 800; font-size: min(2.1vh, 2.1vw);">' + formatTime(d1[1]) + '</text>');
+                d3__WEBPACK_IMPORTED_MODULE_1__["select"]('#label-date-ini').html('<text style="font-weight: 800; font-size: min(2.1vh, 2.1vw);">' + formatTimeFront(d1[0]) + '</text>');
+                d3__WEBPACK_IMPORTED_MODULE_1__["select"]('#label-date-end').html('<text style="font-weight: 800; font-size: min(2.1vh, 2.1vw);">' + formatTimeFront(d1[1]) + '</text>');
                 d3__WEBPACK_IMPORTED_MODULE_1__["select"](this)
                     .transition()
                     .call(d3__WEBPACK_IMPORTED_MODULE_1__["event"].target.move, d1.map(x));
@@ -64595,7 +64596,7 @@ var MapchartComponent = /** @class */ (function () {
                     self.selectedState = d.properties.UF_05;
                     self.loadWidgetState(self.selectedState, byDeaths, byDensidade);
                     d3__WEBPACK_IMPORTED_MODULE_1__["select"](this)
-                        .attr('stroke', '#ED881A')
+                        .attr('stroke', '#007acc')
                         .attr('stroke-width', 6)
                         .attr('selected', 'true');
                 });
@@ -64605,7 +64606,7 @@ var MapchartComponent = /** @class */ (function () {
                 d3__WEBPACK_IMPORTED_MODULE_1__["selectAll"]('#country-g-map path').each(function (d) {
                     if (d.properties.UF_05 === self.selectedState) {
                         d3__WEBPACK_IMPORTED_MODULE_1__["select"](this)
-                            .attr('stroke', '#ED881A')
+                            .attr('stroke', '#007acc')
                             .attr('stroke-width', 6)
                             .attr('selected', 'true');
                     }
@@ -64702,13 +64703,13 @@ var MapchartComponent = /** @class */ (function () {
                     return '';
                 }
                 if (i === 0) {
-                    return '≤' + d3__WEBPACK_IMPORTED_MODULE_1__["format"]('.2s')(y - 1) + '';
+                    return '≤' + d3__WEBPACK_IMPORTED_MODULE_1__["format"](',d')(y - 1) + '';
                 }
                 if (i === 8) {
-                    return '≥' + d3__WEBPACK_IMPORTED_MODULE_1__["format"]('.2s')(lastTick) + '';
+                    return '≥' + d3__WEBPACK_IMPORTED_MODULE_1__["format"](',d')(lastTick) + '';
                 }
                 lastTick = y;
-                return d3__WEBPACK_IMPORTED_MODULE_1__["format"]('.2s')(y - 1) + '';
+                return d3__WEBPACK_IMPORTED_MODULE_1__["format"](',d')(y - 1) + '';
             })
                 .tickValues(color.domain()))
                 .select('.domain')
@@ -64978,13 +64979,13 @@ var MapchartComponent = /** @class */ (function () {
                     return '';
                 }
                 if (i === 0) {
-                    return '≤' + d3__WEBPACK_IMPORTED_MODULE_1__["format"]('.2s')(y - 1) + '';
+                    return '≤' + d3__WEBPACK_IMPORTED_MODULE_1__["format"](',d')(y - 1) + '';
                 }
                 if (i === 8) {
-                    return '≥' + d3__WEBPACK_IMPORTED_MODULE_1__["format"]('.2s')(lastTick) + '';
+                    return '≥' + d3__WEBPACK_IMPORTED_MODULE_1__["format"](',d')(lastTick) + '';
                 }
                 lastTick = y;
-                return d3__WEBPACK_IMPORTED_MODULE_1__["format"]('.2s')(y - 1) + '';
+                return d3__WEBPACK_IMPORTED_MODULE_1__["format"](',d')(y - 1) + '';
             })
                 .tickValues(color.domain()))
                 .select('.domain')
@@ -65258,7 +65259,7 @@ var MapchartComponent = /** @class */ (function () {
                     '<text style="font-weight: 800">' +
                     self.statesNames[d.region] +
                     '</text></br><text>' +
-                    d3__WEBPACK_IMPORTED_MODULE_1__["timeFormat"]('%d/%m/%y')(d.date) +
+                    d3__WEBPACK_IMPORTED_MODULE_1__["timeFormat"]('%d/%m/%Y')(d.date) +
                     ':</text> <text style="font-weight: 800">' +
                     self.formatValueSeperator(d.value) +
                     '</text>' +
@@ -65535,7 +65536,7 @@ var MapchartComponent = /** @class */ (function () {
                     '<text style="font-weight: 800">' +
                     self.countiesNames[d.region] +
                     '</text></br><text>' +
-                    d3__WEBPACK_IMPORTED_MODULE_1__["timeFormat"]('%d/%m/%y')(d.date) +
+                    d3__WEBPACK_IMPORTED_MODULE_1__["timeFormat"]('%d/%m/%Y')(d.date) +
                     ':</text> <text style="font-weight: 800">' +
                     self.formatValueSeperator(d.value) +
                     '</text>' +
