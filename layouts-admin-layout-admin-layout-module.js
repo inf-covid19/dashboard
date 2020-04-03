@@ -64590,21 +64590,28 @@ var MapchartComponent = /** @class */ (function () {
                 mapG.attr('transform', 'translate( ' + widthTrans + ' , ' + heightTrans + ') scale(' + scaleRatio + ')');
             }
             self.tipCountry = Object(d3_tip__WEBPACK_IMPORTED_MODULE_2__["default"])();
-            self.tipCountry.attr('class', 'd3-tip').html(function (d) {
+            self.tipCountry.attr('class', 'd3-tip')
+                .offset([100, 120])
+                .html(function (d) {
                 d3__WEBPACK_IMPORTED_MODULE_1__["select"](this).attr('stroke', '#717171');
+                var labelTot = byDensidade === true ? 'Densidade casos' : 'Total casos';
+                var labelTotDeath = byDensidade === true ? 'Densidade óbitos' : 'Total óbitos';
                 return ('<div style="opacity:0.8;background-color:#8b0707;padding:7px;color:white">' +
                     '<text>Estado: </text><text style="font-weight: 800">' +
                     d.properties.NOME_UF +
                     '</text><br/>' +
-                    '<text>Total casos: </text><text style="font-weight: 800">' +
+                    '<text>' + labelTot + ': </text><text style="font-weight: 800">' +
                     (typeof TotalReport.get(d.properties.UF_05) === 'undefined'
                         ? 0
                         : self.formatValueSeperator(TotalReport.get(d.properties.UF_05))) +
                     '</text><br/>' +
-                    '<text>Total óbitos: </text><text style="font-weight: 800">' +
+                    '<text>' + labelTotDeath + ': </text><text style="font-weight: 800">' +
                     (typeof TotalDeathReport.get(d.properties.UF_05) === 'undefined'
                         ? 0
                         : self.formatValueSeperator(TotalDeathReport.get(d.properties.UF_05))) +
+                    '</text><br/>' +
+                    '<text>População: </text><text style="font-weight: 800">' +
+                    d3__WEBPACK_IMPORTED_MODULE_1__["format"](',d')(self.population[d.properties.UF_05].population) +
                     '</text><br/>' +
                     '</div>');
             });
@@ -64855,20 +64862,26 @@ var MapchartComponent = /** @class */ (function () {
             self.tipCounty
                 .attr('class', 'd3-tip')
                 .html(function (d) {
+                // console.log(d, self.population);
                 d3__WEBPACK_IMPORTED_MODULE_1__["select"](this).attr('stroke', '#717171');
+                var labelTot = byDensidade === true ? 'Densidade casos' : 'Total casos';
+                var labelTotDeath = byDensidade === true ? 'Densidade óbitos' : 'Total óbitos';
                 return ('<div style="opacity:0.8;background-color:#8b0707;padding:7px;color:white">' +
                     '<text>Município: </text><text style="font-weight: 800">' +
                     d.properties.NOME_MUNI +
                     '</text><br/>' +
-                    '<text>Total casos: </text><text style="font-weight: 800">' +
+                    '<text>' + labelTot + ': </text><text style="font-weight: 800">' +
                     (typeof TotalReport.get(d.properties.COD_IBGE) === 'undefined'
                         ? 0
                         : self.formatValueSeperator(TotalReport.get(d.properties.COD_IBGE))) +
                     '</text><br/>' +
-                    '<text>Total óbitos: </text><text style="font-weight: 800">' +
+                    '<text>' + labelTotDeath + ': </text><text style="font-weight: 800">' +
                     (typeof TotalDeathReport.get(d.properties.COD_IBGE) === 'undefined'
                         ? 0
                         : self.formatValueSeperator(TotalDeathReport.get(d.properties.COD_IBGE))) +
+                    '</text><br/>' +
+                    '<text>População: </text><text style="font-weight: 800">' +
+                    d3__WEBPACK_IMPORTED_MODULE_1__["format"](',d')(self.population[d.properties.UF]['municipios'][d.properties.COD_IBGE]) +
                     '</text><br/>' +
                     '</div>');
             });
