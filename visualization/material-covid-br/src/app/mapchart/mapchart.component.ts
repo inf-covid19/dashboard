@@ -192,19 +192,15 @@ export class MapchartComponent implements OnInit, AfterViewInit, OnDestroy {
             const lastValue = self.data[lastDate]['estados'][uf].total;
             self.data[date]['estados'][uf].total = lastValue;
           }
-          self.data[date].total += self.data[date]['estados'][uf].total;
 
           if (self.data[date]['estados'][uf].total_death === 0) {
             const lastValue = self.data[lastDate]['estados'][uf].total_death;
             self.data[date]['estados'][uf].total_death = lastValue;
           }
-          self.data[date].total_death += self.data[date]['estados'][uf].total_death;
 
-          Object.keys(self.data[lastDate]['estados'][uf]['municipios']).forEach(
-            city => {
+          Object.keys(self.data[lastDate]['estados'][uf]['municipios']).forEach(city => {
               if ( city in self.data[date]['estados'][uf]['municipios'] === false ||
                   (city in self.data[date]['estados'][uf]['municipios'] === true
-                      && self.data[date]['estados'][uf]['municipios'][city].total === 0
                       && self.data[date]['estados'][uf]['municipios'][city].total < self.data[lastDate]['estados'][uf]['municipios'][city].total)) {
                 const lastValue = self.data[lastDate]['estados'][uf]['municipios'][city];
                 self.data[date]['estados'][uf]['municipios'][city] = {
@@ -213,13 +209,21 @@ export class MapchartComponent implements OnInit, AfterViewInit, OnDestroy {
               }
               if ( city in self.data[date]['estados'][uf]['municipios'] === false ||
                   (city in self.data[date]['estados'][uf]['municipios'] === true
-                      && self.data[date]['estados'][uf]['municipios'][city].total_death === 0
                       && self.data[date]['estados'][uf]['municipios'][city].total_death < self.data[lastDate]['estados'][uf]['municipios'][city].total_death)) {
                 const lastValue = self.data[lastDate]['estados'][uf]['municipios'][city];
                 self.data[date]['estados'][uf]['municipios'][city].total_death = lastValue.total_death;
               }
             }
           );
+          let totalState = 0, totalStateDeaths = 0;
+          Object.keys(self.data[date]['estados'][uf]['municipios']).forEach(city => {
+            totalStateDeaths += self.data[date]['estados'][uf]['municipios'][city].total_death;
+            totalState += self.data[date]['estados'][uf]['municipios'][city].total;
+          });
+          self.data[date]['estados'][uf].total = totalState;
+          self.data[date]['estados'][uf].total_death = totalStateDeaths;
+          self.data[date].total += totalState;
+          self.data[date].total_death += totalStateDeaths;
         });
       });
 
@@ -895,7 +899,6 @@ export class MapchartComponent implements OnInit, AfterViewInit, OnDestroy {
             population = typeof self.population[stateParam]['municipios'][key] === 'undefined' ? 1000000 :
                 self.population[stateParam]['municipios'][key];
           }
-
           TotalReport.set(key, Math.abs(valorEnd - valorIni) * (self.popScale / population));
           TotalDeathReport.set(key, Math.abs(valorDeathEnd - valorDeathIni) * (self.popScale / population));
           self.totalState += Math.abs(valorEnd - valorIni);
@@ -994,7 +997,6 @@ export class MapchartComponent implements OnInit, AfterViewInit, OnDestroy {
     self.tipCounty
       .attr('class', 'd3-tip')
       .html(function(d) {
-        // console.log(d, self.population);
         d3.select(this).attr('stroke', '#717171');
         const labelTot = byDensidade === true ? 'Densidade casos' : 'Total casos';
         const labelTotDeath = byDensidade === true ? 'Densidade óbitos' : 'Total óbitos';
