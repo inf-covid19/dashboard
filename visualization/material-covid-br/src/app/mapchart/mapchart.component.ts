@@ -285,7 +285,7 @@ export class MapchartComponent implements OnInit, AfterViewInit, OnDestroy {
     const self = this;
     const parseDate = d3.timeParse('%Y-%m-%d');
     const formatTime = d3.timeFormat('%Y-%m-%d');
-    const formatTimeFront = d3.timeFormat('%d/%m/%Y');
+    const formatTimeFront = d3.timeFormat('%d/%m');
     const iniDate = new Date(parseDate(self.minSelectedDay)).valueOf();
     const endDate = new Date(parseDate(self.maxSelectedDay)).valueOf();
 
@@ -1230,7 +1230,7 @@ export class MapchartComponent implements OnInit, AfterViewInit, OnDestroy {
       const times = self.listDatesStates.slice(
           self.listDatesStates.indexOf(self.iniSelectedDay), self.listDatesStates.indexOf(self.endSelectedDay) + 1);
       const legendElementWidth = width / 14;
-      const x = d3.axisBottom().tickFormat(d3.timeFormat('%d/%m/%y')).scale(d3.scaleTime()
+      const x = d3.axisBottom().tickFormat(d3.timeFormat('%d/%m')).scale(d3.scaleTime()
               .domain([d3.timeParse('%Y-%m-%d')(self.iniSelectedDay), d3.timeParse('%Y-%m-%d')(self.endSelectedDay)])
               .range([0, gridSizeX * (qtyDays - 0.9)]));
       let titleLabel = 'Casos confirmados ';
@@ -1402,7 +1402,7 @@ export class MapchartComponent implements OnInit, AfterViewInit, OnDestroy {
               '<text style="font-weight: 800">' +
               self.statesNames[d.region] +
               '</text></br><text>' +
-              d3.timeFormat('%d/%m/%Y')(d.date) +
+              d3.timeFormat('%d/%m')(d.date) +
               ':</text> <text style="font-weight: 800">' +
               self.formatValueSeperator(d.value) +
               '</text>' +
@@ -1527,7 +1527,7 @@ export class MapchartComponent implements OnInit, AfterViewInit, OnDestroy {
       const times = self.listDatesStates.slice(
           self.listDatesStates.indexOf(self.iniSelectedDay), self.listDatesStates.indexOf(self.endSelectedDay) + 1);
       const legendElementWidth = width / 14;
-      const x = d3.axisBottom().tickFormat(d3.timeFormat('%d/%m/%y')).scale(d3.scaleTime()
+      const x = d3.axisBottom().tickFormat(d3.timeFormat('%d/%m')).scale(d3.scaleTime()
           .domain([d3.timeParse('%Y-%m-%d')(self.iniSelectedDay), d3.timeParse('%Y-%m-%d')(self.endSelectedDay)])
           .range([0, gridSizeX * (qtyDays - 0.9)]));
       let titleLabel = 'Casos confirmados ';
@@ -1702,7 +1702,7 @@ export class MapchartComponent implements OnInit, AfterViewInit, OnDestroy {
               '<text style="font-weight: 800">' +
               self.countiesNames[d.region] +
               '</text></br><text>' +
-              d3.timeFormat('%d/%m/%Y')(d.date) +
+              d3.timeFormat('%d/%m')(d.date) +
               ':</text> <text style="font-weight: 800">' +
               self.formatValueSeperator(d.value) +
               '</text>' +
