@@ -64285,7 +64285,7 @@ var MapchartComponent = /** @class */ (function () {
             var self = _this;
             var parseDate = d3__WEBPACK_IMPORTED_MODULE_1__["timeParse"]('%Y-%m-%d');
             var formatTime = d3__WEBPACK_IMPORTED_MODULE_1__["timeFormat"]('%Y-%m-%d');
-            var formatTimeFront = d3__WEBPACK_IMPORTED_MODULE_1__["timeFormat"]('%d/%m/%Y');
+            var formatTimeFront = d3__WEBPACK_IMPORTED_MODULE_1__["timeFormat"]('%d/%m');
             var iniDate = new Date(parseDate(self.minSelectedDay)).valueOf();
             var endDate = new Date(parseDate(self.maxSelectedDay)).valueOf();
             d3__WEBPACK_IMPORTED_MODULE_1__["select"]('#date-slider').selectAll('*').remove();
@@ -65101,7 +65101,7 @@ var MapchartComponent = /** @class */ (function () {
                 var gridSizeY = height / 12;
                 var times = self.listDatesStates.slice(self.listDatesStates.indexOf(self.iniSelectedDay), self.listDatesStates.indexOf(self.endSelectedDay) + 1);
                 var legendElementWidth = width / 14;
-                var x = d3__WEBPACK_IMPORTED_MODULE_1__["axisBottom"]().tickFormat(d3__WEBPACK_IMPORTED_MODULE_1__["timeFormat"]('%d/%m/%y')).scale(d3__WEBPACK_IMPORTED_MODULE_1__["scaleTime"]()
+                var x = d3__WEBPACK_IMPORTED_MODULE_1__["axisBottom"]().tickFormat(d3__WEBPACK_IMPORTED_MODULE_1__["timeFormat"]('%d/%m')).scale(d3__WEBPACK_IMPORTED_MODULE_1__["scaleTime"]()
                     .domain([d3__WEBPACK_IMPORTED_MODULE_1__["timeParse"]('%Y-%m-%d')(self.iniSelectedDay), d3__WEBPACK_IMPORTED_MODULE_1__["timeParse"]('%Y-%m-%d')(self.endSelectedDay)])
                     .range([0, gridSizeX * (qtyDays - 0.9)]));
                 var titleLabel = 'Casos confirmados ';
@@ -65258,7 +65258,7 @@ var MapchartComponent = /** @class */ (function () {
                     '<text style="font-weight: 800">' +
                     self.statesNames[d.region] +
                     '</text></br><text>' +
-                    d3__WEBPACK_IMPORTED_MODULE_1__["timeFormat"]('%d/%m/%Y')(d.date) +
+                    d3__WEBPACK_IMPORTED_MODULE_1__["timeFormat"]('%d/%m')(d.date) +
                     ':</text> <text style="font-weight: 800">' +
                     self.formatValueSeperator(d.value) +
                     '</text>' +
@@ -65376,7 +65376,7 @@ var MapchartComponent = /** @class */ (function () {
                 var gridSizeY = height / 12;
                 var times = self.listDatesStates.slice(self.listDatesStates.indexOf(self.iniSelectedDay), self.listDatesStates.indexOf(self.endSelectedDay) + 1);
                 var legendElementWidth = width / 14;
-                var x = d3__WEBPACK_IMPORTED_MODULE_1__["axisBottom"]().tickFormat(d3__WEBPACK_IMPORTED_MODULE_1__["timeFormat"]('%d/%m/%y')).scale(d3__WEBPACK_IMPORTED_MODULE_1__["scaleTime"]()
+                var x = d3__WEBPACK_IMPORTED_MODULE_1__["axisBottom"]().tickFormat(d3__WEBPACK_IMPORTED_MODULE_1__["timeFormat"]('%d/%m')).scale(d3__WEBPACK_IMPORTED_MODULE_1__["scaleTime"]()
                     .domain([d3__WEBPACK_IMPORTED_MODULE_1__["timeParse"]('%Y-%m-%d')(self.iniSelectedDay), d3__WEBPACK_IMPORTED_MODULE_1__["timeParse"]('%Y-%m-%d')(self.endSelectedDay)])
                     .range([0, gridSizeX * (qtyDays - 0.9)]));
                 var titleLabel = 'Casos confirmados ';
@@ -65535,7 +65535,7 @@ var MapchartComponent = /** @class */ (function () {
                     '<text style="font-weight: 800">' +
                     self.countiesNames[d.region] +
                     '</text></br><text>' +
-                    d3__WEBPACK_IMPORTED_MODULE_1__["timeFormat"]('%d/%m/%Y')(d.date) +
+                    d3__WEBPACK_IMPORTED_MODULE_1__["timeFormat"]('%d/%m')(d.date) +
                     ':</text> <text style="font-weight: 800">' +
                     self.formatValueSeperator(d.value) +
                     '</text>' +
