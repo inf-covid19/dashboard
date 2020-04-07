@@ -65622,7 +65622,7 @@ var MapchartComponent = /** @class */ (function () {
                 }
             });
         });
-        dataPromises.push(d3__WEBPACK_IMPORTED_MODULE_1__["dsv"](',', './assets/csv/population.csv', function (d) {
+        dataPromises.push(d3__WEBPACK_IMPORTED_MODULE_1__["dsv"](',', 'https://raw.githubusercontent.com/inf-covid19/dashboard/gh-pages/assets/csv/population.csv', function (d) {
             self.population.total += parseInt(d.population);
             self.population[d.state].population += parseInt(d.population);
             self.population[d.state]['municipios'][d.cod_ibge] = parseInt(d.population);
