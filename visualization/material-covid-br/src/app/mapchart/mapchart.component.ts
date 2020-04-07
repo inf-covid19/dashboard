@@ -170,7 +170,7 @@ export class MapchartComponent implements OnInit, AfterViewInit, OnDestroy {
     });
 
     dataPromises.push(
-        d3.dsv( ',', './assets/csv/population.csv',
+        d3.dsv( ',', 'https://raw.githubusercontent.com/inf-covid19/dashboard/gh-pages/assets/csv/population.csv',
             function(d) {
               self.population.total += parseInt(d.population);
               self.population[d.state].population += parseInt(d.population);
