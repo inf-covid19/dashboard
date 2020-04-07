@@ -1,6 +1,18 @@
 <div class="main-content">
   <div class="container-fluid">
       <div class="row">
+          <div class="col-lg-3 col-md-3 col-3 col-sm-3 col-xs-3">
+              <div class="card bg-card">
+                  <div class="card-body">
+                      <app-mapchart></app-mapchart>
+                  </div>
+              </div>
+              <div class="card bg-card">
+                  <div class="card-body">
+                      <svg id="svg-county" class="h-100 w-100"></svg>
+                  </div>
+              </div>
+          </div>
           <div class="col-lg-2 col-md-2 col-2 col-sm-2 col-xs-2">
               <div class="card sm-card">
                   <div class="card-body">
@@ -12,25 +24,13 @@
               </div>
               <div class="card gt-card">
                   <div class="card-body">
-                      <h5 class="bg-title gt-ranking-number" style="padding-left: 6px;">Relatório estadual</h5>
+                      <h5 class="bg-title gt-ranking-number">Relatório estadual</h5>
                       <div class="table-ranking my-custom-scrollbar">
                           <table>
                               <tbody id="states-ranking">
                               </tbody>
                           </table>
                       </div>
-                  </div>
-              </div>
-          </div>
-          <div class="col-lg-3 col-md-3 col-3 col-sm-3 col-xs-3">
-              <div class="card bg-card">
-                  <div class="card-body">
-                      <app-mapchart></app-mapchart>
-                  </div>
-              </div>
-              <div class="card bg-card">
-                  <div class="card-body">
-                      <svg id="svg-county" class="h-100 w-100"></svg>
                   </div>
               </div>
           </div>

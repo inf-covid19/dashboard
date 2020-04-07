@@ -649,8 +649,8 @@ export class MapchartComponent implements OnInit, AfterViewInit, OnDestroy {
           self.selectedState = d.properties.UF_05;
             self.loadWidgetState(self.selectedState, byDeaths, byDensidade);
           d3.select(this)
-              .attr('stroke', '#007acc')
-              .attr('stroke-width', 6)
+              .attr('stroke', '#717171')
+              .attr('stroke-width', 7)
               .attr('selected', 'true');
 
         });
@@ -662,8 +662,8 @@ export class MapchartComponent implements OnInit, AfterViewInit, OnDestroy {
       d3.selectAll('#country-g-map path').each(function(d) {
         if (d.properties.UF_05 === self.selectedState) {
           d3.select(this)
-              .attr('stroke', '#007acc')
-              .attr('stroke-width', 6)
+              .attr('stroke', '#717171')
+              .attr('stroke-width', 7)
               .attr('selected', 'true');
         }
       });
@@ -680,8 +680,8 @@ export class MapchartComponent implements OnInit, AfterViewInit, OnDestroy {
               d3.select(this).attr('stroke-width', 3);
             }
           });
-      const labelTot = byDensidade === true ? 'Densidade casos' : 'Total casos';
-      const labelTotDeath = byDensidade === true ? 'Densidade óbitos' : 'Total óbitos';
+      const labelTot = byDensidade === true ? 'Incidência casos' : 'Total casos';
+      const labelTotDeath = byDensidade === true ? 'Incidência óbitos' : 'Total óbitos';
       return (
         '<div style="opacity:0.8;background-color:#8b0707;padding:7px;color:white">' +
         '<text>Estado: </text><text style="font-weight: 800">' +
@@ -795,7 +795,7 @@ export class MapchartComponent implements OnInit, AfterViewInit, OnDestroy {
     d3.select('#total-country-deaths').html( self.formatValueSeperator(self.totalDeathCountry) );
 
     if (byDensidade === true) {
-      d3.select('#name-total-country').html('Densidade Brasil');
+      d3.select('#name-total-country').html('Incidência Brasil');
     } else {
       d3.select('#name-total-country').html('Confirmados Brasil');
     }
@@ -998,8 +998,8 @@ export class MapchartComponent implements OnInit, AfterViewInit, OnDestroy {
       .attr('class', 'd3-tip')
       .html(function(d) {
         d3.select(this).attr('stroke', '#717171');
-        const labelTot = byDensidade === true ? 'Densidade casos' : 'Total casos';
-        const labelTotDeath = byDensidade === true ? 'Densidade óbitos' : 'Total óbitos';
+        const labelTot = byDensidade === true ? 'Incidência casos' : 'Total casos';
+        const labelTotDeath = byDensidade === true ? 'Incidência óbitos' : 'Total óbitos';
         return (
           '<div style="opacity:0.8;background-color:#8b0707;padding:7px;color:white">' +
           '<text>Município: </text><text style="font-weight: 800">' +
@@ -1113,7 +1113,7 @@ export class MapchartComponent implements OnInit, AfterViewInit, OnDestroy {
     d3.select('#total-state').html(self.formatValueSeperator(self.totalState));
     d3.select('#total-state-deaths').html(self.formatValueSeperator(self.totalDeathState));
     if (byDensidade === true) {
-      d3.select('#name-total-state').html('Densidade ' + self.selectedState);
+      d3.select('#name-total-state').html('Incidência ' + self.selectedState);
     } else {
       d3.select('#name-total-state').html('Confirmados ' + self.selectedState);
     }
@@ -1129,13 +1129,6 @@ export class MapchartComponent implements OnInit, AfterViewInit, OnDestroy {
     for (const item in self.rankingCounties) {
       countiesRankingElmnt
         .append('tr')
-          .on('mouseover', function() {
-            d3.select(this).style('cursor', 'pointer');
-            d3.select(this).style('font-weight', '800');
-          })
-          .on('mouseout', function() {
-            d3.select(this).style('font-weight', '300');
-          })
         .html(
             '<td class="' + classColor + ' gt-ranking-number"  style="padding-left: 6px; text-align: right">' +
             self.formatValueSeperator(self.rankingCounties[item].value) +
@@ -1235,7 +1228,7 @@ export class MapchartComponent implements OnInit, AfterViewInit, OnDestroy {
               .range([0, gridSizeX * (qtyDays - 0.9)]));
       let titleLabel = 'Casos confirmados ';
       if (byDensidade === true) {
-        titleLabel = 'Densidade ';
+        titleLabel = 'Incidência ';
       }
       svg.append('text')
           .attr('x', width / 3.5)
@@ -1532,7 +1525,7 @@ export class MapchartComponent implements OnInit, AfterViewInit, OnDestroy {
           .range([0, gridSizeX * (qtyDays - 0.9)]));
       let titleLabel = 'Casos confirmados ';
       if (byDensidade === true) {
-        titleLabel = 'Densidade ';
+        titleLabel = 'Incidência ';
       }
       svg.append('text')
           .attr('x', width / 3.5)
