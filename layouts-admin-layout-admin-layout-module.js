@@ -63630,7 +63630,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"main-content\">\n  <div class=\"container-fluid\">\n      <div class=\"row\">\n          <div class=\"col-lg-2 col-md-2 col-2 col-sm-2 col-xs-2\">\n              <div class=\"card sm-card\">\n                  <div class=\"card-body\">\n                      <h4 class=\"bg-title gt-ranking-number\" id=\"name-total-country\"></h4>\n                      <h2 class=\"gt-number gt-bg-ranking-number\" id=\"total-country\">0</h2>\n                      <h4 class=\"bg-title gt-ranking-number\">Óbitos</h4>\n                      <h3 class=\"gt-dark-number gt-bg-ranking-number\" id=\"total-country-deaths\">0</h3>\n                  </div>\n              </div>\n              <div class=\"card gt-card\">\n                  <div class=\"card-body\">\n                      <h5 class=\"bg-title gt-ranking-number\" style=\"padding-left: 6px;\">Relatório estadual</h5>\n                      <div class=\"table-ranking my-custom-scrollbar\">\n                          <table>\n                              <tbody id=\"states-ranking\">\n                              </tbody>\n                          </table>\n                      </div>\n                  </div>\n              </div>\n          </div>\n          <div class=\"col-lg-3 col-md-3 col-3 col-sm-3 col-xs-3\">\n              <div class=\"card bg-card\">\n                  <div class=\"card-body\">\n                      <app-mapchart></app-mapchart>\n                  </div>\n              </div>\n              <div class=\"card bg-card\">\n                  <div class=\"card-body\">\n                      <svg id=\"svg-county\" class=\"h-100 w-100\"></svg>\n                  </div>\n              </div>\n          </div>\n          <div class=\"col-lg-2 col-md-2 col-2 col-sm-2 col-xs-2\">\n              <div class=\"card sm-card\">\n                  <div class=\"card-body\">\n                      <h4 class=\"bg-title gt-ranking-number\" id=\"name-total-state\"></h4>\n                      <h2 class=\"gt-number gt-bg-ranking-number\" id=\"total-state\">0</h2>\n                      <h4 class=\"bg-title gt-ranking-number\">Óbitos</h4>\n                      <h3 class=\"gt-dark-number gt-bg-ranking-number\" id=\"total-state-deaths\">0</h3>\n                  </div>\n              </div>\n              <div class=\"card gt-card\">\n                  <div class=\"card-body\">\n                      <h5 class=\"bg-title gt-ranking-number\">Relatório por Município</h5>\n                      <div class=\"table-ranking my-custom-scrollbar\">\n                          <table>\n                              <tbody id=\"counties-ranking\">\n                              </tbody>\n                          </table>\n                      </div>\n                  </div>\n              </div>\n          </div>\n          <div class=\"col-lg-5 col-md-5 col-5 col-sm-5 col-xs-5\">\n              <!--<div class=\"card md-card\">\n                  <div class=\"card-body\">\n                      <svg id=\"svg-linechart-country\" class=\"h-100 w-100\"></svg>\n                  </div>\n              </div>-->\n              <div class=\"card bg-card\">\n                  <div class=\"card-body\">\n                      <svg id=\"svg-linechart-state\" class=\"h-100 w-100\"></svg>\n                  </div>\n              </div>\n              <div class=\"card bg-card\">\n                  <div class=\"card-body\">\n                      <svg id=\"svg-linechart-county\" class=\"h-100 w-100\"></svg>\n                  </div>\n              </div>\n          </div>\n      </div>\n  </div>\n</div>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"main-content\">\n  <div class=\"container-fluid\">\n      <div class=\"row\">\n          <div class=\"col-lg-3 col-md-3 col-3 col-sm-3 col-xs-3\">\n              <div class=\"card bg-card\">\n                  <div class=\"card-body\">\n                      <app-mapchart></app-mapchart>\n                  </div>\n              </div>\n              <div class=\"card bg-card\">\n                  <div class=\"card-body\">\n                      <svg id=\"svg-county\" class=\"h-100 w-100\"></svg>\n                  </div>\n              </div>\n          </div>\n          <div class=\"col-lg-2 col-md-2 col-2 col-sm-2 col-xs-2\">\n              <div class=\"card sm-card\">\n                  <div class=\"card-body\">\n                      <h4 class=\"bg-title gt-ranking-number\" id=\"name-total-country\"></h4>\n                      <h2 class=\"gt-number gt-bg-ranking-number\" id=\"total-country\">0</h2>\n                      <h4 class=\"bg-title gt-ranking-number\">Óbitos</h4>\n                      <h3 class=\"gt-dark-number gt-bg-ranking-number\" id=\"total-country-deaths\">0</h3>\n                  </div>\n              </div>\n              <div class=\"card gt-card\">\n                  <div class=\"card-body\">\n                      <h5 class=\"bg-title gt-ranking-number\">Relatório estadual</h5>\n                      <div class=\"table-ranking my-custom-scrollbar\">\n                          <table>\n                              <tbody id=\"states-ranking\">\n                              </tbody>\n                          </table>\n                      </div>\n                  </div>\n              </div>\n          </div>\n          <div class=\"col-lg-2 col-md-2 col-2 col-sm-2 col-xs-2\">\n              <div class=\"card sm-card\">\n                  <div class=\"card-body\">\n                      <h4 class=\"bg-title gt-ranking-number\" id=\"name-total-state\"></h4>\n                      <h2 class=\"gt-number gt-bg-ranking-number\" id=\"total-state\">0</h2>\n                      <h4 class=\"bg-title gt-ranking-number\">Óbitos</h4>\n                      <h3 class=\"gt-dark-number gt-bg-ranking-number\" id=\"total-state-deaths\">0</h3>\n                  </div>\n              </div>\n              <div class=\"card gt-card\">\n                  <div class=\"card-body\">\n                      <h5 class=\"bg-title gt-ranking-number\">Relatório por Município</h5>\n                      <div class=\"table-ranking my-custom-scrollbar\">\n                          <table>\n                              <tbody id=\"counties-ranking\">\n                              </tbody>\n                          </table>\n                      </div>\n                  </div>\n              </div>\n          </div>\n          <div class=\"col-lg-5 col-md-5 col-5 col-sm-5 col-xs-5\">\n              <!--<div class=\"card md-card\">\n                  <div class=\"card-body\">\n                      <svg id=\"svg-linechart-country\" class=\"h-100 w-100\"></svg>\n                  </div>\n              </div>-->\n              <div class=\"card bg-card\">\n                  <div class=\"card-body\">\n                      <svg id=\"svg-linechart-state\" class=\"h-100 w-100\"></svg>\n                  </div>\n              </div>\n              <div class=\"card bg-card\">\n                  <div class=\"card-body\">\n                      <svg id=\"svg-linechart-county\" class=\"h-100 w-100\"></svg>\n                  </div>\n              </div>\n          </div>\n      </div>\n  </div>\n</div>\n");
 
 /***/ }),
 
@@ -64596,8 +64596,8 @@ var MapchartComponent = /** @class */ (function () {
                     self.selectedState = d.properties.UF_05;
                     self.loadWidgetState(self.selectedState, byDeaths, byDensidade);
                     d3__WEBPACK_IMPORTED_MODULE_1__["select"](this)
-                        .attr('stroke', '#007acc')
-                        .attr('stroke-width', 6)
+                        .attr('stroke', '#717171')
+                        .attr('stroke-width', 7)
                         .attr('selected', 'true');
                 });
                 var widthTrans = Math.abs(container.width - mapG.node().getBoundingClientRect().width) / 2;
@@ -64606,8 +64606,8 @@ var MapchartComponent = /** @class */ (function () {
                 d3__WEBPACK_IMPORTED_MODULE_1__["selectAll"]('#country-g-map path').each(function (d) {
                     if (d.properties.UF_05 === self.selectedState) {
                         d3__WEBPACK_IMPORTED_MODULE_1__["select"](this)
-                            .attr('stroke', '#007acc')
-                            .attr('stroke-width', 6)
+                            .attr('stroke', '#717171')
+                            .attr('stroke-width', 7)
                             .attr('selected', 'true');
                     }
                 });
@@ -64623,8 +64623,8 @@ var MapchartComponent = /** @class */ (function () {
                         d3__WEBPACK_IMPORTED_MODULE_1__["select"](this).attr('stroke-width', 3);
                     }
                 });
-                var labelTot = byDensidade === true ? 'Densidade casos' : 'Total casos';
-                var labelTotDeath = byDensidade === true ? 'Densidade óbitos' : 'Total óbitos';
+                var labelTot = byDensidade === true ? 'Incidência casos' : 'Total casos';
+                var labelTotDeath = byDensidade === true ? 'Incidência óbitos' : 'Total óbitos';
                 return ('<div style="opacity:0.8;background-color:#8b0707;padding:7px;color:white">' +
                     '<text>Estado: </text><text style="font-weight: 800">' +
                     d.properties.NOME_UF +
@@ -64718,7 +64718,7 @@ var MapchartComponent = /** @class */ (function () {
             d3__WEBPACK_IMPORTED_MODULE_1__["select"]('#total-country').html(self.formatValueSeperator(self.totalCountry));
             d3__WEBPACK_IMPORTED_MODULE_1__["select"]('#total-country-deaths').html(self.formatValueSeperator(self.totalDeathCountry));
             if (byDensidade === true) {
-                d3__WEBPACK_IMPORTED_MODULE_1__["select"]('#name-total-country').html('Densidade Brasil');
+                d3__WEBPACK_IMPORTED_MODULE_1__["select"]('#name-total-country').html('Incidência Brasil');
             }
             else {
                 d3__WEBPACK_IMPORTED_MODULE_1__["select"]('#name-total-country').html('Confirmados Brasil');
@@ -64898,8 +64898,8 @@ var MapchartComponent = /** @class */ (function () {
                 .attr('class', 'd3-tip')
                 .html(function (d) {
                 d3__WEBPACK_IMPORTED_MODULE_1__["select"](this).attr('stroke', '#717171');
-                var labelTot = byDensidade === true ? 'Densidade casos' : 'Total casos';
-                var labelTotDeath = byDensidade === true ? 'Densidade óbitos' : 'Total óbitos';
+                var labelTot = byDensidade === true ? 'Incidência casos' : 'Total casos';
+                var labelTotDeath = byDensidade === true ? 'Incidência óbitos' : 'Total óbitos';
                 return ('<div style="opacity:0.8;background-color:#8b0707;padding:7px;color:white">' +
                     '<text>Município: </text><text style="font-weight: 800">' +
                     d.properties.NOME_MUNI +
@@ -64993,7 +64993,7 @@ var MapchartComponent = /** @class */ (function () {
             d3__WEBPACK_IMPORTED_MODULE_1__["select"]('#total-state').html(self.formatValueSeperator(self.totalState));
             d3__WEBPACK_IMPORTED_MODULE_1__["select"]('#total-state-deaths').html(self.formatValueSeperator(self.totalDeathState));
             if (byDensidade === true) {
-                d3__WEBPACK_IMPORTED_MODULE_1__["select"]('#name-total-state').html('Densidade ' + self.selectedState);
+                d3__WEBPACK_IMPORTED_MODULE_1__["select"]('#name-total-state').html('Incidência ' + self.selectedState);
             }
             else {
                 d3__WEBPACK_IMPORTED_MODULE_1__["select"]('#name-total-state').html('Confirmados ' + self.selectedState);
@@ -65006,13 +65006,6 @@ var MapchartComponent = /** @class */ (function () {
             for (var item in self.rankingCounties) {
                 countiesRankingElmnt
                     .append('tr')
-                    .on('mouseover', function () {
-                    d3__WEBPACK_IMPORTED_MODULE_1__["select"](this).style('cursor', 'pointer');
-                    d3__WEBPACK_IMPORTED_MODULE_1__["select"](this).style('font-weight', '800');
-                })
-                    .on('mouseout', function () {
-                    d3__WEBPACK_IMPORTED_MODULE_1__["select"](this).style('font-weight', '300');
-                })
                     .html('<td class="' + classColor + ' gt-ranking-number"  style="padding-left: 6px; text-align: right">' +
                     self.formatValueSeperator(self.rankingCounties[item].value) +
                     '</td><td>' + self.rankingCounties[item].name + '</td>');
@@ -65106,7 +65099,7 @@ var MapchartComponent = /** @class */ (function () {
                     .range([0, gridSizeX * (qtyDays - 0.9)]));
                 var titleLabel = 'Casos confirmados ';
                 if (byDensidade === true) {
-                    titleLabel = 'Densidade ';
+                    titleLabel = 'Incidência ';
                 }
                 svg.append('text')
                     .attr('x', width / 3.5)
@@ -65381,7 +65374,7 @@ var MapchartComponent = /** @class */ (function () {
                     .range([0, gridSizeX * (qtyDays - 0.9)]));
                 var titleLabel = 'Casos confirmados ';
                 if (byDensidade === true) {
-                    titleLabel = 'Densidade ';
+                    titleLabel = 'Incidência ';
                 }
                 svg.append('text')
                     .attr('x', width / 3.5)
