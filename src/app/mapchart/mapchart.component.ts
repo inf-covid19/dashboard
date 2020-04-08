@@ -517,6 +517,7 @@ export class MapchartComponent implements OnInit, AfterViewInit, OnDestroy {
 
     const svg = d3
       .select('#svg-country')
+        .style('padding-left', '6px')
       .attr(
         'viewBox',
         '0 0 ' + container.width * 1.3 + ' ' + container.height * 1.3
@@ -856,7 +857,9 @@ export class MapchartComponent implements OnInit, AfterViewInit, OnDestroy {
 
     d3.select('#svg-county').selectAll('*').remove();
 
-    const svg = d3.select('#svg-county').attr('viewBox', '0 0 ' + container.width * 1.3 + ' ' + container.height * 1.3);
+    const svg = d3.select('#svg-county')
+        .style('padding-left', '6px')
+        .attr('viewBox', '0 0 ' + container.width * 1.3 + ' ' + container.height * 1.3);
 
     const TotalReport = d3.map();
     const TotalDeathReport = d3.map();
@@ -1309,7 +1312,7 @@ export class MapchartComponent implements OnInit, AfterViewInit, OnDestroy {
           .data(statesList)
           .enter().append('text')
           .text(function (d) { return d; })
-          .attr('x', 17)
+          .attr('x', 20)
           .attr('y', function (d, i) { return i * gridSizeY; })
           .style('text-anchor', 'end')
           .style('fill', '#aaaaaa')
@@ -1641,10 +1644,10 @@ export class MapchartComponent implements OnInit, AfterViewInit, OnDestroy {
       const dayLabels = scrollGDiv.selectAll('.dayLabel')
           .data(countiesList)
           .enter().append('text')
-          .text(function (d) { return self.countiesNames[d].slice(0,8); })
+          .text(function (d) { return self.countiesNames[d].slice(0, 8); })
           .on('mouseover', self.tipLineCountyName.show)
           .on('mouseout', self.tipLineCountyName.hide)
-          .attr('x', 45)
+          .attr('x', 55)
           .attr('y', function (d, i) { return i * gridSizeY; })
           .style('text-anchor', 'end')
           .style('fill', '#aaaaaa')
