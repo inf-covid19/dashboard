@@ -64472,6 +64472,7 @@ var MapchartComponent = /** @class */ (function () {
             var height = container.height - margin.top - margin.bottom;
             d3__WEBPACK_IMPORTED_MODULE_1__["select"]('#svg-country').selectAll('*').remove();
             var svg = d3__WEBPACK_IMPORTED_MODULE_1__["select"]('#svg-country')
+                .style('padding-left', '6px')
                 .attr('viewBox', '0 0 ' + container.width * 1.3 + ' ' + container.height * 1.3);
             var TotalReport = d3__WEBPACK_IMPORTED_MODULE_1__["map"]();
             var TotalDeathReport = d3__WEBPACK_IMPORTED_MODULE_1__["map"]();
@@ -64769,7 +64770,9 @@ var MapchartComponent = /** @class */ (function () {
             var width = container.width - margin.left - margin.right;
             var height = container.height - margin.top - margin.bottom;
             d3__WEBPACK_IMPORTED_MODULE_1__["select"]('#svg-county').selectAll('*').remove();
-            var svg = d3__WEBPACK_IMPORTED_MODULE_1__["select"]('#svg-county').attr('viewBox', '0 0 ' + container.width * 1.3 + ' ' + container.height * 1.3);
+            var svg = d3__WEBPACK_IMPORTED_MODULE_1__["select"]('#svg-county')
+                .style('padding-left', '6px')
+                .attr('viewBox', '0 0 ' + container.width * 1.3 + ' ' + container.height * 1.3);
             var TotalReport = d3__WEBPACK_IMPORTED_MODULE_1__["map"]();
             var TotalDeathReport = d3__WEBPACK_IMPORTED_MODULE_1__["map"]();
             var path = d3__WEBPACK_IMPORTED_MODULE_1__["geoPath"]();
@@ -65174,7 +65177,7 @@ var MapchartComponent = /** @class */ (function () {
                     .data(statesList)
                     .enter().append('text')
                     .text(function (d) { return d; })
-                    .attr('x', 17)
+                    .attr('x', 20)
                     .attr('y', function (d, i) { return i * gridSizeY; })
                     .style('text-anchor', 'end')
                     .style('fill', '#aaaaaa')
@@ -65495,7 +65498,7 @@ var MapchartComponent = /** @class */ (function () {
                     .text(function (d) { return self.countiesNames[d].slice(0, 8); })
                     .on('mouseover', self.tipLineCountyName.show)
                     .on('mouseout', self.tipLineCountyName.hide)
-                    .attr('x', 45)
+                    .attr('x', 55)
                     .attr('y', function (d, i) { return i * gridSizeY; })
                     .style('text-anchor', 'end')
                     .style('fill', '#aaaaaa')
