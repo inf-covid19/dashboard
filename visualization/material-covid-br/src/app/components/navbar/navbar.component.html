@@ -6,31 +6,40 @@
             <div class="row">
                 <div class="card col-lg-12" style="width: calc(70vw); height: 48px">
                     <div class="row" style="height: 48px">
-                        <div class="col-lg-1 col-md-1 col-1 col-sm-1 col-xs-1"></div>
-                        <div class="col-lg-2  col-md-2 col-2 col-sm-2 col-xs-2">
-                            <div class="custom-control custom-checkbox" style="padding: 12px 0;">
+                        <div class="col-lg-2 col-md-2 col-2 col-sm-2 col-xs-2">
+<!--                        <div class="col-lg-1 col-md-1 col-1 col-sm-1 col-xs-1">-->
+                            <div class="custom-control custom-checkbox" style="text-align: center; padding-top: 6px;">
                                 <input type="checkbox" class="custom-control-input my-danger" id="byDeathsCheckBox">
                                 <label class="custom-control-label" style="font-size: min(2vh, 2vw);" for="byDeathsCheckBox">
                                     Por óbitos
                                 </label>
                             </div>
                         </div>
-                        <div class="col-lg-3 col-md-3 col-3 col-sm-3 col-xs-3">
-                            <div class="custom-control custom-checkbox" style="padding: 10px 0;">
+<!--                        <div class="col-lg-1 col-md-1 col-1 col-sm-1 col-xs-1"></div>-->
+                        <div class="col-lg-2 col-md-2 col-2 col-sm-2 col-xs-2">
+                            <div class="custom-control custom-checkbox" style="text-align: right; padding: 6px 0;">
                                 <input type="checkbox" class="custom-control-input my-danger" id="byDensidadeCheckBox">
                                 <label class="custom-control-label" style="font-size: min(2vh, 2vw);" for="byDensidadeCheckBox">
-                                    Por incidência (cada 100.000 hab.)
+                                    Por incidência <br/>(cada 100.000 hab.)
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-2 col-2 col-sm-2 col-xs-2">
+                            <div class="custom-control custom-checkbox" style="text-align: right; padding: 6px 0;">
+                                <input type="checkbox" class="custom-control-input my-danger" id="byNewCasesCheckBox">
+                                <label class="custom-control-label" style="font-size: min(2vh, 2vw);" for="byNewCasesCheckBox">
+                                    Novos casos
                                 </label>
                             </div>
                         </div>
                         <div class="col-lg-6 col-md-6 col-6 col-sm-6 col-xs-6">
-                            <div id="slider-div" style="height: 13px;">
+                            <div id="slider-div" style="height: 12px; text-align: center;">
                                 <label style="padding: 0px 0px; margin: 0px 0px; font-size: min(2vh, 2vw);">
                                     Selecione período de análise:
                                     <span id="label-date-ini">05/10/2018</span> -
                                     <span id="label-date-end">23/10/2018</span>
                                 </label>
-                                <svg id="date-slider" class="h-100 w-100"></svg>
+                                <svg id="date-slider" style="height:90%; width: 100%;"></svg>
                             </div>
                         </div>
                     </div>
