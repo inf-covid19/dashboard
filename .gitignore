@@ -140,6 +140,5 @@ dmypy.json
 ######################
 # dependencies
 node_modules/
-src/assets/csv
 src/assets/csv/cases-brazil-cities-ibge.csv
 src/assets/csv/cases-brazil-states.csv
