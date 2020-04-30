@@ -311,7 +311,7 @@ export class MapchartComponent implements OnInit, AfterViewInit, OnDestroy {
     d3.select('#date-slider').selectAll('*').remove();
     let container = d3.select('#date-slider').node() as any;
     container = container.parentNode.parentNode.getBoundingClientRect();
-    const margin = { top: 0, right: 0, bottom: 35, left: 0 };
+    const margin = { top: 0, right: 6, bottom: 35, left: 6 };
     const width = container.width - margin.left - margin.right;
     const height = container.height - margin.top - margin.bottom;
 
