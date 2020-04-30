@@ -438,10 +438,14 @@ form .ng-valid{
 
 .custom-checkbox .custom-control-input.my-danger {
   &:checked ~ .custom-control-label::before {
-    color: #ff3d00;
-    border-color: #ff3d00;
-    @include gradient-bg(#ff3d00);
-    @include box-shadow(#ff3d00);
+    //color: #ff3d00;
+    color: #2171B5;
+    //border-color: #ff3d00;
+    border-color: #2171B5;
+    //@include gradient-bg(#ff3d00);
+    @include gradient-bg(#2171B5);
+    //@include box-shadow(#ff3d00);
+    @include box-shadow(#2171B5);
   }
 
   &:focus ~ .custom-control-label::before {
@@ -454,13 +458,18 @@ form .ng-valid{
   }
 
   &:focus:not(:checked) ~ .custom-control-label::before {
-    border-color: #ff3d00;
+    //border-color: #ff3d00;
+    border-color: #2171B5;
   }
 
   &:not(:disabled):active ~ .custom-control-label::before {
-    color: #ff3d00;
-    background-color: #ff3d00;
-    border-color: #ff3d00;
-    @include box-shadow(#ff3d00);
+    //color: #ff3d00;
+    color: #2171B5;
+    //background-color: #ff3d00;
+    background-color: #2171B5;
+    //border-color: #ff3d00;
+    border-color: #2171B5;
+    //@include box-shadow(#ff3d00);
+    @include box-shadow(#2171B5);
   }
 }

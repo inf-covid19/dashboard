@@ -64441,11 +64441,14 @@ var MapchartComponent = /** @class */ (function () {
             self.loadWidgetState(self.selectedState, self.byDeath, self.byDensidade, self.byNewCases);
         };
         this.getPlasmaList = function (cant) {
-            var rangeColor = [];
-            for (var i = 0; i < cant; i++) {
-                rangeColor.push(d3__WEBPACK_IMPORTED_MODULE_1__["interpolateYlOrRd"](i / (cant - 1)));
+            /*const rangeColor = [];
+            for (let i = 0; i < cant; i++) {
+              rangeColor.push(d3.interpolateViridis(i / (cant - 1)));
             }
-            return rangeColor;
+            return rangeColor;*/
+            return ['#ffffd9', '#edf8b1', '#c7e9b4', '#7fcdbb',
+                '#41b6c4', '#1d91c0', '#225ea8', '#253494',
+                '#081d58'];
         };
         this.formatValueSeperator = function (n) {
             if (d3__WEBPACK_IMPORTED_MODULE_1__["select"]('#byDensidadeCheckBox').property('checked')) {
@@ -64589,6 +64592,7 @@ var MapchartComponent = /** @class */ (function () {
                     self.loadWidgetState(self.selectedState, byDeaths, byDensidade, byNewCases);
                     d3__WEBPACK_IMPORTED_MODULE_1__["select"](this)
                         .attr('stroke', '#717171')
+                        // .attr('stroke', '#ED881A')
                         .attr('stroke-width', 7)
                         .attr('selected', 'true');
                 });
@@ -64599,6 +64603,7 @@ var MapchartComponent = /** @class */ (function () {
                     if (d.properties.UF_05 === self.selectedState) {
                         d3__WEBPACK_IMPORTED_MODULE_1__["select"](this)
                             .attr('stroke', '#717171')
+                            // .attr('stroke', '#ED881A')
                             .attr('stroke-width', 7)
                             .attr('selected', 'true');
                     }
@@ -64612,6 +64617,7 @@ var MapchartComponent = /** @class */ (function () {
                 d3__WEBPACK_IMPORTED_MODULE_1__["selectAll"]('#country-g-map path').each(function () {
                     if (d3__WEBPACK_IMPORTED_MODULE_1__["select"](this).attr('selected') !== 'true' && this === selfTemp) {
                         d3__WEBPACK_IMPORTED_MODULE_1__["select"](this).attr('stroke', '#717171');
+                        // d3.select(this).attr('stroke', '#ED881A');
                         d3__WEBPACK_IMPORTED_MODULE_1__["select"](this).attr('stroke-width', 3);
                     }
                 });
@@ -64631,7 +64637,9 @@ var MapchartComponent = /** @class */ (function () {
                 else {
                     labelTotDeath = 'Total óbitos';
                 }
-                return ('<div style="opacity:0.8;background-color:#8b0707;padding:7px;color:white">' +
+                return (
+                // '<div style="opacity:0.8;background-color:#8b0707;padding:7px;color:white">' +
+                '<div style="opacity:0.8;background-color:#253494;padding:7px;color:white">' +
                     '<text>Estado: </text><text style="font-weight: 800">' +
                     d.properties.NOME_UF +
                     '</text><br/>' +
@@ -64646,12 +64654,14 @@ var MapchartComponent = /** @class */ (function () {
                     '</text><br/>' +
                     '</div>');
             });
-            var zoom = d3__WEBPACK_IMPORTED_MODULE_1__["zoom"]()
-                .scaleExtent([1, 8])
-                .on('zoom', function () {
-                mapG.selectAll('path').attr('transform', d3__WEBPACK_IMPORTED_MODULE_1__["event"].transform);
-            });
-            svg.call(zoom);
+            /*const zoom = d3
+              .zoom()
+              .scaleExtent([1, 8])
+              .on('zoom', function() {
+                mapG.selectAll('path').attr('transform', d3.event.transform);
+              });
+        
+            svg.call(zoom);*/
             var g = svg.append('g');
             g.call(self.tipCountry);
             var scaleValue = Math.min((0.5 * height) / 150, (0.5 * width) / 150);
@@ -64741,8 +64751,9 @@ var MapchartComponent = /** @class */ (function () {
                 })
                     .on('click', function () {
                     self.selectedState = self.rankingStates[item].region;
+                    self.loadWidgetCountry(byDeaths, byDensidade, byNewCases); // without event click on counties map
                     self.loadWidgetState(self.rankingStates[item].region, byDeaths, byDensidade, byNewCases); // without event click on counties map
-                    self.loadCountiesLineChart(self.selectedState, self.iniSelectedDay, self.endSelectedDay, byDeaths, byDensidade, byNewCases);
+                    // self.loadCountiesHeatMapChart(self.selectedState, self.iniSelectedDay, self.endSelectedDay, byDeaths, byDensidade, byNewCases);
                 })
                     .html('<td class="' + classColor + ' gt-ranking-number"  style="padding-left: 11px; text-align: right">' +
                     self.formatValueSeperator(self.rankingStates[item].value) +
@@ -64752,7 +64763,7 @@ var MapchartComponent = /** @class */ (function () {
             for (var item in self.rankingStates) {
                 _loop_1(item);
             }
-            self.loadStatesLineChart(self.iniSelectedDay, self.endSelectedDay, byDeaths, byDensidade, byNewCases);
+            self.loadStatesHeatMapChart(self.iniSelectedDay, self.endSelectedDay, byDeaths, byDensidade, byNewCases);
         };
         this.loadWidgetState = function (stateParam, byDeaths, byDensidade, byNewCases) {
             if (byDeaths === void 0) { byDeaths = false; }
@@ -64898,9 +64909,12 @@ var MapchartComponent = /** @class */ (function () {
                 .attr('class', 'd3-tip')
                 .html(function (d) {
                 d3__WEBPACK_IMPORTED_MODULE_1__["select"](this).attr('stroke', '#717171');
+                // d3.select(this).attr('stroke', '#ED881A');
                 var labelTot = byDensidade === true ? 'Incidência casos' : 'Total casos';
                 var labelTotDeath = byDensidade === true ? 'Incidência óbitos' : 'Total óbitos';
-                return ('<div style="opacity:0.8;background-color:#8b0707;padding:7px;color:white">' +
+                return (
+                // '<div style="opacity:0.8;background-color:#8b0707;padding:7px;color:white">' +
+                '<div style="opacity:0.8;background-color:#253494;padding:7px;color:white">' +
                     '<text>Município: </text><text style="font-weight: 800">' +
                     d.properties.NOME_MUNI +
                     '</text><br/>' +
@@ -64919,12 +64933,14 @@ var MapchartComponent = /** @class */ (function () {
                     '</text><br/>' +
                     '</div>');
             });
-            var zoom = d3__WEBPACK_IMPORTED_MODULE_1__["zoom"]()
-                .scaleExtent([1, 8])
-                .on('zoom', function () {
-                mapG.selectAll('path').attr('transform', d3__WEBPACK_IMPORTED_MODULE_1__["event"].transform);
-            });
-            svg.call(zoom);
+            /*const zoom = d3
+              .zoom()
+              .scaleExtent([1, 8])
+              .on('zoom', function() {
+                mapG.selectAll('path').attr('transform', d3.event.transform);
+              });
+        
+            svg.call(zoom);*/
             var g = svg.append('g');
             var scaleValue = Math.min((0.5 * height) / 150, (0.5 * width) / 150);
             svg.append('text')
@@ -65010,9 +65026,9 @@ var MapchartComponent = /** @class */ (function () {
                     self.formatValueSeperator(self.rankingCounties[item].value) +
                     '</td><td>' + self.rankingCounties[item].name + '</td>');
             }
-            self.loadCountiesLineChart(stateParam, self.iniSelectedDay, self.endSelectedDay, byDeaths, byDensidade, byNewCases);
+            self.loadCountiesHeatMapChart(stateParam, self.iniSelectedDay, self.endSelectedDay, byDeaths, byDensidade, byNewCases);
         };
-        this.loadStatesLineChart = function (iniDate, endDate, byDeaths, byDensidade, byNewCases) {
+        this.loadStatesHeatMapChart = function (iniDate, endDate, byDeaths, byDensidade, byNewCases) {
             if (byDeaths === void 0) { byDeaths = false; }
             if (byDensidade === void 0) { byDensidade = false; }
             if (byNewCases === void 0) { byNewCases = false; }
@@ -65177,7 +65193,7 @@ var MapchartComponent = /** @class */ (function () {
                     .data(statesList)
                     .enter().append('text')
                     .text(function (d) { return d; })
-                    .attr('x', 20)
+                    .attr('x', 18)
                     .attr('y', function (d, i) { return i * gridSizeY; })
                     .style('text-anchor', 'end')
                     .style('fill', '#aaaaaa')
@@ -65281,7 +65297,9 @@ var MapchartComponent = /** @class */ (function () {
                 .attr('class', 'd3-tip')
                 .offset([20, -80])
                 .html(function (d) {
-                return ('<div style="opacity:0.8;background-color:#8b0707;padding:7px;color:white">' +
+                return (
+                // '<div style="opacity:0.8;background-color:#8b0707;padding:7px;color:white">' +
+                '<div style="opacity:0.8;background-color:#253494;padding:7px;color:white">' +
                     '<text style="font-weight: 800">' +
                     self.statesNames[d.region] +
                     '</text></br><text>' +
@@ -65293,7 +65311,7 @@ var MapchartComponent = /** @class */ (function () {
             });
             svg.call(self.tipLineState);
         };
-        this.loadCountiesLineChart = function (stateParam, iniDate, endDate, byDeaths, byDensidade, byNewCases) {
+        this.loadCountiesHeatMapChart = function (stateParam, iniDate, endDate, byDeaths, byDensidade, byNewCases) {
             if (byDeaths === void 0) { byDeaths = false; }
             if (byDensidade === void 0) { byDensidade = false; }
             if (byNewCases === void 0) { byNewCases = false; }
@@ -65412,6 +65430,7 @@ var MapchartComponent = /** @class */ (function () {
                 .attr('width', width + margin.left + margin.right)
                 .attr('height', height + margin.top + margin.bottom)
                 .attr('viewBox', '0 0 ' + container.width + ' ' + container.height);
+            console.log(margin);
             var g = svg.append('g')
                 .attr('transform', 'translate(' + margin.left + ',' + margin.top * 3 + ')');
             function ready(_a) {
@@ -65498,7 +65517,7 @@ var MapchartComponent = /** @class */ (function () {
                     .text(function (d) { return self.countiesNames[d].slice(0, 8); })
                     .on('mouseover', self.tipLineCountyName.show)
                     .on('mouseout', self.tipLineCountyName.hide)
-                    .attr('x', 55)
+                    .attr('x', 52)
                     .attr('y', function (d, i) { return i * gridSizeY; })
                     .style('text-anchor', 'end')
                     .style('fill', '#aaaaaa')
@@ -65602,7 +65621,9 @@ var MapchartComponent = /** @class */ (function () {
                 .attr('class', 'd3-tip')
                 .offset([20, -80])
                 .html(function (d) {
-                return ('<div style="opacity:0.8;background-color:#8b0707;padding:7px;color:white">' +
+                return (
+                // '<div style="opacity:0.8;background-color:#8b0707;padding:7px;color:white">' +
+                '<div style="opacity:0.8;background-color:#253494;padding:7px;color:white">' +
                     '<text style="font-weight: 800">' +
                     self.countiesNames[d.region] +
                     '</text></br><text>' +
@@ -65617,7 +65638,9 @@ var MapchartComponent = /** @class */ (function () {
                 .attr('class', 'd3-tip')
                 .offset([20, -80])
                 .html(function (d) {
-                return ('<div style="opacity:0.8;background-color:#8b0707;padding:7px;color:white">' +
+                return (
+                // '<div style="opacity:0.8;background-color:#8b0707;padding:7px;color:white">' +
+                '<div style="opacity:0.8;background-color:#253494;padding:7px;color:white">' +
                     '<text style="font-weight: 800">' +
                     self.countiesNames[d] +
                     '</text>' +

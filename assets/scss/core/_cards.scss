@@ -694,13 +694,15 @@
 }
 
 .gt-number {
-  color: #ff3d00;
+  //color: #ff3d00;
+  color:  #2171B5;
   font-weight: 800;
   text-align: center;
 }
 
 .gt-dark-number {
-  color: #ED881A;
+  //color: #ED881A;
+  color: #9ECAE1;
   font-weight: 800;
   text-align: center;
 }
@@ -756,10 +758,10 @@ div table tr td {
 }
 
 rect.selection {
-  stroke: #ff3d00;
-  fill: #ff3d00;
   //stroke: #ff3d00;
   //fill: #ff3d00;
+  stroke: #2171B5;
+  fill:  #2171B5;
   fill-opacity: 1;
 }
 
