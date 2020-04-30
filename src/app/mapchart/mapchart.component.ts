@@ -42,6 +42,12 @@ export class MapchartComponent implements OnInit, AfterViewInit, OnDestroy {
   byDeath = false;
   byNewCases = false;
 
+  // lineBorderColor = 'rgb(0,0,0,0.87)';
+  lineBorderColor = '#1d1d1da8';
+  lineStrongerBorderColor = '#1d1d1da8';
+  // lineStrongerBorderColor = 'rgb(0,0,0,0.87)';
+  colorText = '#1d1d1da8';
+
   population = { total: 0 };
 
   counts = [ 10, 20, 50, 100, 200, 500, 1000, 2000, 5000, 10000, 20000, 50000, 100000, 200000, 500000, 1000000,
@@ -379,8 +385,8 @@ export class MapchartComponent implements OnInit, AfterViewInit, OnDestroy {
       .enter()
       .append('path')
       .attr('class', 'handle--custom')
-      .attr('stroke', '#eeeeee')
-      .attr('fill', '#eeeeee')
+      .attr('stroke', self.lineBorderColor)
+      .attr('fill', self.lineBorderColor)
       .attr('cursor', 'ew-resize')
       .attr('d', brushResizePath);
 
@@ -627,48 +633,49 @@ export class MapchartComponent implements OnInit, AfterViewInit, OnDestroy {
               estColor = typeof TotalReport.get(d.properties.UF_05) === 'undefined' ? 0 : TotalReport.get(d.properties.UF_05);
           }
           if (estColor === 0) {
-            return '#000000';
+            // return '#000000';
+            return '#FFFFFF';
           }
           return color(estColor);
         })
-        .attr('stroke', '#eeeeee')
+        .attr('stroke', self.lineBorderColor)
         .attr('d', path)
         .on('mouseover', self.tipCountry.show)
         .on('mouseout', function() {
           d3.selectAll('#country-g-map path').each(function(d) {
             if (d3.select(this).attr('selected') !== 'true') {
-              d3.select(this).attr('stroke', '#eeeeee');
-              d3.select(this).attr('stroke-width', 2);
+              d3.select(this).attr('stroke', self.lineBorderColor);
+              d3.select(this).attr('stroke-width', 1);
             }
           });
           self.tipCountry.hide();
         })
         .on('click', function(d) {
           d3.selectAll('#country-g-map path').each(function() {
-              d3.select(this).attr('stroke', '#eeeeee');
+              d3.select(this).attr('stroke', self.lineBorderColor);
               d3.select(this).attr('stroke-width', 2);
               d3.select(this).attr('selected', 'false');
           });
           self.selectedState = d.properties.UF_05;
             self.loadWidgetState(self.selectedState, byDeaths, byDensidade, byNewCases);
           d3.select(this)
-              .attr('stroke', '#717171')
+              .attr('stroke', self.lineStrongerBorderColor)
               // .attr('stroke', '#ED881A')
-              .attr('stroke-width', 7)
+              .attr('stroke-width', 5)
               .attr('selected', 'true');
 
         });
 
-      const widthTrans = Math.abs(container.width - mapG.node().getBoundingClientRect().width) / 2;
+      const widthTrans = Math.abs(container.width - mapG.node().getBoundingClientRect().width) / 1.3;
       const heightTrans = Math.abs(container.height - mapG.node().getBoundingClientRect().height) / 2;
       mapG.attr('transform', 'translate( ' + widthTrans + ' , ' + heightTrans + ') scale(' + scaleRatio + ')');
 
       d3.selectAll('#country-g-map path').each(function(d) {
         if (d.properties.UF_05 === self.selectedState) {
           d3.select(this)
-              .attr('stroke', '#717171')
+              .attr('stroke', self.lineStrongerBorderColor)
               // .attr('stroke', '#ED881A')
-              .attr('stroke-width', 7)
+              .attr('stroke-width', 5)
               .attr('selected', 'true');
         }
       });
@@ -681,7 +688,7 @@ export class MapchartComponent implements OnInit, AfterViewInit, OnDestroy {
           const selfTemp = this;
           d3.selectAll('#country-g-map path').each(function() {
             if (d3.select(this).attr('selected') !== 'true' && this === selfTemp) {
-              d3.select(this).attr('stroke', '#717171');
+              d3.select(this).attr('stroke', self.lineStrongerBorderColor);
               // d3.select(this).attr('stroke', '#ED881A');
               d3.select(this).attr('stroke-width', 3);
             }
@@ -739,7 +746,7 @@ export class MapchartComponent implements OnInit, AfterViewInit, OnDestroy {
       .attr('x', width / 1.7)
       .attr('y', 20)
       .attr('transform', 'scale(' + scaleValue + ')')
-      .attr('fill', '#aaaaaa')
+      .attr('fill', self.colorText)
       .style('background-color', '#000000')
       .attr('font-family', 'sans-serif')
       .style('font-size', '23px')
@@ -772,7 +779,7 @@ export class MapchartComponent implements OnInit, AfterViewInit, OnDestroy {
       .attr('font-family', 'sans-serif')
       .attr('x', -42)
       .attr('y', 20)
-      .attr('fill', '#aaaaaa')
+      .attr('fill', self.colorText)
       .attr('text-anchor', 'start')
       .attr('font-size', '20px')
       .attr('font-weight', 'bold')
@@ -988,20 +995,22 @@ export class MapchartComponent implements OnInit, AfterViewInit, OnDestroy {
           }
 
           if (munColor === 0) {
-            return '#000000';
+            // return '#000000';
+            return '#FFFFFF';
           }
           return color(munColor);
         })
         .attr('d', path)
-        .attr('stroke', '#eeeeee')
+        .attr('stroke', self.lineBorderColor)
         .on('mouseover', self.tipCounty.show)
         .on('mouseout', function() {
-          d3.select(this).attr('stroke', '#eeeeee');
+          d3.select(this).attr('stroke', self.lineBorderColor);
+          d3.select(this).attr('stroke-width', 1);
           self.tipCounty.hide();
         });
 
       const widthTrans =
-          Math.min(Math.abs(width - mapG.node().getBoundingClientRect().width) * 1.8, width * 0.35);
+          Math.min(Math.abs(width - mapG.node().getBoundingClientRect().width) * 1.8, width * 0.30);
           // Math.min(Math.abs(width - d3.select('#county-g-map').node().getBoundingClientRect().width) * 1.8, width * 0.35);
       const heightTrans =
           Math.min(Math.abs(height - mapG.node().getBoundingClientRect().height) * 1.5, height * 0.35);
@@ -1012,7 +1021,8 @@ export class MapchartComponent implements OnInit, AfterViewInit, OnDestroy {
     self.tipCounty
       .attr('class', 'd3-tip')
       .html(function(d) {
-        d3.select(this).attr('stroke', '#717171');
+        d3.select(this).attr('stroke', self.lineStrongerBorderColor);
+        d3.select(this).attr('stroke-width', 3);
         // d3.select(this).attr('stroke', '#ED881A');
         const labelTot = byDensidade === true ? 'Incidência casos' : 'Total casos';
         const labelTotDeath = byDensidade === true ? 'Incidência óbitos' : 'Total óbitos';
@@ -1055,7 +1065,7 @@ export class MapchartComponent implements OnInit, AfterViewInit, OnDestroy {
       .attr('x', width / (2.2 * scaleValue))
       .attr('y', 20)
       .attr('transform', 'scale(' + scaleValue + ')')
-      .attr('fill', '#aaaaaa')
+      .attr('fill', self.colorText)
       .attr('font-family', 'sans-serif')
       .style('font-size', '23px')
       .style('font-weight', 'bold')
@@ -1090,7 +1100,7 @@ export class MapchartComponent implements OnInit, AfterViewInit, OnDestroy {
       .attr('font-family', 'sans-serif')
       .attr('x', -42)
       .attr('y', 20)
-      .attr('fill', '#aaaaaa')
+      .attr('fill', self.colorText)
       .attr('text-anchor', 'start')
       .attr('font-size', '22px')
       .attr('font-weight', 'bold')
@@ -1279,7 +1289,7 @@ export class MapchartComponent implements OnInit, AfterViewInit, OnDestroy {
       svg.append('text')
           .attr('x', width / 3.5)
           .attr('y', margin.top)
-          .attr('fill', '#aaaaaa')
+          .attr('fill', self.colorText)
           .attr('font-family', 'sans-serif')
           .style('font-size', 'calc(2vh)')
           .style('font-weight', 'bold')
@@ -1326,7 +1336,7 @@ export class MapchartComponent implements OnInit, AfterViewInit, OnDestroy {
           .attr('x', 18)
           .attr('y', function (d, i) { return i * gridSizeY; })
           .style('text-anchor', 'end')
-          .style('fill', '#aaaaaa')
+          .style('fill', self.colorText)
           .attr('transform', 'translate(0,' + gridSizeY / 1.5 + ')');
 
       const heatMapG = scrollGDiv
@@ -1422,7 +1432,7 @@ export class MapchartComponent implements OnInit, AfterViewInit, OnDestroy {
       legend.selectAll('text')
           .data(legendRange)
           .join('text')
-          .attr('fill', '#aaaaaa')
+          .attr('fill', self.colorText)
           .attr('x', function(d, i) { return legendElementWidth * i; })
           .attr('y', gridSizeY + 2)
           .text(function(d, i) {
@@ -1567,7 +1577,6 @@ export class MapchartComponent implements OnInit, AfterViewInit, OnDestroy {
         .attr('height', height + margin.top + margin.bottom)
         .attr('viewBox', '0 0 ' + container.width + ' ' + container.height);
 
-    console.log(margin);
     const g = svg.append('g')
         .attr('transform', 'translate(' + margin.left + ',' + margin.top * 3 + ')');
 
@@ -1613,7 +1622,7 @@ export class MapchartComponent implements OnInit, AfterViewInit, OnDestroy {
       svg.append('text')
           .attr('x', width / 3.5)
           .attr('y', margin.top)
-          .attr('fill', '#aaaaaa')
+          .attr('fill', self.colorText)
           .attr('font-family', 'sans-serif')
           .style('font-size', 'calc(2vh)')
           .style('font-weight', 'bold')
@@ -1663,7 +1672,7 @@ export class MapchartComponent implements OnInit, AfterViewInit, OnDestroy {
           .attr('x', 52)
           .attr('y', function (d, i) { return i * gridSizeY; })
           .style('text-anchor', 'end')
-          .style('fill', '#aaaaaa')
+          .style('fill', self.colorText)
           .attr('transform', 'translate(0,' + gridSizeY / 1.5 + ')');
 
       const heatMapG = scrollGDiv
@@ -1760,7 +1769,7 @@ export class MapchartComponent implements OnInit, AfterViewInit, OnDestroy {
       legend.selectAll('text')
           .data(legendRange)
           .join('text')
-          .attr('fill', '#aaaaaa')
+          .attr('fill', self.colorText)
           .attr('x', function(d, i) { return legendElementWidth * i; })
           .attr('y', gridSizeY + 2)
           .text(function(d, i) {
