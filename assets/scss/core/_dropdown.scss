@@ -85,8 +85,9 @@
     display: flex;
     flex-flow: nowrap;
     align-items: center;
-    //color: $bmd-dropdown-link-color;
-    color: #aaaaaa;
+    color: $bmd-dropdown-link-color;
+    //color: #aaaaaa;
+    color: #1d1d1da8;
     font-weight: normal;
     text-decoration: none;
 
@@ -210,5 +211,6 @@
 }
 
 .dropdown-menu.dropdown-menu-right.show {
-  background-color: #121212;
+  background-color: #FFFFFF;
+  //background-color: #121212;
 }

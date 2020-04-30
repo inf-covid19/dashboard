@@ -64248,6 +64248,11 @@ var MapchartComponent = /** @class */ (function () {
         this.byDensidade = false;
         this.byDeath = false;
         this.byNewCases = false;
+        // lineBorderColor = 'rgb(0,0,0,0.87)';
+        this.lineBorderColor = '#1d1d1da8';
+        this.lineStrongerBorderColor = '#1d1d1da8';
+        // lineStrongerBorderColor = 'rgb(0,0,0,0.87)';
+        this.colorText = '#1d1d1da8';
         this.population = { total: 0 };
         this.counts = [10, 20, 50, 100, 200, 500, 1000, 2000, 5000, 10000, 20000, 50000, 100000, 200000, 500000, 1000000,
             2000000, 5000000, 10000000, 20000000, 50000000, 100000000, 200000000, 500000000,
@@ -64361,8 +64366,8 @@ var MapchartComponent = /** @class */ (function () {
                 .enter()
                 .append('path')
                 .attr('class', 'handle--custom')
-                .attr('stroke', '#eeeeee')
-                .attr('fill', '#eeeeee')
+                .attr('stroke', self.lineBorderColor)
+                .attr('fill', self.lineBorderColor)
                 .attr('cursor', 'ew-resize')
                 .attr('d', brushResizePath);
             function onbrush() {
@@ -64566,45 +64571,46 @@ var MapchartComponent = /** @class */ (function () {
                         estColor = typeof TotalReport.get(d.properties.UF_05) === 'undefined' ? 0 : TotalReport.get(d.properties.UF_05);
                     }
                     if (estColor === 0) {
-                        return '#000000';
+                        // return '#000000';
+                        return '#FFFFFF';
                     }
                     return color(estColor);
                 })
-                    .attr('stroke', '#eeeeee')
+                    .attr('stroke', self.lineBorderColor)
                     .attr('d', path)
                     .on('mouseover', self.tipCountry.show)
                     .on('mouseout', function () {
                     d3__WEBPACK_IMPORTED_MODULE_1__["selectAll"]('#country-g-map path').each(function (d) {
                         if (d3__WEBPACK_IMPORTED_MODULE_1__["select"](this).attr('selected') !== 'true') {
-                            d3__WEBPACK_IMPORTED_MODULE_1__["select"](this).attr('stroke', '#eeeeee');
-                            d3__WEBPACK_IMPORTED_MODULE_1__["select"](this).attr('stroke-width', 2);
+                            d3__WEBPACK_IMPORTED_MODULE_1__["select"](this).attr('stroke', self.lineBorderColor);
+                            d3__WEBPACK_IMPORTED_MODULE_1__["select"](this).attr('stroke-width', 1);
                         }
                     });
                     self.tipCountry.hide();
                 })
                     .on('click', function (d) {
                     d3__WEBPACK_IMPORTED_MODULE_1__["selectAll"]('#country-g-map path').each(function () {
-                        d3__WEBPACK_IMPORTED_MODULE_1__["select"](this).attr('stroke', '#eeeeee');
+                        d3__WEBPACK_IMPORTED_MODULE_1__["select"](this).attr('stroke', self.lineBorderColor);
                         d3__WEBPACK_IMPORTED_MODULE_1__["select"](this).attr('stroke-width', 2);
                         d3__WEBPACK_IMPORTED_MODULE_1__["select"](this).attr('selected', 'false');
                     });
                     self.selectedState = d.properties.UF_05;
                     self.loadWidgetState(self.selectedState, byDeaths, byDensidade, byNewCases);
                     d3__WEBPACK_IMPORTED_MODULE_1__["select"](this)
-                        .attr('stroke', '#717171')
+                        .attr('stroke', self.lineStrongerBorderColor)
                         // .attr('stroke', '#ED881A')
-                        .attr('stroke-width', 7)
+                        .attr('stroke-width', 5)
                         .attr('selected', 'true');
                 });
-                var widthTrans = Math.abs(container.width - mapG.node().getBoundingClientRect().width) / 2;
+                var widthTrans = Math.abs(container.width - mapG.node().getBoundingClientRect().width) / 1.3;
                 var heightTrans = Math.abs(container.height - mapG.node().getBoundingClientRect().height) / 2;
                 mapG.attr('transform', 'translate( ' + widthTrans + ' , ' + heightTrans + ') scale(' + scaleRatio + ')');
                 d3__WEBPACK_IMPORTED_MODULE_1__["selectAll"]('#country-g-map path').each(function (d) {
                     if (d.properties.UF_05 === self.selectedState) {
                         d3__WEBPACK_IMPORTED_MODULE_1__["select"](this)
-                            .attr('stroke', '#717171')
+                            .attr('stroke', self.lineStrongerBorderColor)
                             // .attr('stroke', '#ED881A')
-                            .attr('stroke-width', 7)
+                            .attr('stroke-width', 5)
                             .attr('selected', 'true');
                     }
                 });
@@ -64616,7 +64622,7 @@ var MapchartComponent = /** @class */ (function () {
                 var selfTemp = this;
                 d3__WEBPACK_IMPORTED_MODULE_1__["selectAll"]('#country-g-map path').each(function () {
                     if (d3__WEBPACK_IMPORTED_MODULE_1__["select"](this).attr('selected') !== 'true' && this === selfTemp) {
-                        d3__WEBPACK_IMPORTED_MODULE_1__["select"](this).attr('stroke', '#717171');
+                        d3__WEBPACK_IMPORTED_MODULE_1__["select"](this).attr('stroke', self.lineStrongerBorderColor);
                         // d3.select(this).attr('stroke', '#ED881A');
                         d3__WEBPACK_IMPORTED_MODULE_1__["select"](this).attr('stroke-width', 3);
                     }
@@ -64670,7 +64676,7 @@ var MapchartComponent = /** @class */ (function () {
                 .attr('x', width / 1.7)
                 .attr('y', 20)
                 .attr('transform', 'scale(' + scaleValue + ')')
-                .attr('fill', '#aaaaaa')
+                .attr('fill', self.colorText)
                 .style('background-color', '#000000')
                 .attr('font-family', 'sans-serif')
                 .style('font-size', '23px')
@@ -64699,7 +64705,7 @@ var MapchartComponent = /** @class */ (function () {
                 .attr('font-family', 'sans-serif')
                 .attr('x', -42)
                 .attr('y', 20)
-                .attr('fill', '#aaaaaa')
+                .attr('fill', self.colorText)
                 .attr('text-anchor', 'start')
                 .attr('font-size', '20px')
                 .attr('font-weight', 'bold')
@@ -64888,18 +64894,20 @@ var MapchartComponent = /** @class */ (function () {
                         munColor = typeof TotalReport.get(d.properties.COD_IBGE) === 'undefined' ? 0 : TotalReport.get(d.properties.COD_IBGE);
                     }
                     if (munColor === 0) {
-                        return '#000000';
+                        // return '#000000';
+                        return '#FFFFFF';
                     }
                     return color(munColor);
                 })
                     .attr('d', path)
-                    .attr('stroke', '#eeeeee')
+                    .attr('stroke', self.lineBorderColor)
                     .on('mouseover', self.tipCounty.show)
                     .on('mouseout', function () {
-                    d3__WEBPACK_IMPORTED_MODULE_1__["select"](this).attr('stroke', '#eeeeee');
+                    d3__WEBPACK_IMPORTED_MODULE_1__["select"](this).attr('stroke', self.lineBorderColor);
+                    d3__WEBPACK_IMPORTED_MODULE_1__["select"](this).attr('stroke-width', 1);
                     self.tipCounty.hide();
                 });
-                var widthTrans = Math.min(Math.abs(width - mapG.node().getBoundingClientRect().width) * 1.8, width * 0.35);
+                var widthTrans = Math.min(Math.abs(width - mapG.node().getBoundingClientRect().width) * 1.8, width * 0.30);
                 // Math.min(Math.abs(width - d3.select('#county-g-map').node().getBoundingClientRect().width) * 1.8, width * 0.35);
                 var heightTrans = Math.min(Math.abs(height - mapG.node().getBoundingClientRect().height) * 1.5, height * 0.35);
                 mapG.attr('transform', 'translate( ' + widthTrans + ' , ' + heightTrans + ') scale(' + scaleRatio + ')');
@@ -64908,7 +64916,8 @@ var MapchartComponent = /** @class */ (function () {
             self.tipCounty
                 .attr('class', 'd3-tip')
                 .html(function (d) {
-                d3__WEBPACK_IMPORTED_MODULE_1__["select"](this).attr('stroke', '#717171');
+                d3__WEBPACK_IMPORTED_MODULE_1__["select"](this).attr('stroke', self.lineStrongerBorderColor);
+                d3__WEBPACK_IMPORTED_MODULE_1__["select"](this).attr('stroke-width', 3);
                 // d3.select(this).attr('stroke', '#ED881A');
                 var labelTot = byDensidade === true ? 'Incidência casos' : 'Total casos';
                 var labelTotDeath = byDensidade === true ? 'Incidência óbitos' : 'Total óbitos';
@@ -64947,7 +64956,7 @@ var MapchartComponent = /** @class */ (function () {
                 .attr('x', width / (2.2 * scaleValue))
                 .attr('y', 20)
                 .attr('transform', 'scale(' + scaleValue + ')')
-                .attr('fill', '#aaaaaa')
+                .attr('fill', self.colorText)
                 .attr('font-family', 'sans-serif')
                 .style('font-size', '23px')
                 .style('font-weight', 'bold')
@@ -64978,7 +64987,7 @@ var MapchartComponent = /** @class */ (function () {
                 .attr('font-family', 'sans-serif')
                 .attr('x', -42)
                 .attr('y', 20)
-                .attr('fill', '#aaaaaa')
+                .attr('fill', self.colorText)
                 .attr('text-anchor', 'start')
                 .attr('font-size', '22px')
                 .attr('font-weight', 'bold')
@@ -65154,7 +65163,7 @@ var MapchartComponent = /** @class */ (function () {
                 svg.append('text')
                     .attr('x', width / 3.5)
                     .attr('y', margin.top)
-                    .attr('fill', '#aaaaaa')
+                    .attr('fill', self.colorText)
                     .attr('font-family', 'sans-serif')
                     .style('font-size', 'calc(2vh)')
                     .style('font-weight', 'bold')
@@ -65196,7 +65205,7 @@ var MapchartComponent = /** @class */ (function () {
                     .attr('x', 18)
                     .attr('y', function (d, i) { return i * gridSizeY; })
                     .style('text-anchor', 'end')
-                    .style('fill', '#aaaaaa')
+                    .style('fill', self.colorText)
                     .attr('transform', 'translate(0,' + gridSizeY / 1.5 + ')');
                 var heatMapG = scrollGDiv
                     .append('g')
@@ -65282,7 +65291,7 @@ var MapchartComponent = /** @class */ (function () {
                 legend.selectAll('text')
                     .data(legendRange)
                     .join('text')
-                    .attr('fill', '#aaaaaa')
+                    .attr('fill', self.colorText)
                     .attr('x', function (d, i) { return legendElementWidth * i; })
                     .attr('y', gridSizeY + 2)
                     .text(function (d, i) {
@@ -65430,7 +65439,6 @@ var MapchartComponent = /** @class */ (function () {
                 .attr('width', width + margin.left + margin.right)
                 .attr('height', height + margin.top + margin.bottom)
                 .attr('viewBox', '0 0 ' + container.width + ' ' + container.height);
-            console.log(margin);
             var g = svg.append('g')
                 .attr('transform', 'translate(' + margin.left + ',' + margin.top * 3 + ')');
             function ready(_a) {
@@ -65476,7 +65484,7 @@ var MapchartComponent = /** @class */ (function () {
                 svg.append('text')
                     .attr('x', width / 3.5)
                     .attr('y', margin.top)
-                    .attr('fill', '#aaaaaa')
+                    .attr('fill', self.colorText)
                     .attr('font-family', 'sans-serif')
                     .style('font-size', 'calc(2vh)')
                     .style('font-weight', 'bold')
@@ -65520,7 +65528,7 @@ var MapchartComponent = /** @class */ (function () {
                     .attr('x', 52)
                     .attr('y', function (d, i) { return i * gridSizeY; })
                     .style('text-anchor', 'end')
-                    .style('fill', '#aaaaaa')
+                    .style('fill', self.colorText)
                     .attr('transform', 'translate(0,' + gridSizeY / 1.5 + ')');
                 var heatMapG = scrollGDiv
                     .append('g')
@@ -65606,7 +65614,7 @@ var MapchartComponent = /** @class */ (function () {
                 legend.selectAll('text')
                     .data(legendRange)
                     .join('text')
-                    .attr('fill', '#aaaaaa')
+                    .attr('fill', self.colorText)
                     .attr('x', function (d, i) { return legendElementWidth * i; })
                     .attr('y', gridSizeY + 2)
                     .text(function (d, i) {
