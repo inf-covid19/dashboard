@@ -63630,7 +63630,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"main-content\">\n  <div class=\"container-fluid\">\n      <div class=\"row\">\n          <div class=\"col-lg-3 col-md-3 col-3 col-sm-3 col-xs-3\">\n              <div class=\"card bg-card\">\n                  <div class=\"card-body\">\n                      <app-mapchart></app-mapchart>\n                  </div>\n              </div>\n              <div class=\"card bg-card\">\n                  <div class=\"card-body\">\n                      <svg id=\"svg-county\" class=\"h-100 w-100\"></svg>\n                  </div>\n              </div>\n          </div>\n          <div class=\"col-lg-2 col-md-2 col-2 col-sm-2 col-xs-2\">\n              <div class=\"card sm-card\">\n                  <div class=\"card-body\">\n                      <h4 class=\"bg-title gt-ranking-number\" id=\"name-total-country\"></h4>\n                      <h2 class=\"gt-number gt-bg-ranking-number\" id=\"total-country\">0</h2>\n                      <h4 class=\"bg-title gt-ranking-number\">Óbitos</h4>\n                      <h3 class=\"gt-dark-number gt-bg-ranking-number\" id=\"total-country-deaths\">0</h3>\n                  </div>\n              </div>\n              <div class=\"card gt-card\">\n                  <div class=\"card-body\">\n                      <h5 class=\"bg-title gt-ranking-number\">Relatório estadual</h5>\n                      <div class=\"table-ranking my-custom-scrollbar\">\n                          <table>\n                              <tbody id=\"states-ranking\">\n                              </tbody>\n                          </table>\n                      </div>\n                  </div>\n              </div>\n          </div>\n          <div class=\"col-lg-2 col-md-2 col-2 col-sm-2 col-xs-2\">\n              <div class=\"card sm-card\">\n                  <div class=\"card-body\">\n                      <h4 class=\"bg-title gt-ranking-number\" id=\"name-total-state\"></h4>\n                      <h2 class=\"gt-number gt-bg-ranking-number\" id=\"total-state\">0</h2>\n                      <h4 class=\"bg-title gt-ranking-number\">Óbitos</h4>\n                      <h3 class=\"gt-dark-number gt-bg-ranking-number\" id=\"total-state-deaths\">0</h3>\n                  </div>\n              </div>\n              <div class=\"card gt-card\">\n                  <div class=\"card-body\">\n                      <h5 class=\"bg-title gt-ranking-number\">Relatório por Município</h5>\n                      <div class=\"table-ranking my-custom-scrollbar\">\n                          <table>\n                              <tbody id=\"counties-ranking\">\n                              </tbody>\n                          </table>\n                      </div>\n                  </div>\n              </div>\n          </div>\n          <div class=\"col-lg-5 col-md-5 col-5 col-sm-5 col-xs-5\">\n              <!--<div class=\"card md-card\">\n                  <div class=\"card-body\">\n                      <svg id=\"svg-linechart-country\" class=\"h-100 w-100\"></svg>\n                  </div>\n              </div>-->\n              <div class=\"card bg-card\">\n                  <div class=\"card-body\">\n                      <svg id=\"svg-linechart-state\" class=\"h-100 w-100\"></svg>\n                  </div>\n              </div>\n              <div class=\"card bg-card\">\n                  <div class=\"card-body\">\n                      <svg id=\"svg-linechart-county\" class=\"h-100 w-100\"></svg>\n                  </div>\n              </div>\n          </div>\n      </div>\n  </div>\n</div>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"main-content\">\n  <div class=\"container-fluid\">\n      <div class=\"row\">\n<!--          <div class=\"col-lg-3 col-md-3 col-3 col-sm-3 col-xs-3\">-->\n<!--          <div class=\"col-lg-3 col-md-3 col-12\">-->\n          <div class=\"col-lg-3 col-12\">\n              <div class=\"card bg-card\">\n                  <div class=\"card-body\">\n                      <app-mapchart></app-mapchart>\n                  </div>\n              </div>\n              <div class=\"card bg-card\">\n                  <div class=\"card-body\">\n                      <svg id=\"svg-county\" class=\"h-100 w-100\"></svg>\n                  </div>\n              </div>\n          </div>\n<!--          <div class=\"col-lg-2 col-md-2 col-2 col-sm-2 col-xs-2\">-->\n<!--          <div class=\"col-lg-2 col-md-2 col-6\">-->\n          <div class=\"col-lg-2 col-6\">\n              <div class=\"card sm-card\">\n                  <div class=\"card-body\">\n                      <h4 class=\"bg-title gt-ranking-number\" id=\"name-total-country\"></h4>\n                      <h2 class=\"gt-number gt-bg-ranking-number\" id=\"total-country\">0</h2>\n                      <h4 class=\"bg-title gt-ranking-number\">Óbitos</h4>\n                      <h3 class=\"gt-dark-number gt-bg-ranking-number\" id=\"total-country-deaths\">0</h3>\n                  </div>\n              </div>\n              <div class=\"card gt-card\">\n                  <div class=\"card-body\">\n                      <h5 class=\"bg-title gt-ranking-number\">Relatório estadual</h5>\n                      <div class=\"table-ranking my-custom-scrollbar\">\n                          <table>\n                              <tbody id=\"states-ranking\">\n                              </tbody>\n                          </table>\n                      </div>\n                  </div>\n              </div>\n          </div>\n<!--          <div class=\"col-lg-2 col-md-2 col-2 col-sm-2 col-xs-2\">-->\n<!--          <div class=\"col-lg-2 col-md-2 col-6\">-->\n          <div class=\"col-lg-2 col-6\">\n              <div class=\"card sm-card\">\n                  <div class=\"card-body\">\n                      <h4 class=\"bg-title gt-ranking-number\" id=\"name-total-state\"></h4>\n                      <h2 class=\"gt-number gt-bg-ranking-number\" id=\"total-state\">0</h2>\n                      <h4 class=\"bg-title gt-ranking-number\">Óbitos</h4>\n                      <h3 class=\"gt-dark-number gt-bg-ranking-number\" id=\"total-state-deaths\">0</h3>\n                  </div>\n              </div>\n              <div class=\"card gt-card\">\n                  <div class=\"card-body\">\n                      <h5 class=\"bg-title gt-ranking-number\">Relatório por Município</h5>\n                      <div class=\"table-ranking my-custom-scrollbar\">\n                          <table>\n                              <tbody id=\"counties-ranking\">\n                              </tbody>\n                          </table>\n                      </div>\n                  </div>\n              </div>\n          </div>\n<!--          <div class=\"col-lg-5 col-md-5 col-5 col-sm-5 col-xs-5\">-->\n<!--          <div class=\"col-lg-5 col-md-5 col-12\">-->\n          <div class=\"col-lg-5 col-12\">\n              <div class=\"card bg-card\">\n                  <div class=\"card-body\">\n                      <svg id=\"svg-linechart-state\" class=\"h-100 w-100\"></svg>\n                  </div>\n              </div>\n              <div class=\"card bg-card\">\n                  <div class=\"card-body\">\n                      <svg id=\"svg-linechart-county\" class=\"h-100 w-100\"></svg>\n                  </div>\n              </div>\n          </div>\n      </div>\n  </div>\n</div>\n");
 
 /***/ }),
 
@@ -64707,11 +64707,12 @@ var MapchartComponent = /** @class */ (function () {
                 .attr('y', 20)
                 .attr('fill', self.colorText)
                 .attr('text-anchor', 'start')
-                .attr('font-size', '20px')
+                .attr('font-size', '23px')
                 .attr('font-weight', 'bold')
                 .text('Casos');
+            var currentScale = Math.min(scaleValue, (0.5 * height) / 200);
             var lastTick = 0;
-            g.attr('transform', 'translate(50, ' + height / 1.7 + ') scale(' + (0.5 * height) / 200 + ')')
+            g.attr('transform', 'translate(50, ' + (height - 160 * currentScale) + ') scale(' + currentScale + ')')
                 .attr('class', 'legend')
                 .call(d3__WEBPACK_IMPORTED_MODULE_1__["axisRight"](yLegend)
                 .tickSize(0)
@@ -64942,14 +64943,12 @@ var MapchartComponent = /** @class */ (function () {
                     '</text><br/>' +
                     '</div>');
             });
-            /*const zoom = d3
-              .zoom()
-              .scaleExtent([1, 8])
-              .on('zoom', function() {
-                mapG.selectAll('path').attr('transform', d3.event.transform);
-              });
-        
-            svg.call(zoom);*/
+            var zoom = d3__WEBPACK_IMPORTED_MODULE_1__["zoom"]()
+                .scaleExtent([1, 8])
+                .on('zoom', function () {
+                mapG.selectAll('path').attr('transform', d3__WEBPACK_IMPORTED_MODULE_1__["event"].transform);
+            });
+            svg.call(zoom);
             var g = svg.append('g');
             var scaleValue = Math.min((0.5 * height) / 150, (0.5 * width) / 150);
             svg.append('text')
@@ -64993,7 +64992,10 @@ var MapchartComponent = /** @class */ (function () {
                 .attr('font-weight', 'bold')
                 .text('Casos');
             var lastTick = 0;
-            g.attr('transform', 'translate(50, ' + height / 1.7 + ') scale(' + (0.5 * height) / 200 + ')')
+            var currentScale = Math.min(scaleValue, (0.5 * height) / 200);
+            g.attr('transform', 
+            // 'translate(50, ' + height / 1.7 + ') scale(' + (0.5 * height) / 200 + ')'
+            'translate(50, ' + (height - 160 * currentScale) + ') scale(' + currentScale + ')')
                 .attr('class', 'legend')
                 .call(d3__WEBPACK_IMPORTED_MODULE_1__["axisRight"](yLegend)
                 .tickSize(0)
@@ -65160,16 +65162,20 @@ var MapchartComponent = /** @class */ (function () {
                 if (byDensidade === true) {
                     titleLabel = 'Incidência ';
                 }
+                var scaleValue = Math.min((0.5 * height) / 150, (0.5 * width) / 150);
                 svg.append('text')
-                    .attr('x', width / 3.5)
+                    .attr('transform', 'scale(' + scaleValue + ')')
+                    .attr('x', (width / 3.5 < 120) ? 40 : (width / 3.5))
                     .attr('y', margin.top)
                     .attr('fill', self.colorText)
                     .attr('font-family', 'sans-serif')
-                    .style('font-size', 'calc(2vh)')
+                    .style('font-size', 'min(calc(2vh), calc(1.5vw))')
+                    // .style('font-size', 15)
                     .style('font-weight', 'bold')
                     .text(titleLabel + ' por estado');
                 g.append('g')
                     .attr('class', 'x-axis')
+                    // .attr('transform', 'translate( 0,' + 0 + ') scale(' + scaleValue + ')')
                     .attr('transform', 'translate( 0,' + 0 + ')')
                     .call(x)
                     .selectAll('text')
@@ -65481,16 +65487,20 @@ var MapchartComponent = /** @class */ (function () {
                 if (byDensidade === true) {
                     titleLabel = 'Incidência ';
                 }
+                var scaleValue = Math.min((0.5 * height) / 150, (0.5 * width) / 150);
                 svg.append('text')
-                    .attr('x', width / 3.5)
+                    .attr('transform', 'scale(' + scaleValue + ')')
+                    .attr('x', (width / 4 < 120) ? 20 : (width / 4))
                     .attr('y', margin.top)
                     .attr('fill', self.colorText)
                     .attr('font-family', 'sans-serif')
-                    .style('font-size', 'calc(2vh)')
+                    .style('font-size', 'min(calc(2vh), calc(1.5vw))')
+                    // .style('font-size', 15)
                     .style('font-weight', 'bold')
                     .text(titleLabel + 'por município no ' + self.selectedState);
                 g.append('g')
                     .attr('class', 'x-axis')
+                    // .attr('transform', 'translate(4,' + 0 + ') scale(' + scaleValue + ')')
                     .attr('transform', 'translate(4,' + 0 + ')')
                     .call(x)
                     .selectAll('text')
