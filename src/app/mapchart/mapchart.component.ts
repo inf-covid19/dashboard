@@ -781,14 +781,15 @@ export class MapchartComponent implements OnInit, AfterViewInit, OnDestroy {
       .attr('y', 20)
       .attr('fill', self.colorText)
       .attr('text-anchor', 'start')
-      .attr('font-size', '20px')
+      .attr('font-size', '23px')
       .attr('font-weight', 'bold')
       .text('Casos');
 
+    const currentScale = Math.min(scaleValue, (0.5 * height) / 200);
     let lastTick = 0;
     g.attr(
       'transform',
-      'translate(50, ' + height / 1.7 + ') scale(' + (0.5 * height) / 200 + ')'
+      'translate(50, ' + (height - 160 * currentScale) + ') scale(' + currentScale + ')'
     )
       .attr('class', 'legend')
       .call(
@@ -1049,14 +1050,14 @@ export class MapchartComponent implements OnInit, AfterViewInit, OnDestroy {
         );
       });
 
-    /*const zoom = d3
+    const zoom = d3
       .zoom()
       .scaleExtent([1, 8])
       .on('zoom', function() {
         mapG.selectAll('path').attr('transform', d3.event.transform);
       });
 
-    svg.call(zoom);*/
+    svg.call(zoom);
 
     const g = svg.append('g');
 
@@ -1107,9 +1108,11 @@ export class MapchartComponent implements OnInit, AfterViewInit, OnDestroy {
       .text('Casos');
 
     let lastTick = 0;
+    const currentScale = Math.min(scaleValue, (0.5 * height) / 200);
     g.attr(
       'transform',
-      'translate(50, ' + height / 1.7 + ') scale(' + (0.5 * height) / 200 + ')'
+      // 'translate(50, ' + height / 1.7 + ') scale(' + (0.5 * height) / 200 + ')'
+      'translate(50, ' + (height - 160 * currentScale) + ') scale(' +  currentScale  + ')'
     )
       .attr('class', 'legend')
       .call(
@@ -1286,17 +1289,21 @@ export class MapchartComponent implements OnInit, AfterViewInit, OnDestroy {
       if (byDensidade === true) {
         titleLabel = 'Incidência ';
       }
+      const scaleValue = Math.min((0.5 * height) / 150, (0.5 * width) / 150);
       svg.append('text')
-          .attr('x', width / 3.5)
+          .attr('transform', 'scale(' + scaleValue + ')')
+          .attr('x', (width / 3.5 < 120) ? 40 : (width / 3.5))
           .attr('y', margin.top)
           .attr('fill', self.colorText)
           .attr('font-family', 'sans-serif')
-          .style('font-size', 'calc(2vh)')
+          .style('font-size', 'min(calc(2vh), calc(1.5vw))')
+          // .style('font-size', 15)
           .style('font-weight', 'bold')
           .text(titleLabel + ' por estado');
 
       g.append('g')
           .attr('class', 'x-axis')
+          // .attr('transform', 'translate( 0,' + 0 + ') scale(' + scaleValue + ')')
           .attr('transform', 'translate( 0,' + 0 + ')')
           .call(x)
           .selectAll('text')
@@ -1619,17 +1626,21 @@ export class MapchartComponent implements OnInit, AfterViewInit, OnDestroy {
       if (byDensidade === true) {
         titleLabel = 'Incidência ';
       }
+      const scaleValue = Math.min((0.5 * height) / 150, (0.5 * width) / 150);
       svg.append('text')
-          .attr('x', width / 3.5)
+          .attr('transform', 'scale(' + scaleValue + ')')
+          .attr('x', (width / 4 < 120) ? 20 : (width / 4) )
           .attr('y', margin.top)
           .attr('fill', self.colorText)
           .attr('font-family', 'sans-serif')
-          .style('font-size', 'calc(2vh)')
+          .style('font-size', 'min(calc(2vh), calc(1.5vw))')
+          // .style('font-size', 15)
           .style('font-weight', 'bold')
           .text(titleLabel + 'por município no ' + self.selectedState);
 
       g.append('g')
           .attr('class', 'x-axis')
+          // .attr('transform', 'translate(4,' + 0 + ') scale(' + scaleValue + ')')
           .attr('transform', 'translate(4,' + 0 + ')')
           .call(x)
           .selectAll('text')
