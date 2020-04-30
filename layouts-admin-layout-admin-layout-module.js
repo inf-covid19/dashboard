@@ -64307,7 +64307,7 @@ var MapchartComponent = /** @class */ (function () {
             d3__WEBPACK_IMPORTED_MODULE_1__["select"]('#date-slider').selectAll('*').remove();
             var container = d3__WEBPACK_IMPORTED_MODULE_1__["select"]('#date-slider').node();
             container = container.parentNode.parentNode.getBoundingClientRect();
-            var margin = { top: 0, right: 0, bottom: 35, left: 0 };
+            var margin = { top: 0, right: 6, bottom: 35, left: 6 };
             var width = container.width - margin.left - margin.right;
             var height = container.height - margin.top - margin.bottom;
             var x = d3__WEBPACK_IMPORTED_MODULE_1__["scaleTime"]()
