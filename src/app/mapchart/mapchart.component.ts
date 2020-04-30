@@ -483,11 +483,15 @@ export class MapchartComponent implements OnInit, AfterViewInit, OnDestroy {
   };
 
   getPlasmaList = cant => {
-    const rangeColor = [];
+    /*const rangeColor = [];
     for (let i = 0; i < cant; i++) {
-      rangeColor.push(d3.interpolateYlOrRd(i / (cant - 1)));
+      rangeColor.push(d3.interpolateViridis(i / (cant - 1)));
     }
-    return rangeColor;
+    return rangeColor;*/
+
+    return ['#ffffd9', '#edf8b1', '#c7e9b4', '#7fcdbb',
+      '#41b6c4', '#1d91c0', '#225ea8', '#253494',
+      '#081d58'];
   };
 
   formatValueSeperator = n => {
@@ -649,6 +653,7 @@ export class MapchartComponent implements OnInit, AfterViewInit, OnDestroy {
             self.loadWidgetState(self.selectedState, byDeaths, byDensidade, byNewCases);
           d3.select(this)
               .attr('stroke', '#717171')
+              // .attr('stroke', '#ED881A')
               .attr('stroke-width', 7)
               .attr('selected', 'true');
 
@@ -662,6 +667,7 @@ export class MapchartComponent implements OnInit, AfterViewInit, OnDestroy {
         if (d.properties.UF_05 === self.selectedState) {
           d3.select(this)
               .attr('stroke', '#717171')
+              // .attr('stroke', '#ED881A')
               .attr('stroke-width', 7)
               .attr('selected', 'true');
         }
@@ -676,6 +682,7 @@ export class MapchartComponent implements OnInit, AfterViewInit, OnDestroy {
           d3.selectAll('#country-g-map path').each(function() {
             if (d3.select(this).attr('selected') !== 'true' && this === selfTemp) {
               d3.select(this).attr('stroke', '#717171');
+              // d3.select(this).attr('stroke', '#ED881A');
               d3.select(this).attr('stroke-width', 3);
             }
           });
@@ -696,7 +703,8 @@ export class MapchartComponent implements OnInit, AfterViewInit, OnDestroy {
           }
 
           return (
-            '<div style="opacity:0.8;background-color:#8b0707;padding:7px;color:white">' +
+            // '<div style="opacity:0.8;background-color:#8b0707;padding:7px;color:white">' +
+            '<div style="opacity:0.8;background-color:#253494;padding:7px;color:white">' +
             '<text>Estado: </text><text style="font-weight: 800">' +
             d.properties.NOME_UF +
             '</text><br/>' +
@@ -713,14 +721,14 @@ export class MapchartComponent implements OnInit, AfterViewInit, OnDestroy {
           );
         });
 
-    const zoom = d3
+    /*const zoom = d3
       .zoom()
       .scaleExtent([1, 8])
       .on('zoom', function() {
         mapG.selectAll('path').attr('transform', d3.event.transform);
       });
 
-    svg.call(zoom);
+    svg.call(zoom);*/
 
     const g = svg.append('g');
     g.call(self.tipCountry);
@@ -828,8 +836,9 @@ export class MapchartComponent implements OnInit, AfterViewInit, OnDestroy {
         })
         .on('click', function() {
           self.selectedState = self.rankingStates[item].region;
+            self.loadWidgetCountry(byDeaths, byDensidade, byNewCases); // without event click on counties map
             self.loadWidgetState(self.rankingStates[item].region, byDeaths, byDensidade, byNewCases); // without event click on counties map
-            self.loadCountiesLineChart(self.selectedState, self.iniSelectedDay, self.endSelectedDay, byDeaths, byDensidade, byNewCases);
+            // self.loadCountiesHeatMapChart(self.selectedState, self.iniSelectedDay, self.endSelectedDay, byDeaths, byDensidade, byNewCases);
         })
         .html(
           '<td class="' + classColor + ' gt-ranking-number"  style="padding-left: 11px; text-align: right">' +
@@ -837,7 +846,7 @@ export class MapchartComponent implements OnInit, AfterViewInit, OnDestroy {
           '</td><td>' + self.rankingStates[item].name + '</td>'
         );
     }
-      self.loadStatesLineChart(self.iniSelectedDay, self.endSelectedDay, byDeaths, byDensidade, byNewCases);
+      self.loadStatesHeatMapChart(self.iniSelectedDay, self.endSelectedDay, byDeaths, byDensidade, byNewCases);
   };
 
   loadWidgetState = (stateParam, byDeaths = false, byDensidade = false, byNewCases = false) => {
@@ -1004,10 +1013,12 @@ export class MapchartComponent implements OnInit, AfterViewInit, OnDestroy {
       .attr('class', 'd3-tip')
       .html(function(d) {
         d3.select(this).attr('stroke', '#717171');
+        // d3.select(this).attr('stroke', '#ED881A');
         const labelTot = byDensidade === true ? 'Incidência casos' : 'Total casos';
         const labelTotDeath = byDensidade === true ? 'Incidência óbitos' : 'Total óbitos';
         return (
-          '<div style="opacity:0.8;background-color:#8b0707;padding:7px;color:white">' +
+          // '<div style="opacity:0.8;background-color:#8b0707;padding:7px;color:white">' +
+          '<div style="opacity:0.8;background-color:#253494;padding:7px;color:white">' +
           '<text>Município: </text><text style="font-weight: 800">' +
           d.properties.NOME_MUNI +
           '</text><br/>' +
@@ -1028,14 +1039,14 @@ export class MapchartComponent implements OnInit, AfterViewInit, OnDestroy {
         );
       });
 
-    const zoom = d3
+    /*const zoom = d3
       .zoom()
       .scaleExtent([1, 8])
       .on('zoom', function() {
         mapG.selectAll('path').attr('transform', d3.event.transform);
       });
 
-    svg.call(zoom);
+    svg.call(zoom);*/
 
     const g = svg.append('g');
 
@@ -1141,11 +1152,11 @@ export class MapchartComponent implements OnInit, AfterViewInit, OnDestroy {
             '</td><td>' + self.rankingCounties[item].name + '</td>'
         );
     }
-      self.loadCountiesLineChart(stateParam, self.iniSelectedDay, self.endSelectedDay, byDeaths, byDensidade, byNewCases );
+      self.loadCountiesHeatMapChart(stateParam, self.iniSelectedDay, self.endSelectedDay, byDeaths, byDensidade, byNewCases );
   };
 
 
-  loadStatesLineChart = (iniDate, endDate, byDeaths = false, byDensidade = false, byNewCases = false) => {
+  loadStatesHeatMapChart = (iniDate, endDate, byDeaths = false, byDensidade = false, byNewCases = false) => {
     const self = this;
     let container = d3.select('#svg-linechart-state').node() as any;
     if ( container === (undefined || null) || container.parentNode === (undefined || null)) { return; }
@@ -1312,7 +1323,7 @@ export class MapchartComponent implements OnInit, AfterViewInit, OnDestroy {
           .data(statesList)
           .enter().append('text')
           .text(function (d) { return d; })
-          .attr('x', 20)
+          .attr('x', 18)
           .attr('y', function (d, i) { return i * gridSizeY; })
           .style('text-anchor', 'end')
           .style('fill', '#aaaaaa')
@@ -1426,7 +1437,8 @@ export class MapchartComponent implements OnInit, AfterViewInit, OnDestroy {
         .offset([20, -80])
         .html(function(d) {
           return (
-              '<div style="opacity:0.8;background-color:#8b0707;padding:7px;color:white">' +
+              // '<div style="opacity:0.8;background-color:#8b0707;padding:7px;color:white">' +
+              '<div style="opacity:0.8;background-color:#253494;padding:7px;color:white">' +
               '<text style="font-weight: 800">' +
               self.statesNames[d.region] +
               '</text></br><text>' +
@@ -1440,7 +1452,7 @@ export class MapchartComponent implements OnInit, AfterViewInit, OnDestroy {
     svg.call(self.tipLineState);
     };
 
-  loadCountiesLineChart = (stateParam, iniDate, endDate, byDeaths = false, byDensidade = false, byNewCases = false) => {
+  loadCountiesHeatMapChart = (stateParam, iniDate, endDate, byDeaths = false, byDensidade = false, byNewCases = false) => {
     const self = this;
     let container = d3.select('#svg-linechart-county').node() as any;
     if ( container === (undefined || null) || container.parentNode === (undefined || null) ) {
@@ -1555,6 +1567,7 @@ export class MapchartComponent implements OnInit, AfterViewInit, OnDestroy {
         .attr('height', height + margin.top + margin.bottom)
         .attr('viewBox', '0 0 ' + container.width + ' ' + container.height);
 
+    console.log(margin);
     const g = svg.append('g')
         .attr('transform', 'translate(' + margin.left + ',' + margin.top * 3 + ')');
 
@@ -1647,7 +1660,7 @@ export class MapchartComponent implements OnInit, AfterViewInit, OnDestroy {
           .text(function (d) { return self.countiesNames[d].slice(0, 8); })
           .on('mouseover', self.tipLineCountyName.show)
           .on('mouseout', self.tipLineCountyName.hide)
-          .attr('x', 55)
+          .attr('x', 52)
           .attr('y', function (d, i) { return i * gridSizeY; })
           .style('text-anchor', 'end')
           .style('fill', '#aaaaaa')
@@ -1761,7 +1774,8 @@ export class MapchartComponent implements OnInit, AfterViewInit, OnDestroy {
         .offset([20, -80])
         .html(function(d) {
           return (
-              '<div style="opacity:0.8;background-color:#8b0707;padding:7px;color:white">' +
+              // '<div style="opacity:0.8;background-color:#8b0707;padding:7px;color:white">' +
+              '<div style="opacity:0.8;background-color:#253494;padding:7px;color:white">' +
               '<text style="font-weight: 800">' +
               self.countiesNames[d.region] +
               '</text></br><text>' +
@@ -1778,7 +1792,8 @@ export class MapchartComponent implements OnInit, AfterViewInit, OnDestroy {
         .offset([20, -80])
         .html(function(d) {
           return (
-              '<div style="opacity:0.8;background-color:#8b0707;padding:7px;color:white">' +
+              // '<div style="opacity:0.8;background-color:#8b0707;padding:7px;color:white">' +
+              '<div style="opacity:0.8;background-color:#253494;padding:7px;color:white">' +
               '<text style="font-weight: 800">' +
               self.countiesNames[d] +
               '</text>' +

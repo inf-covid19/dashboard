@@ -115,9 +115,11 @@
   a:hover,
   a:focus,
   a:active {
-    @include shadow-small-color(#ff3d00);
+    //@include shadow-small-color(#ff3d00);
+    @include shadow-small-color(#2171B5);
     //background-color: $brand-primary;
-    background-color: #ff3d00;
+    //background-color: #ff3d00;
+    background-color: #2171B5;
     color: #eeeeee;
     font-weight: 700;
   }
