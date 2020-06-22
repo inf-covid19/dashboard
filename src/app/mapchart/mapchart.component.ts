@@ -17,7 +17,9 @@ export class MapchartComponent implements OnInit, AfterViewInit, OnDestroy {
   tipLineState: any;
   tipLineCounty: any;
   iniSelectedDay = '2020-01-01';
+  // iniSelectedDay = '2020-05-13';
   minSelectedDay = '2020-02-24';
+  // minSelectedDay = '2020-04-24';
   endSelectedDay = '2020-03-24';
   maxSelectedDay = '2020-03-24';
   newStatesMaxVal = 0;
@@ -38,8 +40,9 @@ export class MapchartComponent implements OnInit, AfterViewInit, OnDestroy {
   lineChartStates = [];
   lineChartCounties = [];
   popScale = 100000;
-  byDensidade = false;
+  byDensity = false;
   byDeath = false;
+  byTrend = false;
   byNewCases = false;
 
   // lineBorderColor = 'rgb(0,0,0,0.87)';
@@ -47,6 +50,8 @@ export class MapchartComponent implements OnInit, AfterViewInit, OnDestroy {
   lineStrongerBorderColor = '#1d1d1da8';
   // lineStrongerBorderColor = 'rgb(0,0,0,0.87)';
   colorText = '#1d1d1da8';
+
+  slopeLabels = ['Queda', 'Aprox. o mesmo', 'Ascenção (pequena)', 'Ascenção (média)', 'Ascenção (alta)', 'Poucos casos'];
 
   population = { total: 0 };
 
@@ -294,6 +299,7 @@ export class MapchartComponent implements OnInit, AfterViewInit, OnDestroy {
       // self.loadRangeSliderTime();
       self.loadResizeWindow();
 
+      d3.select('#byTrendCheckBox').on( 'change', self.onByTrendCheckBoxChange );
       d3.select('#byDeathsCheckBox').on( 'change', self.onByDeathsCheckBoxChange );
       d3.select('#byDensidadeCheckBox').on( 'change', self.onByDensidadeCheckBoxChange );
       d3.select('#byNewCasesCheckBox').on( 'change', self.onByNewCasesCheckBoxChange );
@@ -443,8 +449,8 @@ export class MapchartComponent implements OnInit, AfterViewInit, OnDestroy {
       self.iniSelectedDay = formatTime(d1[0]);
       self.endSelectedDay = formatTime(d1[1]);
 
-      self.loadWidgetCountry(self.byDeath, self.byDensidade, self.byNewCases);
-      self.loadWidgetState(self.selectedState, self.byDeath, self.byDensidade, self.byNewCases);
+      self.loadWidgetCountry(self.byTrend, self.byDeath, self.byDensity, self.byNewCases);
+      self.loadWidgetState(self.selectedState, self.byTrend, self.byDeath, self.byDensity, self.byNewCases);
     }
     const currIniDate = new Date(parseDate(self.iniSelectedDay)).valueOf();
     const currEndDate = new Date(parseDate(self.endSelectedDay)).valueOf();
@@ -454,9 +460,19 @@ export class MapchartComponent implements OnInit, AfterViewInit, OnDestroy {
   loadResizeWindow = () => {
     const self = this;
     self.loadRangeSliderTime();
-    self.loadWidgetCountry(self.byDeath, self.byDensidade, self.byNewCases);
-    self.loadWidgetState(self.selectedState, self.byDeath, self.byDensidade, self.byNewCases);
+    self.loadWidgetCountry( self.byTrend, self.byDeath, self.byDensity, self.byNewCases);
+    self.loadWidgetState( self.selectedState, self.byTrend, self.byDeath, self.byDensity, self.byNewCases);
   }
+
+  onByTrendCheckBoxChange = () => {
+    const self = this;
+    self.byTrend = false;
+    if (d3.select('#byTrendCheckBox').property('checked')) {
+      self.byTrend = true;
+    }
+    self.loadWidgetCountry(self.byTrend, self.byDeath, self.byDensity, self.byNewCases);
+    self.loadWidgetState(self.selectedState, self.byTrend, self.byDeath, self.byDensity, self.byNewCases);
+  };
 
   onByDeathsCheckBoxChange = () => {
     const self = this;
@@ -464,18 +480,18 @@ export class MapchartComponent implements OnInit, AfterViewInit, OnDestroy {
     if (d3.select('#byDeathsCheckBox').property('checked')) {
       self.byDeath = true;
     }
-      self.loadWidgetCountry(self.byDeath, self.byDensidade, self.byNewCases);
-      self.loadWidgetState(self.selectedState, self.byDeath, self.byDensidade, self.byNewCases);
+      self.loadWidgetCountry(self.byTrend, self.byDeath, self.byDensity, self.byNewCases);
+      self.loadWidgetState(self.selectedState, self.byTrend, self.byDeath, self.byDensity, self.byNewCases);
   };
 
   onByDensidadeCheckBoxChange = () => {
     const self = this;
-    self.byDensidade = false;
+    self.byDensity = false;
     if (d3.select('#byDensidadeCheckBox').property('checked')) {
-      self.byDensidade = true
+      self.byDensity = true
     }
-    self.loadWidgetCountry(self.byDeath, self.byDensidade, self.byNewCases);
-    self.loadWidgetState(self.selectedState, self.byDeath, self.byDensidade, self.byNewCases);
+    self.loadWidgetCountry(self.byTrend, self.byDeath, self.byDensity, self.byNewCases);
+    self.loadWidgetState(self.selectedState, self.byTrend, self.byDeath, self.byDensity, self.byNewCases);
   };
 
   onByNewCasesCheckBoxChange = () => {
@@ -484,8 +500,8 @@ export class MapchartComponent implements OnInit, AfterViewInit, OnDestroy {
     if (d3.select('#byNewCasesCheckBox').property('checked')) {
       self.byNewCases = true;
     }
-    self.loadWidgetCountry(self.byDeath, self.byDensidade, self.byNewCases);
-    self.loadWidgetState(self.selectedState, self.byDeath, self.byDensidade, self.byNewCases);
+    self.loadWidgetCountry(self.byTrend, self.byDeath, self.byDensity, self.byNewCases);
+    self.loadWidgetState(self.selectedState, self.byTrend, self.byDeath, self.byDensity, self.byNewCases);
   };
 
   getPlasmaList = cant => {
@@ -500,6 +516,12 @@ export class MapchartComponent implements OnInit, AfterViewInit, OnDestroy {
       '#081d58'];
   };
 
+  getTrendColorList = () => {
+    return ['#badee8', '#f2df91', '#ffae43', '#ff6e0b',
+      '#ce0a05', '#f2f2f2'
+    ];
+  };
+
   formatValueSeperator = n => {
     if (d3.select('#byDensidadeCheckBox').property('checked')) {
       return d3.format(',.2f')(n);
@@ -508,7 +530,52 @@ export class MapchartComponent implements OnInit, AfterViewInit, OnDestroy {
     }
   };
 
-  loadWidgetCountry = (byDeaths = false, byDensidade = false, byNewCases = false) => {
+  getSlopeValue = (axisX, axisY, minValueAllowed = 2) => {
+    // console.log(axisY);
+    if (axisX.reduce((a, b) => a + b, 0) < minValueAllowed) { return 6; }
+    const maxValue = Math.max.apply(Math, axisX);
+    const minValue = Math.min.apply(Math, axisX);
+    const ratio = (maxValue - minValue) / 130;
+    axisX = axisX.map(function (v) {
+      return (v - minValue) / ratio;
+    });
+    // console.log(axisX);
+    let sumX = 0,  sumY = 0;
+    let sumXY = 0, sumXX = 0;
+    let count = 0;
+    // let undefinedVariable;
+    let x = 0, y = 0;
+    const valuesLength = axisX.length;
+
+    if (valuesLength < 14) { return 6; }
+
+    for (let v = 0; v < valuesLength; v++) {
+      x = axisX[v];
+      y = axisY[v];
+      sumX += x;
+      sumY += y;
+      sumXX += x * x;
+      sumXY += x * y;
+      count++;
+    }
+    // y = x * m + b
+    let m = (count * sumXY - sumX * sumY) / (count * sumXX - sumX * sumX);
+    if ( m < -0.1) { m = 1; }
+    else {
+      if ( m < 0.1 ) { m = 2; }
+      else {
+        if ( m < 0.4 ) { m = 3; }
+        else {
+          if ( m < 0.65 ) { m = 4; }
+          else { m = 5; }
+        }
+      }
+    }
+    // const b = (sumY / count) - (m * sumX) / count;
+    return m;
+  };
+
+  loadWidgetCountry = (byTrend = false, byDeaths = false, byDensity = false, byNewCases = false) => {
     const self = this;
     let container = d3.select('#svg-country').node() as any;
     //
@@ -535,6 +602,8 @@ export class MapchartComponent implements OnInit, AfterViewInit, OnDestroy {
 
     const TotalReport = d3.map();
     const TotalDeathReport = d3.map();
+    const TotalReportSlope = d3.map();
+    const TotalReportDeathSlope = d3.map();
     const path = d3.geoPath();
 
     let maxValue = 0;
@@ -567,7 +636,33 @@ export class MapchartComponent implements OnInit, AfterViewInit, OnDestroy {
             valorDeathEnd = typeof self.data[self.endSelectedDay]['estados'][key] === 'undefined' ? 0 : self.data[self.endSelectedDay]['estados'][key].total_death;
           }
 
-          if (byDensidade === true) {
+          if (byTrend === true) {
+            if (byDeaths === true) {
+              let positionIni = self.listDatesStates.indexOf(self.endSelectedDay) - 14;
+              const xValues = [];
+              while (positionIni > 0 && self.listDatesStates[positionIni] < self.endSelectedDay) {
+                const value = typeof self.data[self.listDatesStates[positionIni]]['estados'][key] === 'undefined' ? 0 : self.data[self.listDatesStates[positionIni]]['estados'][key].new_death_cases;
+                xValues.push(value);
+                positionIni++;
+              }
+              const slope = self.getSlopeValue(xValues, [0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 120, 130], 2);
+              TotalReportDeathSlope.set(key, slope);
+            } else{
+              let positionIni = self.listDatesStates.indexOf(self.endSelectedDay) - 14;
+              const xValues = [];
+              while (positionIni > 0 && self.listDatesStates[positionIni] < self.endSelectedDay) {
+                const value = typeof self.data[self.listDatesStates[positionIni]]['estados'][key] === 'undefined' ? 0 : self.data[self.listDatesStates[positionIni]]['estados'][key].new_cases;
+                xValues.push(value);
+                positionIni++;
+              }
+              // console.log(key);
+              const slope = self.getSlopeValue(xValues, [0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 120, 130], 14);
+              TotalReportSlope.set(key, slope);
+            }
+          }
+          // console.log(TotalReportSlope);
+
+          if (byDensity === true) {
             population = self.population[key].population;
           }
 
@@ -589,7 +684,10 @@ export class MapchartComponent implements OnInit, AfterViewInit, OnDestroy {
           }
         }
 
-        if ( byDensidade === true ) {
+        // console.log(TotalReportSlope);
+        // console.log(TotalReportDeathSlope);
+
+        if ( byDensity === true ) {
           self.totalCountry = self.totalCountry * (self.popScale / self.population.total);
           self.totalDeathCountry = self.totalDeathCountry * (self.popScale / self.population.total);
           self.newCasesCountry = self.newCasesCountry * (self.popScale / self.population.total);
@@ -608,12 +706,13 @@ export class MapchartComponent implements OnInit, AfterViewInit, OnDestroy {
         d3.range(stepSize === 1 ? 1 : stepSize + 1, Math.max(stepSize * 10, 9), stepSize).reverse()
       ).rangeRound([58, 88]);
 
-    const colorRangePlasma = self.getPlasmaList(9);
+    let colorRangePlasma = self.getPlasmaList(9);
+    if (byTrend === true) { colorRangePlasma = self.getTrendColorList(); }
     const color = d3.scaleThreshold().domain(
         d3.range(stepSize === 1 ? 1 : stepSize + 1, Math.max(stepSize * 10, 9), stepSize)
       ).range(colorRangePlasma);
 
-    const mapG = d3.select('#svg-country').append('g');
+      const mapG = d3.select('#svg-country').append('g');
     function ready([coduf]) {
       const scaleRatio = Math.min(width / 700, height / 700);
 
@@ -627,10 +726,17 @@ export class MapchartComponent implements OnInit, AfterViewInit, OnDestroy {
         .append('path')
         .attr('fill', d => {
           let estColor = 0;
-          if (byDeaths === true) {
-              estColor = typeof TotalDeathReport.get(d.properties.UF_05) === 'undefined' ? 0 : TotalDeathReport.get(d.properties.UF_05);
+          if (byTrend === true) {
+            if (byDeaths === true)
+              estColor = typeof TotalReportDeathSlope.get(d.properties.UF_05) === 'undefined' ? 0 : TotalReportDeathSlope.get(d.properties.UF_05);
+            else
+              estColor = typeof TotalReportSlope.get(d.properties.UF_05) === 'undefined' ? 0 : TotalReportSlope.get(d.properties.UF_05);
+            return self.colorScale(colorRangePlasma, [1, 2, 3, 4, 5, 6], estColor);
           } else {
-              estColor = typeof TotalReport.get(d.properties.UF_05) === 'undefined' ? 0 : TotalReport.get(d.properties.UF_05);
+            if (byDeaths === true)
+                estColor = typeof TotalDeathReport.get(d.properties.UF_05) === 'undefined' ? 0 : TotalDeathReport.get(d.properties.UF_05);
+            else
+                estColor = typeof TotalReport.get(d.properties.UF_05) === 'undefined' ? 0 : TotalReport.get(d.properties.UF_05);
           }
           if (estColor === 0) {
             // return '#000000';
@@ -657,7 +763,7 @@ export class MapchartComponent implements OnInit, AfterViewInit, OnDestroy {
               d3.select(this).attr('selected', 'false');
           });
           self.selectedState = d.properties.UF_05;
-            self.loadWidgetState(self.selectedState, byDeaths, byDensidade, byNewCases);
+            self.loadWidgetState(self.selectedState, byTrend, byDeaths, byDensity, byNewCases);
           d3.select(this)
               .attr('stroke', self.lineStrongerBorderColor)
               // .attr('stroke', '#ED881A')
@@ -696,21 +802,20 @@ export class MapchartComponent implements OnInit, AfterViewInit, OnDestroy {
 
           let labelTot = '';
           const qtyTotal = (typeof TotalReport.get(d.properties.UF_05) === 'undefined' ? 0 : self.formatValueSeperator(TotalReport.get(d.properties.UF_05)))
-            if (byDensidade === true) {
+            if (byDensity === true) {
               labelTot = 'Incidência casos';
             } else {
               labelTot = 'Total casos';
             }
           let labelTotDeath = '';
           const qtyTotalDeath = (typeof TotalDeathReport.get(d.properties.UF_05) === 'undefined' ? 0 : self.formatValueSeperator(TotalDeathReport.get(d.properties.UF_05)))
-          if (byDensidade === true) {
+          if (byDensity === true) {
             labelTotDeath = 'Incidência óbitos';
           } else {
             labelTotDeath = 'Total óbitos';
           }
 
           return (
-            // '<div style="opacity:0.8;background-color:#8b0707;padding:7px;color:white">' +
             '<div style="opacity:0.8;background-color:#253494;padding:7px;color:white">' +
             '<text>Estado: </text><text style="font-weight: 800">' +
             d.properties.NOME_UF +
@@ -798,17 +903,16 @@ export class MapchartComponent implements OnInit, AfterViewInit, OnDestroy {
           .tickSize(0)
           // tslint:disable-next-line:only-arrow-functions
           .tickFormat(function(y, i) {
-            if (i > 8) {
-              return '';
+            if (byTrend === true) {
+              if (i > 6) { return ''; }
+              return self.slopeLabels[i];
+            } else {
+              if (i > 8) { return ''; }
+              if (i === 0) { return '≤' + d3.format(',d')(y - 1) + ''; }
+              if (i === 8) { return '≥' + d3.format(',d')(lastTick) + ''; }
+              lastTick = y;
+              return d3.format(',d')(y - 1) + '';
             }
-            if (i === 0) {
-              return '≤' + d3.format(',d')(y - 1) + '';
-            }
-            if (i === 8) {
-              return '≥' + d3.format(',d')(lastTick) + '';
-            }
-            lastTick = y;
-            return d3.format(',d')(y - 1) + '';
           })
           .tickValues(color.domain())
       )
@@ -818,7 +922,7 @@ export class MapchartComponent implements OnInit, AfterViewInit, OnDestroy {
       d3.select('#total-country').html( self.formatValueSeperator(self.totalCountry) );
       d3.select('#total-country-deaths').html( self.formatValueSeperator(self.totalDeathCountry) );
 
-    if (byDensidade === true) {
+    if (byDensity === true) {
       d3.select('#name-total-country').html('Incidência Brasil');
     } else {
       d3.select('#name-total-country').html('Confirmados Brasil');
@@ -844,9 +948,8 @@ export class MapchartComponent implements OnInit, AfterViewInit, OnDestroy {
         })
         .on('click', function() {
           self.selectedState = self.rankingStates[item].region;
-            self.loadWidgetCountry(byDeaths, byDensidade, byNewCases); // without event click on counties map
-            self.loadWidgetState(self.rankingStates[item].region, byDeaths, byDensidade, byNewCases); // without event click on counties map
-            // self.loadCountiesHeatMapChart(self.selectedState, self.iniSelectedDay, self.endSelectedDay, byDeaths, byDensidade, byNewCases);
+            self.loadWidgetCountry(byTrend, byDeaths, byDensity, byNewCases); // without event click on counties map
+            self.loadWidgetState(self.rankingStates[item].region, byTrend, byDeaths, byDensity, byNewCases); // without event click on counties map
         })
         .html(
           '<td class="' + classColor + ' gt-ranking-number"  style="padding-left: 11px; text-align: right">' +
@@ -854,10 +957,10 @@ export class MapchartComponent implements OnInit, AfterViewInit, OnDestroy {
           '</td><td>' + self.rankingStates[item].name + '</td>'
         );
     }
-      self.loadStatesHeatMapChart(self.iniSelectedDay, self.endSelectedDay, byDeaths, byDensidade, byNewCases);
+      self.loadStatesHeatMapChart(self.iniSelectedDay, self.endSelectedDay, byDeaths, byDensity, byNewCases);
   };
 
-  loadWidgetState = (stateParam, byDeaths = false, byDensidade = false, byNewCases = false) => {
+  loadWidgetState = (stateParam, byTrend = false, byDeaths = false, byDensity = false, byNewCases = false) => {
     const self = this;
     let container = d3.select('#svg-county').node() as any;
     //
@@ -880,6 +983,8 @@ export class MapchartComponent implements OnInit, AfterViewInit, OnDestroy {
 
     const TotalReport = d3.map();
     const TotalDeathReport = d3.map();
+    const TotalReportSlope = d3.map();
+    const TotalReportDeathSlope = d3.map();
     const path = d3.geoPath();
     let maxValue = 0;
 
@@ -918,7 +1023,33 @@ export class MapchartComponent implements OnInit, AfterViewInit, OnDestroy {
               valorDeathEnd = typeof self.data[lastDay]['estados'][stateParam]['municipios'][key] === 'undefined' ? 0 : self.data[lastDay]['estados'][stateParam]['municipios'][key].total_death;
             }
           }
-          if (byDensidade === true) {
+
+          if (byTrend === true) {
+            if (byDeaths === true) {
+              let positionIni = self.listDatesStates.indexOf(self.endSelectedDay) - 14;
+              const xValues = [];
+              while (positionIni > 0 && self.listDatesStates[positionIni] < self.endSelectedDay) {
+                const value = typeof self.data[self.listDatesStates[positionIni]]['estados'][stateParam]['municipios'][key] === 'undefined' ? 0 : self.data[self.listDatesStates[positionIni]]['estados'][stateParam]['municipios'][key].new_death_cases;
+                xValues.push(value);
+                positionIni++;
+              }
+              const slope = self.getSlopeValue(xValues, [0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 120, 130], 3);
+              TotalReportDeathSlope.set(key, slope);
+            } else{
+              let positionIni = self.listDatesStates.indexOf(self.endSelectedDay) - 14;
+              const xValues = [];
+              while (positionIni > 0 && self.listDatesStates[positionIni] < self.endSelectedDay) {
+                const value = typeof self.data[self.listDatesStates[positionIni]]['estados'][stateParam]['municipios'][key] === 'undefined' ? 0 : self.data[self.listDatesStates[positionIni]]['estados'][stateParam]['municipios'][key].new_cases;
+                xValues.push(value);
+                positionIni++;
+              }
+              // console.log(key);
+              const slope = self.getSlopeValue(xValues, [0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 120, 130], 14);
+              TotalReportSlope.set(key, slope);
+            }
+          }
+
+          if (byDensity === true) {
             population = typeof self.population[stateParam]['municipios'][key] === 'undefined' ? 1000000 :
                 self.population[stateParam]['municipios'][key];
           }
@@ -938,7 +1069,7 @@ export class MapchartComponent implements OnInit, AfterViewInit, OnDestroy {
             });
           }
         });
-        if (byDensidade === true) {
+        if (byDensity === true) {
           self.totalState = self.totalState * (self.popScale / self.population[stateParam].population);
           self.totalDeathState = self.totalDeathState * (self.popScale / self.population[stateParam].population);
         }
@@ -964,7 +1095,8 @@ export class MapchartComponent implements OnInit, AfterViewInit, OnDestroy {
       .rangeRound([58, 88]);
 
     // @ts-ignore
-    const colorRangePlasma = self.getPlasmaList(9);
+    let colorRangePlasma = self.getPlasmaList(9);
+    if (byTrend === true) { colorRangePlasma = self.getTrendColorList(); }
     const color = d3
       .scaleThreshold()
       .domain(
@@ -989,12 +1121,19 @@ export class MapchartComponent implements OnInit, AfterViewInit, OnDestroy {
         .append('path')
         .attr('fill', d => {
           let munColor = 0;
-          if (byDeaths === true) {
-            munColor = typeof TotalDeathReport.get(d.properties.COD_IBGE) === 'undefined' ? 0 : TotalDeathReport.get(d.properties.COD_IBGE);
+          if (byTrend === true) {
+            if (byDeaths === true)
+              munColor = typeof TotalReportDeathSlope.get(d.properties.COD_IBGE) === 'undefined' ? 0 : TotalReportDeathSlope.get(d.properties.COD_IBGE);
+            else
+              munColor = typeof TotalReportSlope.get(d.properties.COD_IBGE) === 'undefined' ? 0 : TotalReportSlope.get(d.properties.COD_IBGE);
+            return self.colorScale(colorRangePlasma, [1, 2, 3, 4, 5, 6], munColor);
           } else {
-            munColor = typeof TotalReport.get(d.properties.COD_IBGE) === 'undefined' ? 0 : TotalReport.get(d.properties.COD_IBGE);
+            if (byDeaths === true) {
+              munColor = typeof TotalDeathReport.get(d.properties.COD_IBGE) === 'undefined' ? 0 : TotalDeathReport.get(d.properties.COD_IBGE);
+            } else {
+              munColor = typeof TotalReport.get(d.properties.COD_IBGE) === 'undefined' ? 0 : TotalReport.get(d.properties.COD_IBGE);
+            }
           }
-
           if (munColor === 0) {
             // return '#000000';
             return '#FFFFFF';
@@ -1025,8 +1164,8 @@ export class MapchartComponent implements OnInit, AfterViewInit, OnDestroy {
         d3.select(this).attr('stroke', self.lineStrongerBorderColor);
         d3.select(this).attr('stroke-width', 3);
         // d3.select(this).attr('stroke', '#ED881A');
-        const labelTot = byDensidade === true ? 'Incidência casos' : 'Total casos';
-        const labelTotDeath = byDensidade === true ? 'Incidência óbitos' : 'Total óbitos';
+        const labelTot = byDensity === true ? 'Incidência casos' : 'Total casos';
+        const labelTotDeath = byDensity === true ? 'Incidência óbitos' : 'Total óbitos';
         return (
           // '<div style="opacity:0.8;background-color:#8b0707;padding:7px;color:white">' +
           '<div style="opacity:0.8;background-color:#253494;padding:7px;color:white">' +
@@ -1111,27 +1250,24 @@ export class MapchartComponent implements OnInit, AfterViewInit, OnDestroy {
     const currentScale = Math.min(scaleValue, (0.5 * height) / 200);
     g.attr(
       'transform',
-      // 'translate(50, ' + height / 1.7 + ') scale(' + (0.5 * height) / 200 + ')'
       'translate(50, ' + (height - 160 * currentScale) + ') scale(' +  currentScale  + ')'
     )
       .attr('class', 'legend')
       .call(
-        d3
-          .axisRight(yLegend)
+        d3.axisRight(yLegend)
           .tickSize(0)
           // tslint:disable-next-line:only-arrow-functions
           .tickFormat(function(y, i) {
-            if (i > 8) {
-              return '';
+            if (byTrend === true) {
+              if (i > 6) { return ''; }
+              return self.slopeLabels[i];
+            } else {
+              if (i > 8) { return ''; }
+              if (i === 0) { return '≤' + d3.format(',d')(y - 1) + ''; }
+              if (i === 8) { return '≥' + d3.format(',d')(lastTick) + ''; }
+              lastTick = y;
+              return d3.format(',d')(y - 1) + '';
             }
-            if (i === 0) {
-              return '≤' + d3.format(',d')(y - 1) + '';
-            }
-            if (i === 8) {
-              return '≥' + d3.format(',d')(lastTick) + '';
-            }
-            lastTick = y;
-            return d3.format(',d')(y - 1) + '';
           })
           .tickValues(color.domain())
       )
@@ -1142,7 +1278,7 @@ export class MapchartComponent implements OnInit, AfterViewInit, OnDestroy {
 
     d3.select('#total-state').html(self.formatValueSeperator(self.totalState));
     d3.select('#total-state-deaths').html(self.formatValueSeperator(self.totalDeathState));
-    if (byDensidade === true) {
+    if (byDensity === true) {
       d3.select('#name-total-state').html('Incidência ' + self.selectedState);
     } else {
       d3.select('#name-total-state').html('Confirmados ' + self.selectedState);
@@ -1165,11 +1301,11 @@ export class MapchartComponent implements OnInit, AfterViewInit, OnDestroy {
             '</td><td>' + self.rankingCounties[item].name + '</td>'
         );
     }
-      self.loadCountiesHeatMapChart(stateParam, self.iniSelectedDay, self.endSelectedDay, byDeaths, byDensidade, byNewCases );
+      self.loadCountiesHeatMapChart(stateParam, self.iniSelectedDay, self.endSelectedDay, byDeaths, byDensity, byNewCases );
   };
 
 
-  loadStatesHeatMapChart = (iniDate, endDate, byDeaths = false, byDensidade = false, byNewCases = false) => {
+  loadStatesHeatMapChart = (iniDate, endDate, byDeaths = false, byDensity = false, byNewCases = false) => {
     const self = this;
     let container = d3.select('#svg-linechart-state').node() as any;
     if ( container === (undefined || null) || container.parentNode === (undefined || null)) { return; }
@@ -1189,7 +1325,7 @@ export class MapchartComponent implements OnInit, AfterViewInit, OnDestroy {
           const state = rankingElm.region;
           let posIni = self.listDatesStates.indexOf(iniDate);
 
-          if (byDensidade) {
+          if (byDensity) {
             population = self.population[state].population;
           }
 
@@ -1256,7 +1392,7 @@ export class MapchartComponent implements OnInit, AfterViewInit, OnDestroy {
       let legendRange = [0, 10, 50, 100, 250, 500, 1000, 5000, 10000];
       if (byDeaths === true) {
         legendRange = [0, 1, 5, 10, 25, 50, 100, 500, 1000];
-        if (byDensidade === true ) {
+        if (byDensity === true ) {
           legendRange = [0, 0.25, 0.5, 0.75, 1, 5, 10, 25, 50];
           if (byNewCases === true) {
             legendRange = [0, 0.1, 0.2, 0.5, 0.75, 1, 5, 10, 20];
@@ -1267,7 +1403,7 @@ export class MapchartComponent implements OnInit, AfterViewInit, OnDestroy {
           }
         }
       } else {
-        if (byDensidade === true) {
+        if (byDensity === true) {
           legendRange = [0, 0.5, 1, 2, 5, 10, 20, 50, 100];
         } else {
           if (byNewCases === true) {
@@ -1286,7 +1422,7 @@ export class MapchartComponent implements OnInit, AfterViewInit, OnDestroy {
               .domain([d3.timeParse('%Y-%m-%d')(self.iniSelectedDay), d3.timeParse('%Y-%m-%d')(self.endSelectedDay)])
               .range([0, gridSizeX * (qtyDays - 0.9)]));
       let titleLabel = 'Casos confirmados ';
-      if (byDensidade === true) {
+      if (byDensity === true) {
         titleLabel = 'Incidência ';
       }
       const scaleValue = Math.min((0.5 * height) / 150, (0.5 * width) / 150);
@@ -1469,7 +1605,7 @@ export class MapchartComponent implements OnInit, AfterViewInit, OnDestroy {
     svg.call(self.tipLineState);
     };
 
-  loadCountiesHeatMapChart = (stateParam, iniDate, endDate, byDeaths = false, byDensidade = false, byNewCases = false) => {
+  loadCountiesHeatMapChart = (stateParam, iniDate, endDate, byDeaths = false, byDensity = false, byNewCases = false) => {
     const self = this;
     let container = d3.select('#svg-linechart-county').node() as any;
     if ( container === (undefined || null) || container.parentNode === (undefined || null) ) {
@@ -1510,7 +1646,7 @@ export class MapchartComponent implements OnInit, AfterViewInit, OnDestroy {
 
         self.rankingCounties.forEach(function(rankingElm, index) {
           const county = rankingElm.ibge;
-          if (byDensidade === true) {
+          if (byDensity === true) {
               population = typeof self.population[stateParam]['municipios'][county] === 'undefined' ? 1000000 :
                   self.population[stateParam]['municipios'][county];
           }
@@ -1592,7 +1728,7 @@ export class MapchartComponent implements OnInit, AfterViewInit, OnDestroy {
 
       if (byDeaths === true) {
         legendRange = [0, 1, 2, 5, 10, 25, 50, 75, 100];
-        if (byDensidade === true) {
+        if (byDensity === true) {
           legendRange = [0, 0.25, 0.5, 0.75, 1, 5, 10, 25, 50];
           if (byNewCases === true) {
             legendRange = [0, 0.1, 0.2, 0.5, 0.75, 1, 5, 10, 20];
@@ -1603,7 +1739,7 @@ export class MapchartComponent implements OnInit, AfterViewInit, OnDestroy {
           }
         }
       } else {
-        if (byDensidade === true) {
+        if (byDensity === true) {
           legendRange = [0, 0.5, 1, 2, 5, 10, 20, 25, 50];
         } else {
           if (byNewCases === true) {
@@ -1623,7 +1759,7 @@ export class MapchartComponent implements OnInit, AfterViewInit, OnDestroy {
           .domain([d3.timeParse('%Y-%m-%d')(self.iniSelectedDay), d3.timeParse('%Y-%m-%d')(self.endSelectedDay)])
           .range([0, gridSizeX * (qtyDays - 0.9)]));
       let titleLabel = 'Casos confirmados ';
-      if (byDensidade === true) {
+      if (byDensity === true) {
         titleLabel = 'Incidência ';
       }
       const scaleValue = Math.min((0.5 * height) / 150, (0.5 * width) / 150);
