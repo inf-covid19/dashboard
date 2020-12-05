@@ -16,10 +16,10 @@ export class MapchartComponent implements OnInit, AfterViewInit, OnDestroy {
   tipLineCountyName: any;
   tipLineState: any;
   tipLineCounty: any;
-  iniSelectedDay = '2020-01-01';
-  // iniSelectedDay = '2020-05-13';
-  minSelectedDay = '2020-02-24';
-  // minSelectedDay = '2020-04-24';
+  // iniSelectedDay = '2020-01-01';
+  iniSelectedDay = '2020-10-13';
+  // minSelectedDay = '2020-02-24';
+  minSelectedDay = '2020-02-22';
   endSelectedDay = '2020-03-24';
   maxSelectedDay = '2020-03-24';
   newStatesMaxVal = 0;
@@ -44,6 +44,10 @@ export class MapchartComponent implements OnInit, AfterViewInit, OnDestroy {
   byDeath = false;
   byTrend = false;
   byNewCases = false;
+  byWeek = true;
+  maxQtyDayDisplayed = 60;
+  globalStatesStep = 0;
+  globalCountiesStep = 0;
 
   // lineBorderColor = 'rgb(0,0,0,0.87)';
   lineBorderColor = '#1d1d1da8';
@@ -117,7 +121,7 @@ export class MapchartComponent implements OnInit, AfterViewInit, OnDestroy {
     const self = this;
 
     const serieInterval = {
-      start: new Date(2020, 0, 1),
+      start: new Date(2020, 1, 20),
       end: new Date()
     };
 
@@ -149,7 +153,6 @@ export class MapchartComponent implements OnInit, AfterViewInit, OnDestroy {
         };
       });
     });
-
     let dataPromises = Object.keys(this.statesNames).map(uf => {
       return d3.dsv(
         ',',
@@ -337,7 +340,8 @@ export class MapchartComponent implements OnInit, AfterViewInit, OnDestroy {
       .attr('class', 'axis axis--grid')
       .attr('transform', 'translate(0,' + height + ')')
       .call(d3.axisBottom(x)
-          .ticks(d3.timeHour, 24)
+          // .ticks(d3.timeHour, 24)
+          .ticks(d3.timeWeek, 1)
           .tickSize(-height)
           .tickFormat(function() { return null; })
       )
@@ -448,6 +452,13 @@ export class MapchartComponent implements OnInit, AfterViewInit, OnDestroy {
         .call(d3.event.target.move, d1.map(x));
       self.iniSelectedDay = formatTime(d1[0]);
       self.endSelectedDay = formatTime(d1[1]);
+
+      let diffDates = (new Date(parseDate(self.endSelectedDay))).getTime() - (new Date(parseDate(self.iniSelectedDay))).getTime();
+      if (diffDates / (1000 * 3600 * 24) > self.maxQtyDayDisplayed) {
+        self.byWeek = true;
+      }else {
+        self.byWeek = false;
+      }
 
       self.loadWidgetCountry(self.byTrend, self.byDeath, self.byDensity, self.byNewCases);
       self.loadWidgetState(self.selectedState, self.byTrend, self.byDeath, self.byDensity, self.byNewCases);
@@ -702,6 +713,7 @@ export class MapchartComponent implements OnInit, AfterViewInit, OnDestroy {
 
     self.newStatesMaxVal = self.closestMaxLegend(maxValue / 1.5);
     const stepSize = self.newStatesMaxVal / 10;
+    self.globalStatesStep = stepSize;
     const yLegend = d3.scaleLinear().domain(
         d3.range(stepSize === 1 ? 1 : stepSize + 1, Math.max(stepSize * 10, 9), stepSize).reverse()
       ).rangeRound([58, 88]);
@@ -1081,6 +1093,8 @@ export class MapchartComponent implements OnInit, AfterViewInit, OnDestroy {
     const newMaxVal = self.closestMaxLegend(maxValue / 1.5);
     const stepSize = newMaxVal / 10;
 
+    self.globalCountiesStep = stepSize;
+
     const yLegend = d3
       .scaleLinear()
       .domain(
@@ -1316,6 +1330,8 @@ export class MapchartComponent implements OnInit, AfterViewInit, OnDestroy {
 
     const parseDate = d3.timeParse('%Y-%m-%d');
     const statesList = [];
+    const datesHeatMap = [];
+    let addDate = true;
     const promises = [
       new Promise(resolve => {
         self.lineChartStates = [];
@@ -1324,51 +1340,101 @@ export class MapchartComponent implements OnInit, AfterViewInit, OnDestroy {
           // if (index > 9 && stateParam === '') { return; }
           const state = rankingElm.region;
           let posIni = self.listDatesStates.indexOf(iniDate);
-
+          let posEnd = self.listDatesStates.indexOf(endDate);
           if (byDensity) {
             population = self.population[state].population;
           }
 
           while (self.listDatesStates[posIni] <= endDate) {
             let value = 0;
+            let posTemp = (posIni + 7) < posEnd ? posIni + 7 : posEnd;
             if (byDeaths === true) {
               if (byNewCases === true) {
-                value = typeof self.data[self.listDatesStates[posIni]] === 'undefined' ? 0 : self.data[self.listDatesStates[posIni]].new_death_cases;
-              } else {
-                value = typeof self.data[self.listDatesStates[posIni]] === 'undefined' ? 0 : self.data[self.listDatesStates[posIni]].total_death;
+                if (self.byWeek === true) {
+                  value = typeof self.data[self.listDatesStates[posIni - 1]] === 'undefined' ? 0 : self.data[self.listDatesStates[posIni - 1]].total_death;
+                  value = typeof self.data[self.listDatesStates[posTemp]] === 'undefined' ? 0 : self.data[self.listDatesStates[posTemp]].total_death - value;
+                } else {  // By day
+                  value = typeof self.data[self.listDatesStates[posIni]] === 'undefined' ? 0 : self.data[self.listDatesStates[posIni]].new_death_cases;
+                }
+              } else {  // Accumulated (take the last day os that week)
+                if (self.byWeek === true) {
+                  if (posTemp === posEnd) posTemp += 1;
+                  value = typeof self.data[self.listDatesStates[posTemp - 1]] === 'undefined' ? 0 : self.data[self.listDatesStates[posTemp - 1]].total_death;
+                }else {
+                  value = typeof self.data[self.listDatesStates[posIni]] === 'undefined' ? 0 : self.data[self.listDatesStates[posIni]].total_death;
+                }
               }
 
             } else {
               if (byNewCases === true) {
-                value = typeof self.data[self.listDatesStates[posIni]] === 'undefined' ? 0 : self.data[self.listDatesStates[posIni]].new_cases;
-              } else {
-                value = typeof self.data[self.listDatesStates[posIni]] === 'undefined' ? 0 : self.data[self.listDatesStates[posIni]].total;
+                if (self.byWeek === true) {
+                  value = typeof self.data[self.listDatesStates[posIni - 1]] === 'undefined' ? 0 : self.data[self.listDatesStates[posIni - 1]].total;
+                  value = typeof self.data[self.listDatesStates[posTemp]] === 'undefined' ? 0 : self.data[self.listDatesStates[posTemp]].total - value;
+                } else { // By day
+                  value = typeof self.data[self.listDatesStates[posIni]] === 'undefined' ? 0 : self.data[self.listDatesStates[posIni]].new_cases;
+                }
+              } else {  // Accumulated, take the last day of the week
+                if (self.byWeek === true) {
+                  if (posTemp === posEnd) posTemp += 1;
+                  value = typeof self.data[self.listDatesStates[posTemp - 1]] === 'undefined' ? 0 : self.data[self.listDatesStates[posTemp - 1]].total;
+                }else {
+                  value = typeof self.data[self.listDatesStates[posIni]] === 'undefined' ? 0 : self.data[self.listDatesStates[posIni]].total;
+                }
               }
             }
 
-            if (value !== 0) {
+            if (value > 0) {
               if (byDeaths === true) {
                 if (byNewCases === true) {
-                  value = typeof self.data[self.listDatesStates[posIni]]['estados'][state] === 'undefined' ? 0 : self.data[self.listDatesStates[posIni]]['estados'][state].new_death_cases;
+                  if (self.byWeek === true) {
+                    if (typeof self.data[self.listDatesStates[posIni - 1]] === 'undefined') value = 0;
+                    else value = typeof self.data[self.listDatesStates[posIni - 1]]['estados'][state] === 'undefined' ? 0 : self.data[self.listDatesStates[posIni - 1]]['estados'][state].total_death;
+                    value = typeof self.data[self.listDatesStates[posTemp]]['estados'][state] === 'undefined' ? 0 : self.data[self.listDatesStates[posTemp]]['estados'][state].total_death - value;
+                  } else {  // By day
+                    value = typeof self.data[self.listDatesStates[posIni]]['estados'][state] === 'undefined' ? 0 : self.data[self.listDatesStates[posIni]]['estados'][state].new_death_cases;
+                  }
                 } else {
-                  value = typeof self.data[self.listDatesStates[posIni]]['estados'][state] === 'undefined' ? 0 : self.data[self.listDatesStates[posIni]]['estados'][state].total_death;
+                  if (self.byWeek === true) {
+                    if (posTemp === posEnd) posTemp += 1;
+                    value = typeof self.data[self.listDatesStates[posTemp - 1]]['estados'][state] === 'undefined' ? 0 : self.data[self.listDatesStates[posTemp - 1]]['estados'][state].total_death;
+                  }else {
+                    value = typeof self.data[self.listDatesStates[posIni]]['estados'][state] === 'undefined' ? 0 : self.data[self.listDatesStates[posIni]]['estados'][state].total_death;
+                  }
                 }
               } else {
                 if (byNewCases === true) {
-                  value = typeof self.data[self.listDatesStates[posIni]]['estados'][state] === 'undefined' ? 0 : self.data[self.listDatesStates[posIni]]['estados'][state].new_cases;
+                  if (self.byWeek === true) {
+                    if (typeof self.data[self.listDatesStates[posIni - 1]] === 'undefined') value = 0;
+                    else value = typeof self.data[self.listDatesStates[posIni - 1]]['estados'][state] ==='undefined' ? 0 : self.data[self.listDatesStates[posIni - 1]]['estados'][state].total;
+                    value = typeof self.data[self.listDatesStates[posTemp]]['estados'][state] === 'undefined' ? 0 : self.data[self.listDatesStates[posTemp]]['estados'][state].total - value;
+                  } else {  // By day
+                    value = typeof self.data[self.listDatesStates[posIni]]['estados'][state] === 'undefined' ? 0 : self.data[self.listDatesStates[posIni]]['estados'][state].new_cases;
+                  }
                 } else {
-                  value = typeof self.data[self.listDatesStates[posIni]]['estados'][state] === 'undefined' ? 0 : self.data[self.listDatesStates[posIni]]['estados'][state].total;
+                  if (self.byWeek === true) {
+                    if (posTemp === posEnd) posTemp += 1;
+                    value = typeof self.data[self.listDatesStates[posTemp - 1]]['estados'][state] === 'undefined' ? 0 : self.data[self.listDatesStates[posTemp - 1]]['estados'][state].total;
+                  }else {
+                    value = typeof self.data[self.listDatesStates[posIni]]['estados'][state] === 'undefined' ? 0 : self.data[self.listDatesStates[posIni]]['estados'][state].total;
+                  }
                 }
 
               }
             }
-            if (value !== 0 || byNewCases === true) {
+            if (value > 0 || byNewCases === true) {
               value = value * (self.popScale / population);
               self.lineChartStates.push({ region: state, date: parseDate(self.listDatesStates[posIni]), value: value });
             }
-            posIni = posIni + 1;
+            if (addDate === true) datesHeatMap.push(self.listDatesStates[posIni]);
+            if (self.byWeek === true){
+              posIni = posIni + 7;
+              if (posIni > posEnd) break;
+            } else {
+              posIni = posIni + 1;
+            }
           }
           statesList.push(state);
+          addDate = false;
         });
         resolve(true);
       })
@@ -1389,43 +1455,59 @@ export class MapchartComponent implements OnInit, AfterViewInit, OnDestroy {
         .attr('transform', 'translate(' + margin.left + ',' + margin.top * 3 + ')');
 
     function ready([dataPoints]) {
-      let legendRange = [0, 10, 50, 100, 250, 500, 1000, 5000, 10000];
+      let legendRange = [];
+      for (let i = 0; i < 9; i++) legendRange.push((self.globalStatesStep/5)*i);
       if (byDeaths === true) {
-        legendRange = [0, 1, 5, 10, 25, 50, 100, 500, 1000];
+        legendRange = [];
+        for (let i = 0; i < 9; i++) legendRange.push((self.globalStatesStep/4)*i);
         if (byDensity === true ) {
-          legendRange = [0, 0.25, 0.5, 0.75, 1, 5, 10, 25, 50];
+          legendRange = [];
+          for (let i = 0; i < 9; i++) legendRange.push((self.globalStatesStep)*i);
           if (byNewCases === true) {
-            legendRange = [0, 0.1, 0.2, 0.5, 0.75, 1, 5, 10, 20];
+            legendRange = [];
+            for (let i = 0; i < 9; i++) legendRange.push((self.globalStatesStep/10)*i);
           }
         } else {
           if (byNewCases === true) {
-            legendRange = [0, 1, 2, 5, 10, 25, 50, 100, 200];
+            legendRange = [];
+            for (let i = 0; i < 9; i++) legendRange.push((self.globalStatesStep/50)*i);
           }
         }
       } else {
         if (byDensity === true) {
-          legendRange = [0, 0.5, 1, 2, 5, 10, 20, 50, 100];
+          legendRange = [];
+          for (let i = 0; i < 9; i++) legendRange.push((self.globalStatesStep)*i);
+          if (byNewCases === true) {
+            legendRange = [];
+            for (let i = 0; i < 9; i++) legendRange.push((self.globalStatesStep/10)*i);
+          }
         } else {
           if (byNewCases === true) {
-            legendRange = [0, 5, 10, 25, 50, 100, 200, 300, 500];
+            legendRange = [];
+            for (let i = 0; i < 9; i++) legendRange.push((self.globalStatesStep/50)*i);
           }
         }
       }
       const colorRange = self.getPlasmaList(9);
-      const qtyDays = 1 + self.listDatesStates.indexOf(self.endSelectedDay) - self.listDatesStates.indexOf(self.iniSelectedDay);
+      const qtyDays = datesHeatMap.length;
       const gridSizeX = width / qtyDays;
       const gridSizeY = height / 12;
-      const times = self.listDatesStates.slice(
-          self.listDatesStates.indexOf(self.iniSelectedDay), self.listDatesStates.indexOf(self.endSelectedDay) + 1);
+      const times = datesHeatMap;
       const legendElementWidth = width / 14;
+      console.log(datesHeatMap[0], datesHeatMap[datesHeatMap.length -1]);
       const x = d3.axisBottom().tickFormat(d3.timeFormat('%d/%m')).scale(d3.scaleTime()
-              .domain([d3.timeParse('%Y-%m-%d')(self.iniSelectedDay), d3.timeParse('%Y-%m-%d')(self.endSelectedDay)])
+              .domain([d3.timeParse('%Y-%m-%d')(datesHeatMap[0]), d3.timeParse('%Y-%m-%d')(datesHeatMap[datesHeatMap.length - 1])])
               .range([0, gridSizeX * (qtyDays - 0.9)]));
       let titleLabel = 'Casos confirmados ';
+      let titleByWeekLabel = ' (diário)';
       if (byDensity === true) {
         titleLabel = 'Incidência ';
       }
-      const scaleValue = Math.min((0.5 * height) / 150, (0.5 * width) / 150);
+
+      if (self.byWeek === true) {
+        titleByWeekLabel = ' (semanal)';
+      }
+      const scaleValue = Math.min((0.4 * height) / 150, (0.4 * width) / 150);
       svg.append('text')
           .attr('transform', 'scale(' + scaleValue + ')')
           .attr('x', (width / 3.5 < 120) ? 40 : (width / 3.5))
@@ -1435,7 +1517,7 @@ export class MapchartComponent implements OnInit, AfterViewInit, OnDestroy {
           .style('font-size', 'min(calc(2vh), calc(1.5vw))')
           // .style('font-size', 15)
           .style('font-weight', 'bold')
-          .text(titleLabel + ' por estado');
+          .text(titleLabel + ' por estado' + titleByWeekLabel);
 
       g.append('g')
           .attr('class', 'x-axis')
@@ -1589,13 +1671,15 @@ export class MapchartComponent implements OnInit, AfterViewInit, OnDestroy {
         .attr('class', 'd3-tip')
         .offset([20, -80])
         .html(function(d) {
+          const date = new Date(d.date);
+          if (self.byWeek === true) date.setDate(d.date.getDate() + 6);
           return (
               // '<div style="opacity:0.8;background-color:#8b0707;padding:7px;color:white">' +
               '<div style="opacity:0.8;background-color:#253494;padding:7px;color:white">' +
               '<text style="font-weight: 800">' +
               self.statesNames[d.region] +
               '</text></br><text>' +
-              d3.timeFormat('%d/%m')(d.date) +
+              d3.timeFormat('%d/%m')(date) +
               ':</text> <text style="font-weight: 800">' +
               self.formatValueSeperator(d.value) +
               '</text>' +
@@ -1617,6 +1701,8 @@ export class MapchartComponent implements OnInit, AfterViewInit, OnDestroy {
     const height = container.height - margin.top - margin.bottom;
 
     const parseDate = d3.timeParse('%Y-%m-%d');
+    const datesHeatMap = [];
+    let addDate = true;
 
     // Define scales
     const xScale = d3.scaleTime().range([0, width]);
@@ -1651,61 +1737,132 @@ export class MapchartComponent implements OnInit, AfterViewInit, OnDestroy {
                   self.population[stateParam]['municipios'][county];
           }
           let posIni = self.listDatesCounties.indexOf(iniDate);
+          let posEnd = self.listDatesStates.indexOf(endDate);
           while (self.listDatesCounties[posIni] <= endDate) {
+            let posTemp = (posIni + 7) < posEnd ? posIni + 7 : posEnd;
             let value = 0;
             if (byDeaths === true) {
               if (byNewCases === true) {
-                value = typeof self.data[self.listDatesCounties[posIni]] === 'undefined' ? 0 : self.data[self.listDatesCounties[posIni]].new_death_cases;
-              } else {
-                value = typeof self.data[self.listDatesCounties[posIni]] === 'undefined' ? 0 : self.data[self.listDatesCounties[posIni]].total_death;
+                if (self.byWeek === true) {
+                  value = typeof self.data[self.listDatesCounties[posIni - 1]] === 'undefined' ? 0 : self.data[self.listDatesCounties[posIni - 1]].total_death;
+                  value = typeof self.data[self.listDatesCounties[posTemp]] === 'undefined' ? 0 : self.data[self.listDatesCounties[posTemp]].total_death - value;
+                } else {  // By day
+                  value = typeof self.data[self.listDatesCounties[posIni]] === 'undefined' ? 0 : self.data[self.listDatesCounties[posIni]].new_death_cases;
+                }
+              } else {  // Acumulated by day, if byweek just the last day of that week
+                if (self.byWeek === true) {
+                  if (posTemp === posEnd) posTemp += 1;
+                  value = typeof self.data[self.listDatesCounties[posTemp - 1]] === 'undefined' ? 0 : self.data[self.listDatesCounties[posTemp - 1]].total_death;
+                }else {
+                  value = typeof self.data[self.listDatesCounties[posIni]] === 'undefined' ? 0 : self.data[self.listDatesCounties[posIni]].total_death;
+                }
               }
             } else {
               if (byNewCases === true) {
-                value = typeof self.data[self.listDatesCounties[posIni]] === 'undefined' ? 0 : self.data[self.listDatesCounties[posIni]].new_cases;
-              } else {
-                value = typeof self.data[self.listDatesCounties[posIni]] === 'undefined' ? 0 : self.data[self.listDatesCounties[posIni]].total;
+                if (self.byWeek === true) {
+                  value = typeof self.data[self.listDatesCounties[posIni - 1]] === 'undefined' ? 0 : self.data[self.listDatesCounties[posIni - 1]].total;
+                  value = typeof self.data[self.listDatesCounties[posTemp]] === 'undefined' ? 0 : self.data[self.listDatesCounties[posTemp]].total - value;
+                } else {  // By day
+                  value = typeof self.data[self.listDatesCounties[posIni]] === 'undefined' ? 0 : self.data[self.listDatesCounties[posIni]].new_cases;
+                }
+              } else {  // Acumulated by day, if byweek just the last day of that week
+                if (self.byWeek === true) {
+                  if (posTemp === posEnd) posTemp += 1;
+                  value = typeof self.data[self.listDatesCounties[posTemp - 1]] === 'undefined' ? 0 : self.data[self.listDatesCounties[posTemp - 1]].total;
+                }else {
+                  value = typeof self.data[self.listDatesCounties[posIni]] === 'undefined' ? 0 : self.data[self.listDatesCounties[posIni]].total;
+                }
               }
             }
-            if (value !== 0) {
+            if (value > 0) {
               if (byDeaths === true) {
                 if (byNewCases === true) {
-                  value = typeof self.data[self.listDatesCounties[posIni]]['estados'][stateParam] === 'undefined'? 0 : self.data[self.listDatesCounties[posIni]]['estados'][stateParam].new_death_cases;
-                } else {
-                  value = typeof self.data[self.listDatesCounties[posIni]]['estados'][stateParam] === 'undefined'? 0 : self.data[self.listDatesCounties[posIni]]['estados'][stateParam].total_death;
+                  if (self.byWeek === true) {
+                    if (typeof self.data[self.listDatesCounties[posIni - 1]] === 'undefined') value = 0;
+                    else value = typeof self.data[self.listDatesCounties[posIni - 1]]['estados'][stateParam] === 'undefined' ? 0 : self.data[self.listDatesCounties[posIni - 1]]['estados'][stateParam].total_death;
+                    value = typeof self.data[self.listDatesCounties[posTemp]]['estados'][stateParam] === 'undefined' ? 0 : self.data[self.listDatesCounties[posTemp]]['estados'][stateParam].total_death - value;
+                  } else {  // By day
+                    value = typeof self.data[self.listDatesCounties[posIni]]['estados'][stateParam] === 'undefined' ? 0 : self.data[self.listDatesCounties[posIni]]['estados'][stateParam].new_death_cases;
+                  }
+                } else {  // Acumulated by day, if byweek just the last day of that week
+                  if (self.byWeek === true) {
+                    if (posTemp === posEnd) posTemp += 1;
+                    value = typeof self.data[self.listDatesCounties[posTemp - 1]]['estados'][stateParam] === 'undefined' ? 0 : self.data[self.listDatesCounties[posTemp - 1]]['estados'][stateParam].total_death;
+                  }else {
+                    value = typeof self.data[self.listDatesCounties[posIni]]['estados'][stateParam] === 'undefined' ? 0 : self.data[self.listDatesCounties[posIni]]['estados'][stateParam].total_death;
+                  }
                 }
               } else {
                 if (byNewCases === true) {
-                  value = typeof self.data[self.listDatesCounties[posIni]]['estados'][stateParam] === 'undefined'? 0 : self.data[self.listDatesCounties[posIni]]['estados'][stateParam].new_cases;
-                } else {
-                  value = typeof self.data[self.listDatesCounties[posIni]]['estados'][stateParam] === 'undefined'? 0 : self.data[self.listDatesCounties[posIni]]['estados'][stateParam].total;
+                  if (self.byWeek === true) {
+                    if (typeof self.data[self.listDatesCounties[posIni - 1]] === 'undefined') value = 0;
+                    else value = typeof self.data[self.listDatesCounties[posIni - 1]]['estados'][stateParam] === 'undefined' ? 0 : self.data[self.listDatesCounties[posIni - 1]]['estados'][stateParam].total;
+                    value = typeof self.data[self.listDatesCounties[posTemp]]['estados'][stateParam] === 'undefined' ? 0 : self.data[self.listDatesCounties[posTemp]]['estados'][stateParam].total - value;
+                  } else {  // By day
+                    value = typeof self.data[self.listDatesCounties[posIni]]['estados'][stateParam] === 'undefined' ? 0 : self.data[self.listDatesCounties[posIni]]['estados'][stateParam].new_cases;
+                  }
+                } else {  // Acumulated by day, if byweek just the last day of that week
+                  if (self.byWeek === true) {
+                    if (posTemp === posEnd) posTemp += 1;
+                    value = typeof self.data[self.listDatesCounties[posTemp - 1]]['estados'][stateParam] === 'undefined' ? 0 : self.data[self.listDatesCounties[posTemp - 1]]['estados'][stateParam].total;
+                  }else {
+                    value = typeof self.data[self.listDatesCounties[posIni]]['estados'][stateParam] === 'undefined' ? 0 : self.data[self.listDatesCounties[posIni]]['estados'][stateParam].total;
+                  }
                 }
               }
             }
-            if (value !== 0) {
+            if (value > 0) {
               if (byDeaths === true) {
                 if (byNewCases === true) {
-                  value = typeof self.data[self.listDatesCounties[posIni]]['estados'][stateParam]['municipios'][county] === 'undefined' ? 0 : self.data[self.listDatesCounties[posIni]]['estados'][stateParam]['municipios'][county].new_death_cases;
-                } else {
-                  value = typeof self.data[self.listDatesCounties[posIni]]['estados'][stateParam]['municipios'][county] === 'undefined' ? 0 : self.data[self.listDatesCounties[posIni]]['estados'][stateParam]['municipios'][county].total_death;
+                  if (self.byWeek === true) {
+                    value = typeof self.data[self.listDatesCounties[posIni - 1]]['estados'][stateParam]['municipios'][county] === 'undefined' ? 0 : self.data[self.listDatesCounties[posIni - 1]]['estados'][stateParam]['municipios'][county].total_death;
+                    value = typeof self.data[self.listDatesCounties[posTemp]]['estados'][stateParam]['municipios'][county] === 'undefined' ? 0 : self.data[self.listDatesCounties[posTemp]]['estados'][stateParam]['municipios'][county].total_death - value;
+                  } else {  // By day
+                    value = typeof self.data[self.listDatesCounties[posIni]]['estados'][stateParam]['municipios'][county] === 'undefined' ? 0 : self.data[self.listDatesCounties[posIni]]['estados'][stateParam]['municipios'][county].new_death_cases;
+                  }
+                } else {  // Acumulated by day, if byweek just the last day of that week
+                  if (self.byWeek === true) {
+                    if (posTemp === posEnd) posTemp += 1;
+                    value = typeof self.data[self.listDatesCounties[posTemp - 1]]['estados'][stateParam]['municipios'][county] === 'undefined' ? 0 : self.data[self.listDatesCounties[posTemp - 1]]['estados'][stateParam]['municipios'][county].total_death;
+                  }else {
+                    value = typeof self.data[self.listDatesCounties[posIni]]['estados'][stateParam]['municipios'][county] === 'undefined' ? 0 : self.data[self.listDatesCounties[posIni]]['estados'][stateParam]['municipios'][county].total_death;
+                  }
                 }
               } else {
                 if (byNewCases === true) {
-                  value = typeof self.data[self.listDatesCounties[posIni]]['estados'][stateParam]['municipios'][county] === 'undefined' ? 0 : self.data[self.listDatesCounties[posIni]]['estados'][stateParam]['municipios'][county].new_cases;
-                } else {
-                  value = typeof self.data[self.listDatesCounties[posIni]]['estados'][stateParam]['municipios'][county] === 'undefined' ? 0 : self.data[self.listDatesCounties[posIni]]['estados'][stateParam]['municipios'][county].total;
+                  if (self.byWeek === true) {
+                    value = typeof self.data[self.listDatesCounties[posIni - 1]]['estados'][stateParam]['municipios'][county] === 'undefined' ? 0 : self.data[self.listDatesCounties[posIni - 1]]['estados'][stateParam]['municipios'][county].total;
+                    value = typeof self.data[self.listDatesCounties[posTemp]]['estados'][stateParam]['municipios'][county] === 'undefined' ? 0 : self.data[self.listDatesCounties[posTemp]]['estados'][stateParam]['municipios'][county].total - value;
+                  } else {  // By day
+                    value = typeof self.data[self.listDatesCounties[posIni]]['estados'][stateParam]['municipios'][county] === 'undefined' ? 0 : self.data[self.listDatesCounties[posIni]]['estados'][stateParam]['municipios'][county].new_cases;
+                  }
+                } else {  // Acumulated by day, if byweek just the last day of that week
+                  if (self.byWeek === true) {
+                    if (posTemp === posEnd) posTemp += 1;
+                    value = typeof self.data[self.listDatesCounties[posTemp - 1]]['estados'][stateParam]['municipios'][county] === 'undefined' ? 0 : self.data[self.listDatesCounties[posTemp - 1]]['estados'][stateParam]['municipios'][county].total;
+                  }else {
+                    value = typeof self.data[self.listDatesCounties[posIni]]['estados'][stateParam]['municipios'][county] === 'undefined' ? 0 : self.data[self.listDatesCounties[posIni]]['estados'][stateParam]['municipios'][county].total;
+                  }
                 }
               }
             }
-            if (value !== 0 || byNewCases === true) {
+            if (value > 0 || byNewCases === true) {
               value = value * (self.popScale / population);
               self.lineChartCounties.push({ date: parseDate(self.listDatesCounties[posIni]),
                 value: value,
                 region: county
               });
             }
-            posIni = posIni + 1;
+            if (addDate === true) datesHeatMap.push(self.listDatesStates[posIni]);
+            if (self.byWeek === true){
+              posIni = posIni + 7;
+              if (posIni > posEnd) break;
+            } else {
+              posIni = posIni + 1;
+            }
           }
           countiesList.push(county);
+          addDate = false;
         });
         resolve(true);
       })
@@ -1724,45 +1881,61 @@ export class MapchartComponent implements OnInit, AfterViewInit, OnDestroy {
         .attr('transform', 'translate(' + margin.left + ',' + margin.top * 3 + ')');
 
     function ready([dataPoints]) {
-      let legendRange = [0, 5, 10, 20, 50, 100, 200, 500, 1000];
+      let legendRange = [];
+      for (let i = 0; i < 9; i++) legendRange.push((self.globalCountiesStep/5)*i);
 
       if (byDeaths === true) {
-        legendRange = [0, 1, 2, 5, 10, 25, 50, 75, 100];
-        if (byDensity === true) {
-          legendRange = [0, 0.25, 0.5, 0.75, 1, 5, 10, 25, 50];
+        legendRange = [];
+        for (let i = 0; i < 9; i++) legendRange.push((self.globalCountiesStep/4)*i);
+        if (byDensity === true ) {
+          legendRange = [];
+          for (let i = 0; i < 9; i++) legendRange.push((self.globalCountiesStep)*i);
           if (byNewCases === true) {
-            legendRange = [0, 0.1, 0.2, 0.5, 0.75, 1, 5, 10, 20];
+            legendRange = [];
+            for (let i = 0; i < 9; i++) legendRange.push((self.globalCountiesStep/10)*i);
           }
         } else {
           if (byNewCases === true) {
-            legendRange = [0, 1, 2, 5, 10, 25, 50, 100, 200];
+            legendRange = [];
+            for (let i = 0; i < 9; i++) legendRange.push((self.globalCountiesStep/50)*i);
           }
         }
       } else {
         if (byDensity === true) {
-          legendRange = [0, 0.5, 1, 2, 5, 10, 20, 25, 50];
+          legendRange = [];
+          for (let i = 0; i < 9; i++) legendRange.push((self.globalCountiesStep)*i);
+          if (byNewCases === true) {
+            legendRange = [];
+            for (let i = 0; i < 9; i++) legendRange.push((self.globalCountiesStep/10)*i);
+          }
         } else {
           if (byNewCases === true) {
-            legendRange = [0, 2, 5, 10, 25, 50, 100, 250, 500];
+            legendRange = [];
+            for (let i = 0; i < 9; i++) legendRange.push((self.globalCountiesStep/50)*i);
           }
         }
       }
 
       const colorRange = self.getPlasmaList(9);
-      const qtyDays = 1 + self.listDatesStates.indexOf(self.endSelectedDay) - self.listDatesStates.indexOf(self.iniSelectedDay);
+      const qtyDays = datesHeatMap.length;
       const gridSizeX = width / qtyDays;
       const gridSizeY = height / 12;
-      const times = self.listDatesStates.slice(
-          self.listDatesStates.indexOf(self.iniSelectedDay), self.listDatesStates.indexOf(self.endSelectedDay) + 1);
+      const times = datesHeatMap;
       const legendElementWidth = width / 14;
       const x = d3.axisBottom().tickFormat(d3.timeFormat('%d/%m')).scale(d3.scaleTime()
-          .domain([d3.timeParse('%Y-%m-%d')(self.iniSelectedDay), d3.timeParse('%Y-%m-%d')(self.endSelectedDay)])
+          // .domain([d3.timeParse('%Y-%m-%d')(self.iniSelectedDay), d3.timeParse('%Y-%m-%d')(self.endSelectedDay)])
+          .domain([d3.timeParse('%Y-%m-%d')(datesHeatMap[0]), d3.timeParse('%Y-%m-%d')(datesHeatMap[datesHeatMap.length - 1])])
           .range([0, gridSizeX * (qtyDays - 0.9)]));
       let titleLabel = 'Casos confirmados ';
+      let titleByWeekLabel = ' (diário)';
       if (byDensity === true) {
         titleLabel = 'Incidência ';
       }
-      const scaleValue = Math.min((0.5 * height) / 150, (0.5 * width) / 150);
+
+      if (self.byWeek === true) {
+        titleByWeekLabel = ' (semanal)';
+      }
+      const scaleValue = Math.min((0.4 * height) / 150, (0.4 * width) / 150);
       svg.append('text')
           .attr('transform', 'scale(' + scaleValue + ')')
           .attr('x', (width / 4 < 120) ? 20 : (width / 4) )
@@ -1772,7 +1945,7 @@ export class MapchartComponent implements OnInit, AfterViewInit, OnDestroy {
           .style('font-size', 'min(calc(2vh), calc(1.5vw))')
           // .style('font-size', 15)
           .style('font-weight', 'bold')
-          .text(titleLabel + 'por município no ' + self.selectedState);
+          .text(titleLabel + 'por município no ' + self.selectedState + titleByWeekLabel);
 
       g.append('g')
           .attr('class', 'x-axis')
@@ -1929,13 +2102,15 @@ export class MapchartComponent implements OnInit, AfterViewInit, OnDestroy {
         .attr('class', 'd3-tip')
         .offset([20, -80])
         .html(function(d) {
+          const date = new Date(d.date);
+          if (self.byWeek === true) date.setDate(d.date.getDate() + 6);
           return (
               // '<div style="opacity:0.8;background-color:#8b0707;padding:7px;color:white">' +
               '<div style="opacity:0.8;background-color:#253494;padding:7px;color:white">' +
               '<text style="font-weight: 800">' +
               self.countiesNames[d.region] +
               '</text></br><text>' +
-              d3.timeFormat('%d/%m')(d.date) +
+              d3.timeFormat('%d/%m')(date) +
               ':</text> <text style="font-weight: 800">' +
               self.formatValueSeperator(d.value) +
               '</text>' +
